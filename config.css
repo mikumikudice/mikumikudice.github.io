@@ -1,0 +1,12 @@
+.default {
+    color: rgb(204, 238, 102);
+    background-color: rgb(60, 77, 9);
+    font-family:'Courier New', Courier;
+}
+
+.j_text {
+
+    font-family:'Courier New', Courier, monospace;
+    font-size: 24px;
+}
+
