@@ -27,7 +27,7 @@
 
             <!-- Logo -->
             <p align = "center">
-                <img src = Logo.png alt = "Logo" style = "width: 256px; height: 256px" align = "middle">
+                <img src = Logo.png alt = "Logo.png" style = "width: 256px; height: 256px" align = "middle">
             </p>
         
             <!-- First Headline -->
