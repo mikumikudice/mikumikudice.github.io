@@ -71,5 +71,5 @@ function blog_post_save(){
             </p>
         </div>
     </body>`;
-    download(`blog/${name}.html`, cntt)
+    download(`${name}.html`, cntt)
 }
