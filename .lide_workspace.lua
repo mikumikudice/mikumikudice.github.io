@@ -1,1 +1,1 @@
-return {["views"]={[1]={["filename"]="my_work.html",["scroll"]={["x"]=37.6,["y"]=450},["type"]="doc",["text"]=false,["selection"]={[1]=41,[2]=116,[3]=41,[4]=116},["active"]=true}},["active_view"]=1,["type"]="leaf"}
+return {["active_view"]=1,["views"]={[1]={["selection"]={[1]=50,[2]=25,[3]=50,[4]=25},["type"]="doc",["text"]=false,["active"]=true,["filename"]="my_work.html",["scroll"]={["y"]=600,["x"]=0}}},["type"]="leaf"}
