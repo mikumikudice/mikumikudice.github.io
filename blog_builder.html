@@ -1,9 +1,10 @@
 <html>
     <head>
         <title>BinaryBrain_</title>
+
+        <script src="blog/blog_builder.js"></script>
         <link rel="stylesheet" href="config.css"/>
     </head>
-
     <body>
         <!-- Head -->
         <h1 align = "center" style = "color:#3C4D09"><u><br/>BinaryBrain</u></h1>
@@ -19,18 +20,21 @@
         </div>
         <hr align = "center"/>
 
+        <!-- Body -->
         <div>
-            <p><br/><br/></p>
-            <p align = "center">
-                <img src = "Coming soon.gif" alt = "coming soon" style = "width: 320px; height: 320px" align = "middle">
-            </p>
-            <p><br/><br/></p>
+            <div class = "default" id = "post"></div>
+            <div align = "center">
+                <input type = "text" id = "field" size = 80/>
+                <input type = "submit" value="submit"  onclick="blog_post()"/>
+                <input type = "submit" value="delete"  onclick="blog_post_dell()"/>
+                <input type = "submit" value="publish" onclick="blog_post_save()"/>
+            </div>
         </div>
 
+        <hr align = "center"/>
+        <!-- Footnote -->
         <div class="default" align = "center">
-            <hr/>
-            <!-- Footnote -->
-            <p>
+            <p align = "center">
                 BinaryBrain_ Copyright(c) 2019-2021 by Mateus M. D. de Souza,
                 name (BinaryBrain_) and logo.<br/>
                 All rights reserved.
