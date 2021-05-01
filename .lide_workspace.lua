@@ -1,1 +1,0 @@
-return {["views"]={[1]={["scroll"]={["x"]=0,["y"]=200},["text"]=false,["selection"]={[1]=25,[2]=13,[3]=25,[4]=13},["filename"]="blog_builder.html",["type"]="doc",["active"]=true},[2]={["scroll"]={["x"]=0,["y"]=950},["text"]=false,["selection"]={[1]=59,[2]=9,[3]=59,[4]=50},["filename"]="blog/blog_builder.js",["type"]="doc",["active"]=false}},["type"]="leaf",["active_view"]=1}
