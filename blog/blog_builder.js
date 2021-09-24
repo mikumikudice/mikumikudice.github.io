@@ -22,6 +22,12 @@ function blog_post(){
     lastidx++;
     lastone[lastidx] = post.innerHTML.length;
 
+    html.value = html.value.replace(/\~\~(.+)\~\~/gi, '<s>$1</s>')
+    html.value = html.value.replace(/\*\*(.+)\*\*/gi, '<b>$1</b>')
+    html.value = html.value.replace(/\[([^\[\]]+)\]\(([^\(\)]+)\)/gi, '<a href=$2 target="_blank" style="color:#CCEE66">$1</a>')
+    html.value = html.value.replace(/__(.+)__/gi, '<i>$1</i>')
+    html.value = html.value.replace('\\n', '<br/>')
+
     post.innerHTML += html.value;
     html.value = "";
 }
