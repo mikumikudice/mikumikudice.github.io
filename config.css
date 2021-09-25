@@ -1,17 +1,21 @@
 .default {
     color           : #CCEE66;
     background-color: #3C4D09;
-    font-family     : 'Courier New', Courier;
+    font-family: 'PT Mono', monospace;
+}
+.logo {
+    font-family: 'DM Mono', monospace;
+    font-size  : 32px;
 }
 .j_text {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'DM Mono', monospace;
     font-size  : 24px;
 }
 div {
-    padding-top  : 05px;
-    padding-left : 20px;
-    padding-down : 10px;
-    padding-right: 20px;
+    padding-top   : 05px;
+    padding-left  : 20px;
+    padding-bottom: 10px;
+    padding-right : 20px;
 }
 
 hr {
@@ -20,7 +24,7 @@ hr {
     border: none;
 }
 
-// fullclick class was originally written by christianheilmann.com
+/* fullclick class was originally written by christianheilmann.com */
 .fullclick {
     margin   : 1em 0;
     padding  : 0;
