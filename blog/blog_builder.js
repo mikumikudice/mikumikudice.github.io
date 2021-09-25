@@ -45,10 +45,15 @@ function blog_post_save(){
     <head>
         <title>BinaryBrain_</title>
         <link rel="stylesheet" href="../config.css"/>
+        <link rel="icon" href="icon.png">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet">
     </head>
     <body>
         <!-- Head -->
-        <h1 align = "center" style = "color:#3C4D09"><u><br/>BinaryBrain</u></h1>
+        <h1 class = "logo" align = "center" style = "color:#3C4D09"><u><br/>BinaryBrain</u></h1>
         <hr align = "center"/>
 
         <!-- Menu -->
@@ -64,11 +69,9 @@ function blog_post_save(){
         <!-- Body -->
         <div class = "default" align = "justify">
             ${document.getElementById('post').innerHTML}
-        </div>
 
-        <hr align = "center"/>
-        <!-- Footnote -->
-        <div class="default" align = "center">
+            <!-- Footnote -->
+            <hr align = "center"/>
             <p align = "center">
                 BinaryBrain_ Copyright(c) 2019-2021 by Mateus M. D. de Souza,
                 name (BinaryBrain_) and logo.<br/>
@@ -76,6 +79,7 @@ function blog_post_save(){
                 <br/><br/>
             </p>
         </div>
-    </body>`;
+    </body>
+</html>`;
     download(`${name}.html`, cntt)
 }
