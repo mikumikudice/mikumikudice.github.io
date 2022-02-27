@@ -8,23 +8,17 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
         <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet"> 
-    </head>
+        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
 
-    <body>
+        <script src="auto_header.js"></script>
+    </head>
+    <body onload = "init_header()">
         <!-- Head -->
         <h1 align = "center" style = "color:#3C4D09" class = "logo"><u><br/>BinaryBrain</u></h1>
         <hr align = "center"/>
 
         <!-- Menu -->
-        <div class="j_text" align = "center">
-            <a href = "soon.html"                    style = "color:#3C4D09">sketches</a>
-            <a href = "blog.html"                    style = "color:#3C4D09">blog</a>
-            <a href = "https://mateus-md.github.io/" style = "color:#3C4D09">home</a>
-            <a href = "my_work.html"                 style = "color:#3C4D09">work</a>
-            <a href = "about_me.html"                style = "color:#3C4D09">about me</a>
-        </div>
-        <hr align = "center"/>
+        <div id = "header"></div>
 
         <!-- Projects -->
         <div class="default">
@@ -38,12 +32,21 @@
                 <!-- C -->
                 Made with C.<br/>
                 <ul>
+                    <!-- b++ -->
+                    <li>
+                        bee++<br/>
+                        My revival of <a href = "https://en.wikipedia.org/wiki/B_(programming_language)" target = "_blank" style = "color:#CCEE66">B programming language</a>. [status: running | progress: 45%]<br/>
+                        <hr/>
+                        Its my life project. It's a compiled programming language designed for <b>MY</b> needs. It's kinda functional, weak-typed (weaker than C) and targets linux 32-bits architecture. You can read further more on it's <a  href = "https://github.com/mateus-md/beeplusplus" target = "_blank" style = "color:#CCEE66">github repo's page</a>.
+                    </li>
+                </ul>
+                <ul>
                     <!-- lowy -->
                     <li>
                         Lowy<br/>
                         My own vm interpreted language. [status: frozen | progress: minimal]<br/>
                         <hr/>
-                        Its one of my most ambitious project. I'm planning to create a language easy and embeddable like Lua, useful and simple like C and safe and reliable like Pony/Rust.
+                        Its an old project of mine. Maybe I'll give up or redesign everything and give a new name to it. I'm planning to create a language easy and embeddable like Lua, useful and simple like C and safe and reliable like Pony/Rust.
                         <br/><small>
                         related: <a href = "blog/Lowy.html" target = "_blank" style = "color:#CCEE66">april 27th</a>
                         </small>
@@ -58,7 +61,7 @@
                         leaf:
                         <small> A collection of libraries and classes for
                         <a href = "https://love2d.org" target = "_blank" style = "color:#CCEE66">LÖVE</a>.
-                        <a href = "https://github.com/mateusmds/leaf" style = "color:#CCEE66">Github</a>.
+                        <a href = "https://github.com/mateus-md/leaf" style = "color:#CCEE66">Github</a>.
                         </small>
                     </li>
                     <p></p>
@@ -66,7 +69,7 @@
                     <li>
                         Ghost:
                         <small> An esolang interpreter to summon spells and kill programs.<br/>Based on ZOMBIE and Pascal.
-                        <a href = "https://github.com/mateusmds/ghost" style = "color:#CCEE66">Github</a>.
+                        <a href = "https://github.com/mateus-md/ghost" style = "color:#CCEE66">Github</a>.
                         </small>
                     </li>
                     <p></p>
@@ -74,7 +77,7 @@
                     <li>
                         Dark Lua:
                         <small> A RPG text game.
-                        <a href = "https://github.com/mateusmds/Dark-Lua" style = "color:rgb(204, 238, 102)">Github</a>.
+                        <a href = "https://github.com/mateus-md/Dark-Lua" style = "color:rgb(204, 238, 102)">Github</a>.
                         </small>
                     </li>
                 </ul>

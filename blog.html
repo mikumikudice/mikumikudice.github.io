@@ -10,23 +10,18 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
         <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+
+        <script src="auto_header.js"></script>
     </head>
 
-    <body>
+    <body onload = "init_header()">
         <!-- Head -->
         <h1 align = "center" style = "color:#3C4D09" class = "logo"><u><br/>BinaryBrain</u></h1>
         <hr align = "center"/>
 
         <!-- Menu -->
-        <div class="j_text" align = "center">
-            <a href = "soon.html"                    style = "color:#3C4D09">sketches</a>
-            <a href = "blog.html"                    style = "color:#3C4D09">blog</a>
-            <a href = "https://mateus-md.github.io/" style = "color:#3C4D09">home</a>
-            <a href = "my_work.html"                 style = "color:#3C4D09">work</a>
-            <a href = "about_me.html"                style = "color:#3C4D09">about me</a>
-        </div>
-        <hr align = "center"/>
+        <div id = "header"></div>
 
         <div class = "default">
             <ul class = "fullclick" id = "feed">
