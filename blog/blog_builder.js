@@ -53,7 +53,7 @@ function blog_post_save(){
 
         <script src="auto_header.js"></script>
     </head>
-    <body onload = "init_header()">
+    <body onload = "init_header('../')">
         <!-- Head -->
         <h1 class = "logo" align = "center" style = "color:#3C4D09"><u><br/>BinaryBrain</u></h1>
         <hr align = "center"/>
