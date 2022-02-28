@@ -60,20 +60,16 @@ function blog_post_save(){
 
         <!-- Menu -->
         <div id = "header"></div>
+        <hr align = "center"/>
 
         <!-- Body -->
         <div class = "default" align = "justify">
             ${document.getElementById('post').innerHTML}
-
-            <!-- Footnote -->
-            <hr align = "center"/>
-            <p align = "center">
-                BinaryBrain_ Copyright(c) 2019-2021 by Mateus M. D. de Souza,
-                name (BinaryBrain_) and logo.<br/>
-                All rights reserved.
-                <br/><br/>
-            </p>
         </div>
+
+        <!-- Footnote -->
+        <hr align = "center"/>
+        <div class="default" id = "footnote" align="center"></div>
     </body>
 </html>`;
     download(`${name}.html`, cntt)

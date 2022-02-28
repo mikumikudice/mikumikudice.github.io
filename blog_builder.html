@@ -8,15 +8,17 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
         <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+        <script src="auto_header.js"></script>
     </head>
-    <body>
+    <body onload="init_header()">
         <!-- Head -->
         <h1 align = "center" style = "color:#3C4D09" class = "logo"><u><br/>BinaryBrain</u></h1>
         <hr align = "center"/>
 
         <!-- Menu -->
-        <div id = "header" onload="init_header()"></div>
+        <div id = "header"></div>
+        <hr align = "center"/>
 
         <!-- Body -->
         <div>
@@ -29,15 +31,8 @@
             </div>
         </div>
 
-        <hr align = "center"/>
         <!-- Footnote -->
-        <div class="default" align = "center">
-            <p align = "center">
-                BinaryBrain_ Copyright(c) 2019-2021 by Mateus M. D. de Souza,
-                name (BinaryBrain_) and logo.<br/>
-                All rights reserved.
-                <br/><br/>
-            </p>
-        </div>
+        <hr align = "center"/>
+        <div class="default" id = "footnote" align="center"></div>
     </body>
 </html>
