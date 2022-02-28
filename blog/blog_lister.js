@@ -1,4 +1,4 @@
-window.onload = function() {
+function list_posts(){
     let feed = document.getElementById('feed');
     let crds = feed.getElementsByTagName('li');
     for(i = 0; i < crds.length; i++){
