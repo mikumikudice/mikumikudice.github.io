@@ -64,7 +64,7 @@ function blog_post_save(){
         <hr align = "center"/>
 
         <!-- Body -->
-        <div class = "default" align = "justify">
+        <div class = "default" id = "data" align = "justify">
             ${document.getElementById('post').innerHTML}
         </div>
 
