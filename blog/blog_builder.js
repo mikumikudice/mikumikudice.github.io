@@ -1,6 +1,14 @@
 let lastidx = -1;
 let lastone = {};
 
+function allow_return(){
+    document.getElementById('field')
+    .addEventListener('keyup', function(event){
+        event.preventDefault();
+        if(event.key == "Enter") blog_post();
+});
+}
+
 // function from codegrepper.com
 function download(filename, text){
     var element = document.createElement('a');
@@ -22,11 +30,12 @@ function blog_post(){
     lastidx++;
     lastone[lastidx] = post.innerHTML.length;
 
-    html.value = html.value.replace(/\~\~(.+)\~\~/gi, '<s>$1</s>')
-    html.value = html.value.replace(/#(.+)\./gi, '<h3>$1</h3>')
-    html.value = html.value.replace(/\*\*(.+)\*\*/gi, '<b>$1</b>')
-    html.value = html.value.replace(/\[([^\[\]]+)\]\(([^\(\)]+)\)/gi, '<a href=$2 target="_blank" style="color:#CCEE66">$1</a>')
-    html.value = html.value.replace(/__(.+)__/gi, '<i>$1</i>')
+    html.value = html.value.replace(/\#(.+)/i, '<h3>$1</h3>')
+    html.value = html.value.replace(/\~\~(.+?)\~\~/i, '<s>$1</s>')
+    html.value = html.value.replace(/\*\*(.+?)\*\*/i, '<b>$1</b>')
+    html.value = html.value.replace(/__(.+?)__/i, '<i>$1</i>')
+    html.value = html.value.replace(/``(.+?)``/i, '<small><mark>$1</mark></small>')
+    html.value = html.value.replace(/\[([^\[\]]+?)\]\(([^\(\)]+?)\)/i, '<a href=$2 target="_blank" style="color:#CCEE66">$1</a>')
     html.value = html.value.replace('\\n', '<br\/>')
 
     post.innerHTML += html.value;

@@ -11,17 +11,17 @@ async function list_posts(){
     // substitute each of them by the preview card
     for(i = 0; i < crds.length; i++){
         // get the source for the brief line
-        const txt = await fetch_file(`https://mateus-md.github.io/blog/${crds[i].id}.html`);
+        const cid = crds[i].id;
+        const txt = await fetch_file(`https://mateus-md.github.io/blog/${cid}.html`);
         const src = prsr.parseFromString(txt, 'text/html');
 
         let brf = src.getElementById('data').innerHTML;
-        brf = brf.replace(/\<h3\>.+\<\/h3\>/, '');
+        brf = brf.replace(/\<h3\>.+?\<\/h3\>/, '');
+        brf = brf.replace(/\<a.+?\>(.+?)\<\/a\>/, '$1');
         brf = brf.slice(0, brf.indexOf('.', 66) ) + "...";
 
         // make the card
-        crds[i].innerHTML = `<h3>${crds[i].id}</h3>`+
-        `<p>${brf}</p>`+
-        `<a href = \"blog/${crds[i].id.replaceAll('.', '_')}.html`+
-        `\" class = \"main\">read more</a>`;
+        crds[i].innerHTML = `<h3>${cid}</h3><p>${brf}</p>
+        <a href = \"blog/${cid}.html\" class = \"main\">read more</a>`;
     }
 }
