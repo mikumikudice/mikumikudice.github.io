@@ -6,7 +6,7 @@ function allow_return(){
     .addEventListener('keyup', function(event){
         event.preventDefault();
         if(event.key == "Enter") blog_post();
-});
+    });
 }
 
 // function from codegrepper.com
