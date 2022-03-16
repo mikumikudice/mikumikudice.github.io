@@ -11,17 +11,31 @@
     font-family: 'DM Mono', monospace;
     font-size  : 24px;
 }
+
+.light_hr {
+    height: 2px;
+    border: none;
+    background-color: #CCEE66;
+}
+
 div {
-    padding-top   : 05px;
+    padding-top   : 10px;
     padding-left  : 20px;
     padding-bottom: 10px;
     padding-right : 20px;
 }
-
 hr {
-    height: 3px;
+    height: 4px;
     background-color: #2B381D;
     border: none;
+}
+li {
+    color           : #CCEE66;
+    background-color: #2B381D;
+    padding-top   : 10px;
+    padding-left  : 10px;
+    padding-bottom: 10px;
+    padding-right : 20px;
 }
 
 /* fullclick class was originally written by christianheilmann.com */
