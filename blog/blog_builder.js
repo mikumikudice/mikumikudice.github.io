@@ -30,12 +30,14 @@ function blog_post(){
     lastidx++;
     lastone[lastidx] = post.innerHTML.length;
 
-    html.value = html.value.replace(/\#(.+)/i, '<h3>$1</h3>')
-    html.value = html.value.replace(/\~\~(.+?)\~\~/i, '<s>$1</s>')
-    html.value = html.value.replace(/\*\*(.+?)\*\*/i, '<b>$1</b>')
-    html.value = html.value.replace(/__(.+?)__/i, '<i>$1</i>')
-    html.value = html.value.replace(/``(.+?)``/i, '<small><mark>$1</mark></small>')
-    html.value = html.value.replace(/\[([^\[\]]+?)\]\(([^\(\)]+?)\)/i, '<a href=$2 target="_blank" style="color:#CCEE66">$1</a>')
+    html.value = html.value.replace(/\#(.+)/g, '<h3>$1</h3>')
+    html.value = html.value.replace(/\##(.+)/g, '<h4>$1</h4>')
+    html.value = html.value.replace(/``(.+)``/g, '<code>$1</code>')
+    html.value = html.value.replace(/\~\~(.+?)\~\~/g, '<s>$1</s>')
+    html.value = html.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+    html.value = html.value.replace(/__(.+?)__/g, '<i>$1</i>')
+    html.value = html.value.replace(/``(.+?)``/g, '<small><mark>$1</mark></small>')
+    html.value = html.value.replace(/\[([^\[\]]+?)\]\(([^()]+?)\)/g, '<a href=$2 target="_blank" style="color:#CCEE66">$1</a>')
     html.value = html.value.replace('\\n', '<br\/>')
 
     post.innerHTML += html.value;
