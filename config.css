@@ -38,6 +38,21 @@ li {
     padding-right : 20px;
 }
 
+code {
+    font-size  : 14px;
+    color           : #8866EE;
+    background-color: #2A1D38;
+    padding-top   : 1px;
+    padding-left  : 2px;
+    padding-bottom: 1px;
+    padding-right : 2px;
+}
+
+::selection {
+    color: #2A1D38;
+    background: #8866EE;
+  }
+
 /* fullclick class was originally written by christianheilmann.com */
 .fullclick {
     margin   : 1em 0;
