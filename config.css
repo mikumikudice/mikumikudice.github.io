@@ -32,26 +32,26 @@ hr {
 li {
     color           : #CCEE66;
     background-color: #2B381D;
-    padding-top   : 10px;
-    padding-left  : 10px;
-    padding-bottom: 10px;
-    padding-right : 20px;
+    padding-top     : 10px;
+    padding-left    : 10px;
+    padding-bottom  : 10px;
+    padding-right   : 20px;
 }
 
 code {
-    font-size  : 14px;
+    font-size       : 14px;
     color           : #8866EE;
     background-color: #2A1D38;
-    padding-top   : 1px;
-    padding-left  : 2px;
-    padding-bottom: 1px;
-    padding-right : 2px;
+    padding-top     : 1px;
+    padding-left    : 2px;
+    padding-bottom  : 1px;
+    padding-right   : 2px;
 }
 
 ::selection {
     color: #2A1D38;
     background: #8866EE;
-  }
+}
 
 /* fullclick class was originally written by christianheilmann.com */
 .fullclick {
@@ -65,7 +65,7 @@ code {
     padding   : 10px 10px;
     background: #2B381D;
     position  : relative;
-    transition: 400ms;
+    transition: 0ms;
 }
 .todelete {
     opacity: 0;
@@ -88,7 +88,7 @@ code {
 }
 .fullclick:hover a.main,
 .fullclick:focus-within a.main {
-    color : #CCEE66;
+    color : #8866EE;
 }
 .fullclick li button {
     z-index : 2;
@@ -96,16 +96,17 @@ code {
     top     : 5px;
     right   : 5px;
     opacity : 0;
-    transition: 400ms;
+    transition: 0ms;
     border    : none;
     color     : #ffffff;
     background: #3C4D09;
 }
 .fullclick li:hover button,
 .fullclick li:focus-within button {
-    opacity  : 1;
+    opacity: 1;
+    color  : #8866EE;
 }
 .fullclick li:hover, .fullclick li:focus-within {
-    background:#3C4D09;
-    box-shadow: 0px 3px 6px #2B381D;
+    color     : #8866EE;
+    background: #2A1D38;
 }
