@@ -16,12 +16,18 @@ async function list_posts(){
         const src = prsr.parseFromString(txt, 'text/html');
 
         let brf = src.getElementById('data').innerHTML;
+        let tlt = src.getElementsByTagName('h3')[0].innerHTML;
         brf = brf.replace(/\<h3\>.+?\<\/h3\>/, '');
         brf = brf.replace(/\<a.+?\>(.+?)\<\/a\>/, '$1');
         brf = brf.slice(0, brf.indexOf('.', 66) ) + "...";
 
+        let date = cid.toString();
+        if(date.length < 6) date = '0' + date;
+        
+        date = date.slice(0,2) + "/" + date.slice(2,4) + "/" + date.slice(4);
+
         // make the card
-        crds[i].innerHTML = `<h3>${cid}</h3><p>${brf}</p>
+        crds[i].innerHTML = `<h4>${date + " | " + tlt}</h4><p>${brf}</p>
         <a href = \"blog/${cid}.html\" class = \"main\"></a>`;
     }
 }
