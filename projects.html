@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>mmd's blog</title>
+        <link rel="stylesheet" href="config.css"/>
+        <link rel="icon" href="icon.png">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap"         rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"         rel="stylesheet">
+
+        <script src="auto_header.js"></script>
+    </head>
+    <body onload = "init_header()">
+        <header>
+            <!-- Head -->
+            <h1 align = "center" class = "title"><u><a href="index.html" title="making stuff since 4 B.W." target="_blank">mmd's blog</a></u></h1>
+            <hr align = "center"/>
+
+            <!-- Menu -->
+            <nav id = "header"></nav>
+            <hr align = "center"/>
+        </header>
+
+        <!-- Projects -->
+        <main class="default">
+            <!-- First Headline -->
+            <section title="programming stuff I made">
+                <h2>My programming projects (see also my <a href = "https://www.github.com/mateusmds" target = "_blank">github account</a>)<br/>
+                </h2>
+                <!-- C -->
+                <h3>Made with C</h3>
+                <!-- b++ -->
+                <section class="dark">
+                    bee++<br/>
+                    My revival of <a href = "https://en.wikipedia.org/wiki/B_(programming_language)" target = "_blank">B programming language</a>. [status: running | progress: 45%]<br/>
+                    <hr class = "light_hr"/>
+                    It's my life project. It's a compiled programming language designed for <b>MY</b> needs. It's kinda functional, weak-typed (weaker than C) and targets linux 32-bits architecture. You can read further more on its <a href = "https://github.com/mateus-md/beeplusplus" target = "_blank">github repo's page</a>.
+                    <br/><br/><small>
+                    related: <a href = "blog/092421 061221.html" target = "_blank">september 9th</a>
+                    </small>
+                </section>
+                <!-- lowy -->
+                <section class="dark">
+                    lowy<br/>
+                    My own vm interpreted language. [status: frozen | progress: minimal]<br/>
+                    <hr class = "light_hr"/>
+                    Its an old project of mine. Maybe I'll give up or redesign everything and give it a new name. I have planned to create a language easy and embeddable like Lua, useful and simple like C and safe and reliable like Pony/Rust.
+                    <br/><br/><small>
+                    related: <a href = "blog/061221.html" target = "_blank">june 12th</a>
+                    </small>
+                </section>
+            <!-- Lua -->
+            <h3>Made with <a href = "https://www.lua.org" target = "_blank">Lua</a><br/>
+            Most of this work is deprecated and/or is a historical register</h3>
+                <!-- leaf -->
+                <section class="dark">
+                    leaf:
+                    <small> A collection of libraries and classes for
+                    <a href = "https://love2d.org" target = "_blank">LÖVE</a>.
+                    <a href = "https://github.com/mateus-md/leaf" target = "_blank">Github</a>.
+                    </small>
+                </section>
+
+                <!-- ghost -->
+                <section class="dark">
+                    ghost:
+                    <small> An esolang interpreter to summon spells and kill programs.<br/>Based on <a href = "https://esolangs.org/wiki/ZOMBIE" target = "_blank">ZOMBIE</a> and Pascal.
+                    <a href = "https://github.com/mateus-md/ghost" target="_blank">Github</a>.
+                    </small>
+                </section>
+
+                <!-- Dark Lua -->
+                <section class="dark">
+                    Dark Lua:
+                    <small> A RPG text game.
+                    <a href = "https://github.com/mateus-md/Dark-Lua" target="_blank">Github</a>.
+                    </small>
+                </section>
+            </section>
+        </main>
+
+        <!-- Footnote -->
+        <hr align = "center"/>
+        <footer class="footnote" id = "footnote">
+        </footer>
+    </body>
+</html>

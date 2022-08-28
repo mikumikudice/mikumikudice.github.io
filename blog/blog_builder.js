@@ -37,7 +37,7 @@ function blog_post(){
     html.value = html.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
     html.value = html.value.replace(/__(.+?)__/g, '<i>$1</i>')
     html.value = html.value.replace(/``(.+?)``/g, '<small><mark>$1</mark></small>')
-    html.value = html.value.replace(/\[([^\[\]]+?)\]\(([^()]+?)\)/g, '<a href=$2 target="_blank" style="color:#CCEE66">$1</a>')
+    html.value = html.value.replace(/\[([^\[\]]+?)\]\(([^()]+?)\)/g, '<a href=$2 target="_blank" >$1</a>')
     html.value = html.value.replace('\\n', '<br\/>')
 
     post.innerHTML += html.value;
@@ -55,33 +55,40 @@ function blog_post_save(){
     let   name = prompt('please enter the post name')
     const cntt = `<html>
     <head>
-        <title>BinaryBrain_</title>
+        <title>mmd's blog</title>
         <link rel="stylesheet" href="../config.css"/>
         <link rel="icon" href="icon.png">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet">
+        
+        <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap"         rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"         rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mon&display=swap"  rel="stylesheet">
 
         <script src="../auto_header.js"></script>
     </head>
     <body onload = "init_header('../')">
-        <!-- Head -->
-        <h1 class = "logo" align = "center" style = "color:#3C4D09"><u><br/>BinaryBrain</u></h1>
-        <hr align = "center"/>
+        <header>
+            <!-- Head -->
+            <h1 align = "center" class = "title"><u><a href="index.html" title="making stuff since 4 B.W." target="_blank">mmd's blog</a></u></h1>
+            <hr align = "center"/>
 
-        <!-- Menu -->
-        <div id = "header"></div>
-        <hr align = "center"/>
+            <!-- Menu -->
+            <nav id = "header"></nav>
+            <hr align = "center"/>
+        </header>
 
         <!-- Body -->
-        <div class = "default" id = "data" align = "justify">
+        <main class = "default" id = "data" align = "justify">
             ${document.getElementById('post').innerHTML}
-        </div>
+        </main>
 
         <!-- Footnote -->
         <hr align = "center"/>
-        <div class="default" id = "footnote" align="center"></div>
+        <footer class="footnote" id = "footnote">
+        </footer>
     </body>
 </html>`;
     download(`${name}.html`, cntt)

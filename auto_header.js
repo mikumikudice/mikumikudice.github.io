@@ -4,21 +4,24 @@ function init_header(subpath){
     let head = document.getElementById('header');
     head.innerHTML = `
     <div class="j_text" align = "center">
-        <a href = "https://www.deviantart.com/mateusmds" style = "color:#3C4D09">sketches</a>
-        <a href = "${subpath}blog.html"                  style = "color:#3C4D09">blog</a>
-        <a href = "https://mateus-md.github.io/"         style = "color:#3C4D09">home</a>
-        <a href = "${subpath}my_work.html"               style = "color:#3C4D09">work</a>
-        <a href = "${subpath}about_me.html"              style = "color:#3C4D09">about me</a>
+        <a href = "https://www.deviantart.com/mateusmds">sketches</a>
+        <a href = "${subpath}soon.html"                 >mmdpedia</a>
+        <a href = "${subpath}index.html"                >home</a>
+        <a href = "${subpath}projects.html"             >projects</a>
+        <a href = "${subpath}about_me.html"             >about me</a>
     </div>
     `;
 
     let foot = document.getElementById('footnote');
     foot.innerHTML = `
-    <p>
-        BinaryBrain_ Copyright(c) 2019-2022 by Mateus M. D. de Souza,
-        name (BinaryBrain_) and logo.<br/>
-        All rights reserved.
-    </p>
+        Copyright(c) 2019-2022 by Mateus M. D. de Souza.<br/>
+        all images' rights are reserved.<br/>
+        this website uses the color pallete <a href = "https://lospec.com/palette-list/laser-lab" target="_blank">laser lab</a> made by <a href="https://twitter.com/polyphorge" target="_blank">polyphorge.</a></br></br>
+        <address>
+            contact email: 6s4aq0np7@mozmail.com |
+            twitter: <a href="https://twitter.com/levi_alfeuson" target="_blank">
+            @levi_alfeuson</a>
+        </address>
     `;
     return 0;
 }

@@ -22,6 +22,6 @@ async function list_posts(){
 
         // make the card
         crds[i].innerHTML = `<h3>${cid}</h3><p>${brf}</p>
-        <a href = \"blog/${cid}.html\" class = \"main\">read more</a>`;
+        <a href = \"blog/${cid}.html\" class = \"main\"></a>`;
     }
 }

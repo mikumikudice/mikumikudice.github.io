@@ -1,53 +1,48 @@
 <html>
     <head>
-        <title>BinaryBrain_</title>
+        <title>mmd's blog</title>
         <link rel="stylesheet" href="config.css"/>
         <link rel="icon" href="icon.png">
 
+        
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap"         rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"         rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mon&display=swap"  rel="stylesheet">
+        
         <script src="auto_header.js"></script>
+        <script src="blog/blog_lister.js"></script>
     </head>
-    <body onload = "init_header()">
-        <!-- Head -->
-        <h1 align = "center" style = "color:#3C4D09" class = "logo"><u><br/>BinaryBrain</u></h1>
-        <hr align = "center"/>
 
-        <!-- Menu -->
-        <div id = "header"></div>
-        <hr align = "center"/>
-
-        <!-- Home -->
-        <div class = "default">
-            <!-- Logo -->
-            <p align = "center">
-                <img src = logo.png alt = "Logo.png" style = "width: 256px; height: 256px" align = "middle">
-            </p>
-            <!-- First Headline -->
-            <h2 align = "center" class = "logo">
-                Wellcome to BinaryBrain_
-            </h2>
-
-            <!-- About Binary Brain -->
-            <p align = "center">
-                BinaryBrain_ is a game producer corporation created by Mateus Morais Dias in jan 2019.<br/>
-                Actually this site is a portfolio of all my work, including draws and softwares.<br/>
-                You can see my artwork in the <a href = "https://www.deviantart.com/mateusmds" style = "color:#CCEE66">sketches on deviantart</a> 
-                or my programs in the <a href = "my_work.html" style = "color:#CCEE66">work</a> section.
-            </p>
-
+    <body onload = "init_header(); list_posts()">
+        <header>
+            <!-- Head -->
+            <h1 align = "center" class = "title"><u><a href="index.html" title="making stuff since 4 B.W." target="_blank">mmd's blog</a></u></h1>
             <hr align = "center"/>
-            <!-- About me -->
-            <p align = "center">
-                You can contact me by e-mail or social medias (<a href = "about_me.html" style = "color:#CCEE66">about me</a>).<br/>
-            </p>
-            <!-- Footnote -->
+
+            <!-- Menu -->
+            <nav id = "header"></nav>
             <hr align = "center"/>
-            <div class="default" id = "footnote" align="center"></div>
-        </div>
+        </header>
+
+        <main class = "default">
+            <section class = "highlight">
+                <ul id = "feed">
+                    <li id = "030922"></li>
+                    <li id = "031422"></li>
+                    <li id = "040222"></li>
+                    <li id = "061221"></li>
+                    <li id = "092421"></li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- Footnote -->
+        <hr align = "center"/>
+        <footer class="footnote" id = "footnote">
+        </footer>
     </body>
 </html>

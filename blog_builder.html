@@ -1,39 +1,48 @@
 <html>
     <head>
-        <title>BinaryBrain_</title>
+        <title>mmd's blog</title>
         <link rel="stylesheet" href="config.css"/>
         <link rel="icon" href="icon.png">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap"         rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"         rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mon&display=swap"  rel="stylesheet">
+
         <script src="auto_header.js"></script>
         <script src="blog/blog_builder.js"></script>
     </head>
     <body onload="init_header();allow_return()">
-        <!-- Head -->
-        <h1 align = "center" style = "color:#3C4D09" class = "logo"><u><br/>BinaryBrain</u></h1>
-        <hr align = "center"/>
+        <header>
+            <!-- Head -->
+            <h1 align = "center" class = "title"><u><a href="index.html" title="making stuff since 4 B.W." target="_blank">mmd's blog</a></u></h1>
+            <hr align = "center"/>
 
-        <!-- Menu -->
-        <div id = "header"></div>
-        <hr align = "center"/>
+            <!-- Menu -->
+            <nav id = "header"></nav>
+            <hr align = "center"/>
+        </header>
 
         <!-- Body -->
-        <div>
-            <div class = "default" align = "justify" id = "post"></div>
+        <main class = "default">
+            <div align = "justify" id = "post"></div>
             <div align = "center">
-                <input type = "text" id = "field" size = 80/>
+                <input type = "text" id = "field" size = 80 spellcheck="true"/>
                 <input type = "submit" value="submit"  id = "submit"  onclick="blog_post()"/>
                 <input type = "submit" value="delete"  id = "delete"  onclick="blog_post_dell()"/>
                 <input type = "submit" value="publish" id = "publish" onclick="blog_post_save()"/>
             </div>
-        </div>
+            <!-- Footnote -->
+            <hr align = "center"/>
+            <div class="footnote" id = "footnote" align="center"></div>
+        </main>
 
         <!-- Footnote -->
         <hr align = "center"/>
-        <div class="default" id = "footnote" align="center"></div>
+        <footer class="footnote" id = "footnote">
+        </footer>
     </body>
 </html>

@@ -4,6 +4,8 @@ function scandir(directory)
     local t = {}
 
     local pfile = io.popen('ls -a "'..directory..'"')
+    assert(pfile)
+
     for filename in pfile:lines() do
         i = i + 1
         t[i] = filename
@@ -31,6 +33,8 @@ for _, f in pairs(posts) do
 end
 data = data:gsub(path[1] .. '.*' .. path[2], path[1] .. addt .. path[2])
 
-local file = io.open('blog.html', 'w')
+local file = io.open('index.html', 'w')
+assert(file)
+
 file:write(data)
 file:close()
