@@ -29,10 +29,18 @@ section {
 .light {
     color           : #271d2c;
     background-color: #fff8ed;
+    padding-top   : 16px;
+    padding-left  : 24px;
+    padding-bottom: 16px;
+    padding-right : 24px;
 }
 .dark {
     color           : #fff8ed;
     background-color: #271d2c;
+    padding-top   : 16px;
+    padding-left  : 24px;
+    padding-bottom: 16px;
+    padding-right : 24px;
 }
 
 ul {
