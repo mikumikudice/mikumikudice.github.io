@@ -167,6 +167,10 @@ code {
     padding-bottom  : 1px;
     padding-right   : 2px;
 }
+code::selection {
+    color           : #e01f3f;
+    background-color: #271d2c;
+}
 
 ::selection {
     color           : #fff8ed;
