@@ -70,7 +70,7 @@ function blog_post_save(){
     <body onload = "init_header('../')">
         <header>
             <!-- Head -->
-            <h1 align = "center" class = "title"><u><a href="index.html" title="making stuff since 4 B.W." target="_blank">mmd's blog</a></u></h1>
+            <h1 align = "center" class = "title"><u><a href="index.html" title="making stuff since 4 B.W." >mmd's blog</a></u></h1>
             <hr align = "center"/>
 
             <!-- Menu -->
