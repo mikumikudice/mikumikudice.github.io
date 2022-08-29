@@ -27,9 +27,6 @@ section {
     padding-bottom: 24px;
     padding-right : 32px;
 }
-.default i {
-    font-style: italic;
-}
 
 .light {
     color           : #271d2c;
@@ -154,18 +151,20 @@ code {
 
 /* this class was originally written by christianheilmann.com */
 .highlight {
-    padding  : 0;
+    padding     : 0;
+    text-align  : left;
 }
 
 .highlight ul {
-    column-count    : 3;
-    column-gap      : 0;
+    column-count: 3;
+    column-gap  : 0;
 }
 .highlight li {
-    list-style : none;
-    position   : relative;
-    transition : 64ms;
-    height     : 360px;
+    font-size   : 16;
+    list-style  : none;
+    position    : relative;
+    transition  : 64ms;
+    height      : 256px;
 
     margin        : 0;
     padding-top   : 8px;
