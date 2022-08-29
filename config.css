@@ -16,17 +16,21 @@ section {
 }
 
 .default {
-    align-content   : justify;
-    font-size       : 24px;
+    font-size       : 16px;
     color           : #271d2c;
     background-color: #7b6960;
-    font-family     : 'Ubuntu Mono', monospace;
+    font-family     : 'PT Mono', monospace;
+    text-align      : justify;
 
     padding-top   : 24px;
     padding-left  : 32px;
     padding-bottom: 24px;
     padding-right : 32px;
 }
+.default i {
+    font-style: italic;
+}
+
 .light {
     color           : #271d2c;
     background-color: #fff8ed;
@@ -119,7 +123,10 @@ hr {
 
 a {
     color: #fff8ed;
-    text-decoration-thickness: 2px;
+    text-decoration-thickness: 0.15em;
+}
+s {
+    text-decoration-thickness: 0.05em;
 }
 
 div {
