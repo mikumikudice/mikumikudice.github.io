@@ -1,11 +1,13 @@
 body {
-    padding-top: 16px;
     font-size  : 32px;
     font-family: 'DM Mono';
     color           : #e01f3f;
     background-color: #fff8ed;
-    padding-left    : 256px;
-    padding-right   : 256px;
+    
+    padding-top     : 16px;
+    padding-bottom  : 16px;
+    padding-left    : 16%;
+    padding-right   : 16%;
 }
 
 section {
@@ -23,9 +25,9 @@ section {
     text-align      : justify;
 
     padding-top   : 24px;
-    padding-left  : 32px;
+    padding-left  : 48px;
     padding-bottom: 24px;
-    padding-right : 32px;
+    padding-right : 48px;
 }
 
 .light {
@@ -54,10 +56,10 @@ ul {
 }
 li {
     padding-top     : 0px;
-    padding-left    : 24px;
+    padding-left    : 8px;
     padding-bottom  : 0px;
-    padding-right   : 24px;
-    margin-left     : 32;
+    padding-right   : 48px;
+    margin-left     : 48;
 }
 
 .img_center {
@@ -120,10 +122,10 @@ hr {
 
 a {
     color: #fff8ed;
-    text-decoration-thickness: 0.15em;
+    text-decoration-thickness: 0.1em;
 }
 s {
-    text-decoration-thickness: 0.05em;
+    text-decoration-thickness: 0.04em;
 }
 
 div {
@@ -164,7 +166,8 @@ code {
     list-style  : none;
     position    : relative;
     transition  : 64ms;
-    height      : 256px;
+    height      : relative;
+    min-height  : 256px;
 
     margin        : 0;
     padding-top   : 8px;
