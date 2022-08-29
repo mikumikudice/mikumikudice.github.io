@@ -4,54 +4,59 @@ body {
     font-family: 'DM Mono';
     color           : #e01f3f;
     background-color: #fff8ed;
-    padding-left    : 64px;
-    padding-right   : 64px;
+    padding-left    : 256px;
+    padding-right   : 256px;
 }
 
 section {
-    padding-top     : 8px;
+    padding-top     : 0px;
     padding-left    : 16px;
-    padding-bottom  : 8px;
+    padding-bottom  : 0px;
     padding-right   : 16px;
 }
 
 .default {
-    font-size       : 20px;
+    align-content   : justify;
+    font-size       : 24px;
     color           : #271d2c;
     background-color: #7b6960;
     font-family     : 'Ubuntu Mono', monospace;
 
-    padding-top   : 16px;
+    padding-top   : 24px;
     padding-left  : 32px;
-    padding-bottom: 16px;
+    padding-bottom: 24px;
     padding-right : 32px;
 }
 .light {
     color           : #271d2c;
     background-color: #fff8ed;
-    padding-top   : 16px;
-    padding-left  : 24px;
-    padding-bottom: 16px;
-    padding-right : 24px;
+    padding-top   : 24px;
+    padding-left  : 32px;
+    padding-bottom: 24px;
+    padding-right : 32px;
 }
 .dark {
     color           : #fff8ed;
     background-color: #271d2c;
-    padding-top   : 16px;
-    padding-left  : 24px;
-    padding-bottom: 16px;
-    padding-right : 24px;
+    padding-top   : 8px;
+    padding-left  : 16px;
+    padding-bottom: 8px;
+    padding-right : 16px;
 }
 
 ul {
     font-size       : 24px;
     color           : #fff8ed;
     background-color: #271d2c;
-    padding-top     : 16px;
-    padding-left    : 24px;
-    padding-bottom  : 16px;
-    padding-right   : 24px;
+    padding         : 8px;
     list-style-type : square;
+}
+li {
+    padding-top     : 0px;
+    padding-left    : 24px;
+    padding-bottom  : 0px;
+    padding-right   : 24px;
+    margin-left     : 32;
 }
 
 .img_center {
@@ -88,9 +93,14 @@ ul {
 }
 
 .light_hr {
-    height: 2px;
+    height: 4px;
     border: none;
     background-color: #fff8ed;
+}
+.dark_hr {
+    height: 4px;
+    border: none;
+    background-color: #271d2c;
 }
 hr {
     height: 4px;
@@ -143,14 +153,18 @@ code {
 .highlight ul {
     column-count    : 3;
     column-gap      : 0;
-    column-width    : 33.34%;
 }
 .highlight li {
-    list-style: none;
-    padding   : 16px 16px;
-    position  : relative;
-    transition: 64ms;
-    height    : 256px;
+    list-style : none;
+    position   : relative;
+    transition : 64ms;
+    height     : 360px;
+
+    margin        : 0;
+    padding-top   : 8px;
+    padding-left  : 16px;
+    padding-bottom: 8px;
+    padding-right : 16px;
 
     page-break-inside: avoid;
     break-inside     : avoid;
