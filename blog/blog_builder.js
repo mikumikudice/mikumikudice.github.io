@@ -1,5 +1,6 @@
 let lastidx = -1;
 let lastone = {};
+let lastpsh = {};
 
 function allow_return(){
     document.getElementById('field')
@@ -31,6 +32,7 @@ function blog_post(){
 
     lastidx++;
     lastone[lastidx] = post.innerHTML.length;
+    lastpsh[lastidx] = html.value;
 
     if(!in_or_out && !html.value.startsWith('#')){
         html.value = "<p>" + html.value;
@@ -57,9 +59,11 @@ function blog_post(){
 }
 
 function blog_post_dell(){
-    let post = document.getElementById('post');
-
+    let post       = document.getElementById('post');
     post.innerHTML = post.innerHTML.slice(0, lastone[lastidx]);
+    let subm       = document.getElementById('submit');
+    subm.value     = lastpsh[lastidx];
+
     lastidx = lastidx > 0 ? lastidx - 1 : 0;
 }
 
@@ -93,7 +97,7 @@ function blog_post_save(){
         <!-- Body -->
         <main class = "default class = "default" id = "data" align = "justify">
             ${document.getElementById('post').innerHTML}
-        </main class = "default">
+        </main>
 
         <!-- Footnote -->
         <hr align = "center"/>
