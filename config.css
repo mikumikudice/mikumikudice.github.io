@@ -116,6 +116,10 @@ li {
     padding-right   : 24px;
     align-content   : center;
 }
+.footnote::selection {
+    color           : #fff8ed;
+    background-color: #271d2c;
+}
 
 .light_hr {
     height: 4px;
@@ -168,7 +172,7 @@ code {
     padding-right   : 2px;
 }
 code::selection {
-    color           : #e01f3f;
+    color           : #fff8ed;
     background-color: #271d2c;
 }
 

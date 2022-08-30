@@ -1,14 +1,12 @@
-function init_header(subpath){
-    if(subpath == undefined) subpath = "";
-
+function init_header(){
     let head = document.getElementById('header');
     head.innerHTML = `
     <div class="j_text" align = "center">
         <a href = "https://www.deviantart.com/mateusmds">sketches</a>
-        <a href = "${subpath}soon.html"                 >mmdpedia</a>
-        <a href = "${subpath}index.html"                >home</a>
-        <a href = "${subpath}projects.html"             >projects</a>
-        <a href = "${subpath}about_me.html"             >about me</a>
+        <a href = /soon.html"                           >mmdpedia</a>
+        <a href = /index.html"                          >home</a>
+        <a href = /projects.html"                       >projects</a>
+        <a href = /about_me.html"                       >about me</a>
     </div>
     `;
 
