@@ -23,23 +23,34 @@ function download(filename, text){
     document.body.removeChild(element);
 }
 
+let in_or_out = false;
 function blog_post(){
+    
     let html = document.getElementById('field');
     let post = document.getElementById('post');
 
     lastidx++;
     lastone[lastidx] = post.innerHTML.length;
 
-    html.value = html.value.replace(/\#(.+)/g, '<h3>$1</h3>')
-    html.value = html.value.replace(/\##(.+)/g, '<h4>$1</h4>')
-    html.value = html.value.replace(/``(.+)``/g, '<code>$1</code>')
-    html.value = html.value.replace(/\~\~(.+?)\~\~/g, '<s>$1</s>')
-    html.value = html.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
-    html.value = html.value.replace(/__(.+?)__/g, '<i>$1</i>')
-    html.value = html.value.replace(/\[([^\[\]]+?)\]\(([^()]+?)\)/g, '<a href=$2 target="_blank" >$1</a>')
-    html.value = html.value.replace('\\n', '<br\/>')
-    html.value = html.value.replace('\\\\n', '\\n')
-    html.value = html.value.replace('---', '<hr class="dark_hr" align="center" />')
+    if(!in_or_out && !html.value.startsWith('#')){
+        html.value = "<p>" + html.value;
+        in_or_out = true;
+    }
+    if(in_or_out && html.value.endsWith("\\n")){
+        html.value.replace(/\\n$/g, '</p>\n');
+        in_or_out = false;
+    }
+
+    html.value = html.value.replace(/\#(.+)/g, '<h3>$1</h3>\n');
+    html.value = html.value.replace(/\##(.+)/g, '<h4>$1</h4>\n');
+    html.value = html.value.replace(/``(.+)``/g, '<code>$1</code>');
+    html.value = html.value.replace(/\~\~(.+?)\~\~/g, '<s>$1</s>');
+    html.value = html.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+    html.value = html.value.replace(/__(.+?)__/g, '<i>$1</i>');
+    html.value = html.value.replace('\\n', '\n');
+    html.value = html.value.replace('\\\\n', '\\n');
+    html.value = html.value.replace(/\[([^\[\]]+?)\]\(([^()]+?)\)/g, '<a href=$2 target="_blank" >$1</a>');
+    html.value = html.value.replace('---', '<hr class="dark_hr" align="center"/>');
 
     post.innerHTML += html.value;
     html.value = "";
@@ -80,9 +91,9 @@ function blog_post_save(){
         </header>
 
         <!-- Body -->
-        <main id = "data" align = "justify">
+        <main class = "default class = "default" id = "data" align = "justify">
             ${document.getElementById('post').innerHTML}
-        </main>
+        </main class = "default">
 
         <!-- Footnote -->
         <hr align = "center"/>
