@@ -1,8 +1,9 @@
-body {    
-    padding-top   : 16px;
-    padding-bottom: 16px;
-    padding-left  : 16%;
-    padding-right : 16%;
+body {
+    background-color: #fff8ed;
+    padding-top     : 16px;
+    padding-bottom  : 16px;
+    padding-left    : 16%;
+    padding-right   : 16%;
 }
 body a {
     text-decoration-thickness: 0.1em;
@@ -48,6 +49,8 @@ s::selection, b::selection {
 .default a::selection {
     color           : #fff8ed;
     background-color: #e01f3f;
+    text-decoration-color     : #271d2c;
+    -moz-text-decoration-color: #271d2c;
 }
 
 footer {
