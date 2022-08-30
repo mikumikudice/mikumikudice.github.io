@@ -9,18 +9,57 @@ body {
     padding-left    : 16%;
     padding-right   : 16%;
 }
-section {
-    padding-top     : 0px;
-    padding-left    : 16px;
-    padding-bottom  : 0px;
-    padding-right   : 16px;
+main {
+    font-size       : 16px;
+    color           : #271d2c;
+    background-color: #7b6960;
+    font-family     : 'PT Mono', monospace;
+    text-align      : justify;
+
+    padding-top   : 24px;
+    padding-left  : 48px;
+    padding-bottom: 24px;
+    padding-right : 48px;
 }
-a {
+main::selection {
+    color           : #fff8ed;
+    background-color: #e01f3f;
+}
+main a {
+    color                    : #fff8ed;
+    text-decoration-color    : #fff8ed;
     text-decoration-thickness: 0.1em;
     
 }
-s {
+main s {
+    color                    : #fff8ed;
+    text-decoration-color    : #fff8ed;
     text-decoration-thickness: 0.04em;
+}
+
+footer {
+    font-family     : 'DM Mono';
+    font-size       : 16px;
+    color           : #fff8ed;
+    background-color: #e01f3f;
+    padding-top     : 16px;
+    padding-left    : 24px;
+    padding-bottom  : 16px;
+    padding-right   : 24px;
+    align-content   : center;
+}
+footer::selection {
+    color           : #fff8ed;
+    background-color: #271d2c;
+}
+footer a {
+    color                : #fff8ed;
+    background-color     : #e01f3f;
+    text-decoration-color: #fff8ed;
+}
+footer a::selection {
+    color                : #fff8ed;
+    background-color     : #271d2c;
 }
 
 address::selection {
@@ -31,13 +70,6 @@ address a::selection {
     color                : #e01f3f;
     background-color     : #271d2c;
     text-decoration-color: #271d2c;
-}
-
-div {
-    padding-top   : 16px;
-    padding-left  : 24px;
-    padding-bottom: 16px;
-    padding-right : 24px;
 }
 
 ul {
@@ -74,30 +106,6 @@ code {
 code::selection {
     color           : #fff8ed;
     background-color: #271d2c;
-}
-
-.default {
-    font-size       : 16px;
-    color           : #271d2c;
-    background-color: #7b6960;
-    font-family     : 'PT Mono', monospace;
-    text-align      : justify;
-
-    padding-top   : 24px;
-    padding-left  : 48px;
-    padding-bottom: 24px;
-    padding-right : 48px;
-}
-.default::selection {
-    color           : #fff8ed;
-    background-color: #e01f3f;
-}
-.default a {
-    color           : #fff8ed;
-}
-.default a::selection {
-    color           : #fff8ed;
-    background-color: #e01f3f;
 }
 
 .light {
@@ -158,31 +166,6 @@ code::selection {
 .j_text a:hover {
     color           : #fff8ed;
     background-color: #e01f3f;
-}
-
-.footnote {
-    font-family     : 'DM Mono';
-    font-size       : 16px;
-    color           : #fff8ed;
-    background-color: #e01f3f;
-    padding-top     : 16px;
-    padding-left    : 24px;
-    padding-bottom  : 16px;
-    padding-right   : 24px;
-    align-content   : center;
-}
-.footnote::selection {
-    color           : #fff8ed;
-    background-color: #271d2c;
-}
-.footnote a {
-    color                : #fff8ed;
-    background-color     : #e01f3f;
-    text-decoration-color: #fff8ed;
-}
-.footnote a::selection {
-    color                : #fff8ed;
-    background-color     : #271d2c;
 }
 
 .light_hr {

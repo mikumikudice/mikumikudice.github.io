@@ -80,13 +80,13 @@ function blog_post_save(){
         </header>
 
         <!-- Body -->
-        <main class = "default" id = "data" align = "justify">
+        <main id = "data" align = "justify">
             ${document.getElementById('post').innerHTML}
         </main>
 
         <!-- Footnote -->
         <hr align = "center"/>
-        <footer class="footnote" id = "footnote">
+        <footer id = "footnote">
         </footer>
     </body>
 </html>`;
