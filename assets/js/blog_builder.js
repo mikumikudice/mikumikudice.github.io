@@ -72,8 +72,8 @@ function blog_post_save(){
     const cntt = `<html>
     <head>
         <title>mmd's blog</title>
-        <link rel="stylesheet" href="config.css"/>
-        <link rel="icon" href="icon.png">
+        <link rel="stylesheet" href="assets/css/config.css"/>
+        <link rel="icon" href="assets/img/icon.png">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,7 +81,7 @@ function blog_post_save(){
         <link href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
 
-        <script src="auto_header.js"></script>
+        <script src="assets/js/auto_header.js"></script>
     </head>
     <body onload = "init_header()">
         <header>

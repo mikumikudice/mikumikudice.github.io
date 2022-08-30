@@ -5,13 +5,25 @@ body {
     padding-left    : 16%;
     padding-right   : 16%;
 }
-body a {
+a {
+    color                    : #fff8ed;
+    text-decoration-color    : #fff8ed;
     text-decoration-thickness: 0.1em;
 }
-body s {
+a::selection {
+    color           : #fff8ed;
+    background-color: #e01f3f;
+    text-decoration-color     : #271d2c;
+    -moz-text-decoration-color: #271d2c;
+}
+s {
     text-decoration-thickness: 0.02em;
 }
 
+::selection {
+    color           : #fff8ed;
+    background-color: #e01f3f;
+}
 .default {
     text-align : justify;
     font-family: 'PT Mono', monospace;
@@ -25,33 +37,6 @@ body s {
     padding-bottom: 24px;
     padding-right : 48px;
 }
-.default::selection {
-    color           : #fff8ed;
-    background-color: #e01f3f;
-}
-.default
-h1::selection, h2::selection, h3::selection,
-h4::selection, h5::selection, h6::selection {
-    color           : #fff8ed;
-    background-color: #e01f3f;
-}
-.default
-p::selection, i::selection,
-s::selection, b::selection {
-    color           : #fff8ed;
-    background-color: #e01f3f;
-}
-.default a {
-    color                    : #fff8ed;
-    text-decoration-color    : #fff8ed;
-    text-decoration-thickness: 0.1em;
-}
-.default a::selection {
-    color           : #fff8ed;
-    background-color: #e01f3f;
-    text-decoration-color     : #271d2c;
-    -moz-text-decoration-color: #271d2c;
-}
 
 footer {
     font-family     : 'DM Mono';
@@ -64,28 +49,8 @@ footer {
     padding-right   : 24px;
     align-content   : center;
 }
-footer::selection {
-    color           : #fff8ed;
-    background-color: #271d2c;
-}
-footer a {
-    color           : #fff8ed;
-    background-color: #e01f3f;
-}
-footer a::selection {
-    color           : #fff8ed;
-    background-color: #271d2c;
-}
-address::selection {
-    color           : #fff8ed;
-    background-color: #271d2c;
-}
-address a {
-    color           : #fff8ed;
-    background-color: #e01f3f;
-}
-address a::selection {
-    color           : #fff8ed;
+footer::selection  , address::selection,
+footer a::selection, address a::selection {
     background-color: #271d2c;
 }
 
