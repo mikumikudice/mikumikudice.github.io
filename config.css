@@ -9,12 +9,71 @@ body {
     padding-left    : 16%;
     padding-right   : 16%;
 }
-
 section {
     padding-top     : 0px;
     padding-left    : 16px;
     padding-bottom  : 0px;
     padding-right   : 16px;
+}
+a {
+    text-decoration-thickness: 0.1em;
+    
+}
+s {
+    text-decoration-thickness: 0.04em;
+}
+
+address::selection {
+    color           : #fff8ed;
+    background-color: #271d2c;
+}
+address a::selection {
+    color                : #e01f3f;
+    background-color     : #271d2c;
+    text-decoration-color: #271d2c;
+}
+
+div {
+    padding-top   : 16px;
+    padding-left  : 24px;
+    padding-bottom: 16px;
+    padding-right : 24px;
+}
+
+ul {
+    font-size       : 24px;
+    color           : #fff8ed;
+    background-color: #271d2c;
+    padding         : 8px;
+    list-style-type : square;
+}
+li {
+    padding-top     : 0px;
+    padding-left    : 8px;
+    padding-bottom  : 0px;
+    padding-right   : 48px;
+    margin-left     : 48;
+}
+
+hr {
+    height: 4px;
+    background-color: #e01f3f;
+    border: none;
+}
+
+code {
+    font            : 'Share Tech Mono', monospace;
+    font-size       : 14px;
+    color           : #fff8ed;
+    background-color: #e01f3f;
+    padding-top     : 1px;
+    padding-left    : 2px;
+    padding-bottom  : 1px;
+    padding-right   : 2px;
+}
+code::selection {
+    color           : #fff8ed;
+    background-color: #271d2c;
 }
 
 .default {
@@ -28,6 +87,17 @@ section {
     padding-left  : 48px;
     padding-bottom: 24px;
     padding-right : 48px;
+}
+.default::selection {
+    color           : #fff8ed;
+    background-color: #e01f3f;
+}
+.default a {
+    color           : #fff8ed;
+}
+.default a::selection {
+    color           : #fff8ed;
+    background-color: #e01f3f;
 }
 
 .light {
@@ -69,21 +139,6 @@ section {
     box-shadow      : none;
 }
 
-ul {
-    font-size       : 24px;
-    color           : #fff8ed;
-    background-color: #271d2c;
-    padding         : 8px;
-    list-style-type : square;
-}
-li {
-    padding-top     : 0px;
-    padding-left    : 8px;
-    padding-bottom  : 0px;
-    padding-right   : 48px;
-    margin-left     : 48;
-}
-
 .img_center {
     display     : block;
     margin-left : auto;
@@ -120,6 +175,15 @@ li {
     color           : #fff8ed;
     background-color: #271d2c;
 }
+.footnote a {
+    color                : #fff8ed;
+    background-color     : #e01f3f;
+    text-decoration-color: #fff8ed;
+}
+.footnote a::selection {
+    color                : #fff8ed;
+    background-color     : #271d2c;
+}
 
 .light_hr {
     height: 4px;
@@ -131,11 +195,6 @@ li {
     border: none;
     background-color: #271d2c;
 }
-hr {
-    height: 4px;
-    background-color: #e01f3f;
-    border: none;
-}
 
 .title {
     font-family: 'PT Mono', monospace;
@@ -144,41 +203,6 @@ hr {
 .title a {
     color: #e01f3f;
     text-decoration: none;
-}
-
-a {
-    color: #fff8ed;
-    text-decoration-thickness: 0.1em;
-}
-s {
-    text-decoration-thickness: 0.04em;
-}
-
-div {
-    padding-top   : 16px;
-    padding-left  : 24px;
-    padding-bottom: 16px;
-    padding-right : 24px;
-}
-
-code {
-    font            : 'Share Tech Mono', monospace;
-    font-size       : 14px;
-    color           : #fff8ed;
-    background-color: #e01f3f;
-    padding-top     : 1px;
-    padding-left    : 2px;
-    padding-bottom  : 1px;
-    padding-right   : 2px;
-}
-code::selection {
-    color           : #fff8ed;
-    background-color: #271d2c;
-}
-
-::selection {
-    color           : #fff8ed;
-    background-color: #e01f3f;
 }
 
 /* this class was originally written by christianheilmann.com */
