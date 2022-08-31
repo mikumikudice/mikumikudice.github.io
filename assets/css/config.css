@@ -13,8 +13,6 @@ a {
 a::selection {
     color           : #fff8ed;
     background-color: #e01f3f;
-    text-decoration-color     : #fff8ed;
-    -moz-text-decoration-color: #fff8ed;
 }
 s {
     text-decoration-thickness: 0.02em;
@@ -25,9 +23,9 @@ s {
     background-color: #e01f3f;
 }
 .default {
+    font-size  : 16px;
     text-align : justify;
     font-family: 'PT Mono', monospace;
-    font-size  : 16px;
 
     color           : #271d2c;
     background-color: #7b6960;
@@ -178,6 +176,7 @@ code::selection {
     padding     : 0;
     text-align  : left;
 }
+
 .highlight ul {
     column-count: 3;
     column-gap  : 0;
@@ -199,21 +198,27 @@ code::selection {
     page-break-inside: avoid;
     break-inside     : avoid;
 }
+.highlight p {
+    font-size : 12;
+    text-align: justify;
+}
 .highlight p a {
     z-index : 2;
     position: relative;
 }
 .highlight a.main {
-    color           : #fff8ed;
-    background-color: #271d2c;
-    text-align: right;
     display   : block;
     z-index   : 1;
+    color           : #fff8ed;
+    background-color: #271d2c;
 }
-.highlight li a.main:after {
+.highlight li a.main::after {
     position: absolute;
     content : ' ';
-    top: 0; left: 0; right: 0; bottom: 0;
+    top     : 0;
+    left    : 0;
+    right   : 0;
+    bottom  : 0;
 }
 .highlight li button {
     z-index : 2;

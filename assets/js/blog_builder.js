@@ -61,8 +61,8 @@ function blog_post(){
 function blog_post_dell(){
     let post       = document.getElementById('post');
     post.innerHTML = post.innerHTML.slice(0, lastone[lastidx]);
-    let subm       = document.getElementById('submit');
-    subm.value     = lastpsh[lastidx];
+    let tbox       = document.getElementById('field');
+    tbox.value     = lastpsh[lastidx];
 
     lastidx = lastidx > 0 ? lastidx - 1 : 0;
 }

@@ -19,7 +19,16 @@ async function list_posts(){
         let tlt = src.getElementsByTagName('h3')[0].innerHTML;
         brf = brf.replace(/\<h3\>.+?\<\/h3\>/, '');
         brf = brf.replace(/\<a.+?\>(.+?)\<\/a\>/, '$1');
-        brf = brf.slice(0, brf.indexOf('.', 66) ) + "...";
+        
+        let idx = 80;
+        let sub = "";
+        while(sub.length < 100
+            && idx < brf.length
+            && idx > 0){
+            sub = brf.slice(0, idx);
+            idx = brf.indexOf('.', idx) + 1;
+        }
+        brf = sub + " [...]";
 
         let date = cid.toString();
         if(date.length < 6) date = '0' + date;
@@ -27,7 +36,8 @@ async function list_posts(){
         date = date.slice(0,2) + "/" + date.slice(2,4) + "/" + date.slice(4);
 
         // make the card
-        crds[i].innerHTML = `<h4>${date + " | " + tlt}</h4><p>${brf}</p>
-        <a href = \"blog/${cid}.html\"></a>`;
+        crds[i].innerHTML = `<h4>${date + " | " + tlt}</h4>
+        <p>${brf}</p>
+        <a href = \"blog/${cid}.html\" class = \"main\"></a>`;
     }
 }
