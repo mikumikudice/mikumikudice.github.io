@@ -51,8 +51,8 @@ function blog_post(){
     html.value = html.value.replace(/__(.+?)__/g, '<i>$1</i>');
     html.value = html.value.replace('\\n', '\n');
     html.value = html.value.replace('\\\\n', '\\n');
-    html.value = html.value.replace(/\[([^\[\]]+?)\]\(([^()]+?)\)/g, '<a href=$2 target="_blank" >$1</a>');
-    html.value = html.value.replace('---', '<hr class="dark_hr" align="center"/>');
+    html.value = html.value.replace(/\[([^\[\]]+?)\]\(([^()]+?)\)/g, '<a href=$2 target = "_blank" >$1</a>');
+    html.value = html.value.replace('---', '<hr class = "dark_hr" align = "center"/>');
 
     post.innerHTML += html.value;
     html.value = "";
@@ -72,21 +72,21 @@ function blog_post_save(){
     const cntt = `<html>
     <head>
         <title>mmd's blog</title>
-        <link rel="stylesheet" href="assets/css/config.css"/>
-        <link rel="icon" href="assets/img/icon.png">
+        <link rel = "stylesheet" href = "/assets/css/config.css"/>
+        <link rel = "icon" href = "/assets/img/icon.png">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel = "preconnect" href = "https://fonts.googleapis.com">
+        <link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin>
 
-        <link href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+        <link href = "https://fonts.googleapis.com/css2?family=DM+Mono&display=swap" rel = "stylesheet">
+        <link href = "https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel = "stylesheet">
 
-        <script src="assets/js/auto_header.js"></script>
+        <script src = "/assets/js/auto_header.js"></script>
     </head>
     <body onload = "init_header()">
         <header>
             <!-- Head -->
-            <h1 align = "center" class = "title"><u><a href="index.html" title="making stuff since 4 B.W." >mmd's blog</a></u></h1>
+            <h1 align = "center" class = "title"><u><a href = "index.html" title = "making stuff since 4 B.W." >mmd's blog</a></u></h1>
             <hr align = "center"/>
 
             <!-- Menu -->

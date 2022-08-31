@@ -28,6 +28,6 @@ async function list_posts(){
 
         // make the card
         crds[i].innerHTML = `<h4>${date + " | " + tlt}</h4><p>${brf}</p>
-        <a href = \"blog/${cid}.html\" class = \"main class = "default"\"></a>`;
+        <a href = \"blog/${cid}.html\" class = \"default\"></a>`;
     }
 }

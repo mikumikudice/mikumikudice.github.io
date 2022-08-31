@@ -1,12 +1,12 @@
 function init_header(){
     let head = document.getElementById('header');
     head.innerHTML = `
-    <div class="j_text" align = "center">
+    <div class = "j_text" align = "center">
         <a href = "https://www.deviantart.com/mateusmds">sketches</a>
-        <a href = "soon.html"                           >mmdpedia</a>
-        <a href = "index.html"                          >home</a>
-        <a href = "projects.html"                       >projects</a>
-        <a href = "about_me.html"                       >about me</a>
+        <a href = "/soon.html"                           >mmdpedia</a>
+        <a href = "/index.html"                          >home</a>
+        <a href = "/projects.html"                       >projects</a>
+        <a href = "/about_me.html"                       >about me</a>
     </div>
     `;
 
@@ -14,10 +14,10 @@ function init_header(){
     foot.innerHTML = `
         Copyright(c) 2019-2022 by Mateus M. D. de Souza.<br/>
         all images' rights are reserved.<br/>
-        this website uses the color pallete <a href = "https://lospec.com/palette-list/laser-lab" target="_blank">laser lab</a> made by <a href="https://twitter.com/polyphorge" target="_blank">polyphorge.</a></br></br>
+        this website uses the color pallete <a href = "https://lospec.com/palette-list/laser-lab" target = "_blank">laser lab</a> made by <a href = "https://twitter.com/polyphorge" target = "_blank">polyphorge.</a></br></br>
         <address>
             contact email: 6s4aq0np7@mozmail.com |
-            twitter: <a href="https://twitter.com/levi_alfeuson" target="_blank">
+            twitter: <a href = "https://twitter.com/levi_alfeuson" target = "_blank">
             @levi_alfeuson</a>
         </address>
     `;
