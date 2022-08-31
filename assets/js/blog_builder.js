@@ -24,42 +24,75 @@ function download(filename, text){
     document.body.removeChild(element);
 }
 
-let in_or_out = false;
+let opened = false;
+let closed = false;
+let begnin = 0;
 function blog_post(){
     
     let html = document.getElementById('field');
     let post = document.getElementById('post');
 
-    lastidx++;
-    lastone[lastidx] = post.innerHTML.length;
-    lastpsh[lastidx] = html.value;
+    // flush buffers
+    html.value.trim();
+    post.innerHTML.replace('<p></p>', '');
 
-    if(!in_or_out && !html.value.startsWith('#')){
-        html.value = "<p>" + html.value;
-        in_or_out = true;
+    // linefeed
+    if(html.value.startsWith('#')
+    || html.value.endsWith('\\n')
+    || begnin == 0 && !closed){
+        if(begnin == 0) begnin = post.innerHTML.length;
+        else closed = true;
     }
-    if(in_or_out && html.value.endsWith("\\n")){
-        html.value.replace(/\\n$/g, '</p>\n');
-        in_or_out = false;
+
+    if(html.value != "\\n"){
+        lastidx++;
+        lastone[lastidx] = post.innerHTML.length;
+        lastpsh[lastidx] = html.value;
+
+        html.value = html.value.replace(/\#(.+)/g, '<h3>$1</h3>\n');
+        html.value = html.value.replace(/\##(.+)/g, '<h4>$1</h4>\n');
+        html.value = html.value.replace(/``(.+)``/g, '<code>$1</code>');
+        html.value = html.value.replace(/\~\~(.+?)\~\~/g, '<s>$1</s>');
+        html.value = html.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+        html.value = html.value.replace(/__(.+?)__/g, '<i>$1</i>');
+        html.value = html.value.replace('\\n', '\n');
+        html.value = html.value.replace('\\\\n', '\\n');
+        html.value = html.value.replace(/\[([^\[\]]+?)\]\(([^()]+?)\)/g, '<a href = $2 target = "_blank" >$1</a>');
+        html.value = html.value.replace('---', '<hr class = "dark_hr" align = "center"/>');
+
+        post.innerHTML += html.value;
     }
 
-    html.value = html.value.replace(/\#(.+)/g, '<h3>$1</h3>\n');
-    html.value = html.value.replace(/\##(.+)/g, '<h4>$1</h4>\n');
-    html.value = html.value.replace(/``(.+)``/g, '<code>$1</code>');
-    html.value = html.value.replace(/\~\~(.+?)\~\~/g, '<s>$1</s>');
-    html.value = html.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
-    html.value = html.value.replace(/__(.+?)__/g, '<i>$1</i>');
-    html.value = html.value.replace('\\n', '\n');
-    html.value = html.value.replace('\\\\n', '\\n');
-    html.value = html.value.replace(/\[([^\[\]]+?)\]\(([^()]+?)\)/g, '<a href=$2 target = "_blank" >$1</a>');
-    html.value = html.value.replace('---', '<hr class = "dark_hr" align = "center"/>');
+    if(opened){
+        begnin = post.innerHTML.length;
+        opened = false;
+    }
 
-    post.innerHTML += html.value;
+    if(closed){
+        // put last block within a p tag
+        if(begnin > 0){
+            let cntt = post.innerHTML.slice(begnin, post.innerHTML.length);
+            let temp = post.innerHTML;
+            temp = temp.slice(0, begnin) + '<p>' + cntt + '</p>';
+            
+            post.innerHTML = temp;
+            begnin = 0;
+        }
+        closed = false;
+    }   
+
     html.value = "";
 }
 
 function blog_post_dell(){
     let post       = document.getElementById('post');
+
+    // if we are at the end of a paragraph
+    if(post.innerHTML.endsWith('</p>')){
+        // find last opened paragraph and remove it
+        begnin = post.innerHTML.lastIndexOf('<p>');
+        post.innerHTML = post.innerHTML.replace(/\<p\>(.+?)\<\/p\>$/, '$1');
+    }
     post.innerHTML = post.innerHTML.slice(0, lastone[lastidx]);
     let tbox       = document.getElementById('field');
     tbox.value     = lastpsh[lastidx];
