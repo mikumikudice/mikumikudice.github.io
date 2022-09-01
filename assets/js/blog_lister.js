@@ -12,7 +12,10 @@ async function list_posts(){
     for(i = 0; i < crds.length; i++){
         // get the source for the brief line
         const cid = crds[i].id;
-        const txt = await fetch_file(`https://mateus-md.github.io/blog/${cid}.html`);
+        const txt = await fetch_file(`/blog/${cid}.html`);
+
+        if(txt == undefined || txt == null) continue;
+
         const src = prsr.parseFromString(txt, 'text/html');
 
         let brf = src.getElementById('data').innerHTML;

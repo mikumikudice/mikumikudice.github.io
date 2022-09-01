@@ -22,9 +22,9 @@ for _, f in pairs(scandir('blog/')) do
     end
 end
 
-local path = {"<ul class = \"fullclick\" id = \"feed\">", "</ul>"}
+local path = {"<ul id = \"feed\">", "</ul>"}
 local item = "\n" .. string.rep(" ", 16) .. "<li id = \"%s\"></li>"
-local data = io.open('blog.html', 'r'):read('*all')
+local data = io.open('index.html', 'r'):read('*all')
 
 local addt = ""
 for _, f in pairs(posts) do

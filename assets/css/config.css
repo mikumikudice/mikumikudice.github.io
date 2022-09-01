@@ -112,16 +112,15 @@ code::selection {
 }
 .editor_hotbar input {
     font-family     : 'DM Mono';
-    color           : #e01f3f;
+    color           : #271d2c;
     background-color: #fff8ed;
     outline         : none;
     border          : none;
     box-shadow      : none;
 }
 .editor_hotbar input:hover {
-    font-family     : 'DM Mono';
     color           : #fff8ed;
-    background-color: #e01f3f;
+    background-color: #271d2c;
     outline         : none;
     border          : none;
     box-shadow      : none;

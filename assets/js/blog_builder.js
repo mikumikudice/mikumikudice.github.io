@@ -49,15 +49,14 @@ function blog_post(){
         lastone[lastidx] = post.innerHTML.length;
         lastpsh[lastidx] = html.value;
 
-        html.value = html.value.replace(/\#(.+)/g, '<h3>$1</h3>\n');
-        html.value = html.value.replace(/\##(.+)/g, '<h4>$1</h4>\n');
-        html.value = html.value.replace(/``(.+)``/g, '<code>$1</code>');
+        html.value = html.value.replace(/^#[ ]?(.+)/, '<h3>$1</h3>\n');
+        html.value = html.value.replace(/^##[ ]?(.+)/, '<h4>$1</h4>\n');
+        html.value = html.value.replace(/``(.+?)``/g, '<code>$1</code>');
         html.value = html.value.replace(/\~\~(.+?)\~\~/g, '<s>$1</s>');
         html.value = html.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
         html.value = html.value.replace(/__(.+?)__/g, '<i>$1</i>');
-        html.value = html.value.replace('\\n', '\n');
         html.value = html.value.replace('\\\\n', '\\n');
-        html.value = html.value.replace(/\[([^\[\]]+?)\]\(([^()]+?)\)/g, '<a href = $2 target = "_blank" >$1</a>');
+        html.value = html.value.replace(/\[(.+?)\]\((.+?)\)/g, '<a href = $2 target = "_blank">$1</a>');
         html.value = html.value.replace('---', '<hr class = "dark_hr" align = "center"/>');
 
         post.innerHTML += html.value;
@@ -73,7 +72,7 @@ function blog_post(){
         if(begnin > 0){
             let cntt = post.innerHTML.slice(begnin, post.innerHTML.length);
             let temp = post.innerHTML;
-            temp = temp.slice(0, begnin) + '<p>' + cntt + '</p>';
+            temp = temp.slice(0, begnin) + '<p>' + cntt + '</p>\n';
             
             post.innerHTML = temp;
             begnin = 0;
