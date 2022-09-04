@@ -57,6 +57,7 @@ footer a {
 footer a:hover {
     color                    : #fff8ed;
     text-decoration-color    : #fff8ed;
+    text-decoration          : underline;
     text-decoration-thickness: 0.1em;
 }
 
