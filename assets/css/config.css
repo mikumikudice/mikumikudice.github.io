@@ -51,6 +51,14 @@ footer::selection  , address::selection,
 footer a::selection, address a::selection {
     background-color: #271d2c;
 }
+footer a {
+    text-decoration: none;
+}
+footer a:hover {
+    color                    : #fff8ed;
+    text-decoration-color    : #fff8ed;
+    text-decoration-thickness: 0.1em;
+}
 
 ul {
     font-size       : 24px;
