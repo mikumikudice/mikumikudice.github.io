@@ -33,8 +33,8 @@ function blog_post(){
     let post = document.getElementById('post');
 
     // flush buffers
-    html.value.trim();
-    post.innerHTML.replace('<p></p>', '');
+    html.value = html.value.trim();
+    post.innerHTML = post.innerHTML.replace('<p></p>', '');
 
     // linefeed
     if(html.value.startsWith('#')
@@ -42,6 +42,14 @@ function blog_post(){
     || begnin == 0 && !closed){
         if(begnin == 0) begnin = post.innerHTML.length;
         else closed = true;
+        
+        if(html.value.startsWith('#') && begnin > 0){
+            let sub = html.value;
+            sub = sub.replace(/^##[ ]?(.+)/, '<h4>$1</h4>');
+            sub = sub.replace(/^#[ ]?(.+)/, '<h3>$1</h3>');
+
+            begnin += sub.length;
+        }
     }
 
     if(html.value != "\\n"){
@@ -49,8 +57,8 @@ function blog_post(){
         lastone[lastidx] = post.innerHTML.length;
         lastpsh[lastidx] = html.value;
 
-        html.value = html.value.replace(/^#[ ]?(.+)/, '<h3>$1</h3>\n');
         html.value = html.value.replace(/^##[ ]?(.+)/, '<h4>$1</h4>\n');
+        html.value = html.value.replace(/^#[ ]?(.+)/, '<h3>$1</h3>\n');
         html.value = html.value.replace(/``(.+?)``/g, '<code>$1</code>');
         html.value = html.value.replace(/\~\~(.+?)\~\~/g, '<s>$1</s>');
         html.value = html.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
