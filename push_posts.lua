@@ -18,17 +18,34 @@ local posts = {}
 for _, f in pairs(scandir('blog/')) do
     if f:match('.+%.html') then
         posts[#posts + 1] = f:gsub('%.html', '')
-        print("added \"" .. f .. "\" to file")
     end
 end
 
-local path = {"<ul id = \"feed\">", "</ul>"}
+-- sort posts by date
+table.sort(posts, function(t1, t2)
+    local t1_d = tonumber(t1:sub(-4, -3))
+    local t2_d = tonumber(t2:sub(-4, -3))
+
+    local t1_m = tonumber(t1:sub(01, 02))
+    local t2_m = tonumber(t2:sub(01, 02))
+
+    local t1_y = tonumber(t1:sub(-2, -1))
+    local t2_y = tonumber(t2:sub(-2, -1))
+
+    time1 = t1_y * 10000 + t1_m * 100 + t1_d
+    time2 = t2_y * 10000 + t2_m * 100 + t2_d
+
+    return time1 > time2
+end)
+
+local path = {"<ul id = \"feed\">", "\n</ul>"}
 local item = "\n" .. string.rep(" ", 16) .. "<li id = \"%s\"></li>"
 local data = io.open('index.html', 'r'):read('*all')
 
 local addt = ""
-for _, f in pairs(posts) do
+for _, f in ipairs(posts) do
     local i = item:format(f)
+    print("added \"" .. f .. "\" to file")
     addt = addt .. i
 end
 data = data:gsub(path[1] .. '.*' .. path[2], path[1] .. addt .. path[2])
