@@ -7,24 +7,23 @@
         <link rel = "preconnect" href = "https://fonts.googleapis.com">
         <link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin>
 
-        <link href = "https://fonts.googleapis.com/css2?family=DM+Mono"         rel = "stylesheet">
-        <link href = "https://fonts.googleapis.com/css2?family=PT+Mono"         rel = "stylesheet">
-        <link href = "https://fonts.googleapis.com/css2?family=Share+Tech+Mono" rel = "stylesheet">
-        
+        <link href = "https://fonts.googleapis.com/css2?family=DM+Mono&display=swap"         rel = "stylesheet">
+        <link href = "https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"         rel = "stylesheet">
+        <link href = "https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel = "stylesheet">
+
         <script src = "/assets/js/auto_header.js"></script>
         <script src = "/assets/js/feed_lister.js"></script>
 
         <meta charset = "UTF-8">
         <meta name = "author"      content = "Mateus M.D. Souza">
         <meta name = "keywords"    content = 
-            "blog,programming,systems development,philosophy,digital art"
+            "filosofia, existencialismo,pensamentos da meia noite"
         >
         <meta name = "description" content =
             "the most marxist-leninist, philosophical and problematic technology blog out there!"
         >
     </head>
-
-    <body onload = "init_header(); list_posts()">
+    <body onload = "init_header()">
         <header>
             <!-- Head -->
             <h1 align = "center" class = "title"><a href = "index.html" title = "making stuff since 4 B.W." >mmd's blog</a></h1>
@@ -35,17 +34,20 @@
             <hr align = "center"/>
         </header>
 
+        <!-- Body -->
         <main class = "default">
+            <section class = "dark" align="left">
+                <p class = "lang_switch" align = "left">
+                    <a class = "lang_button_off" href = "en.mmdnight.html">EN</a>
+                    <a class = "lang_button_on"  href = "pt.mmdnight.html">PT</a><br/>
+                </p>
+                <hr class = "light_hr">
+                <p>
+                    aqui eu posto algumas tranqueiras filosóficas, normalmente existencialistas. sinta-se à vontade para lê-las!
+                </p>
+            </section>
             <section class = "highlight">
-                <ul id = "feed">
-                <li id = "090422"></li>
-                <li id = "090322"></li>
-                <li id = "090122"></li>
-                <li id = "040222"></li>
-                <li id = "031422"></li>
-                <li id = "030922"></li>
-                <li id = "092421"></li>
-                <li id = "061221"></li></ul>
+                <ul id = "feed"></ul>
             </section>
         </main>
 

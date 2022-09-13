@@ -4,8 +4,9 @@ body {
     padding-bottom  : 16px;
     padding-left    : 16%;
     padding-right   : 16%;
+    text-decoration-thickness: 0.2em;
 }
-a {
+a, u {
     color                    : #fff8ed;
     text-decoration-color    : #fff8ed;
     text-decoration-thickness: 0.1em;
@@ -34,6 +35,7 @@ s {
     padding-left  : 48px;
     padding-bottom: 24px;
     padding-right : 48px;
+    text-decoration-thickness: 0.1em;
 }
 
 footer {
@@ -177,6 +179,36 @@ code::selection {
 .title a {
     color: #e01f3f;
     text-decoration : none;
+}
+
+.lang_button_on {
+    text-decoration : none;
+    color           : #271d2c;
+    background-color: #fff8ed;
+    padding-top     : 3px;
+    padding-left    : 4px;
+    padding-bottom  : 3px;
+    padding-right   : 4px;
+}
+.lang_button_off {
+    text-decoration : none;
+    color           : #fff8ed;
+    background-color: #7b6960;
+    padding-top     : 3px;
+    padding-left    : 4px;
+    padding-bottom  : 3px;
+    padding-right   : 4px;
+}
+
+.lang_switch {
+    text-decoration : none;
+    color           : #fff8ed;
+    background-color: #7b6960;
+    padding-top     : 3px;
+    padding-left    : 0px;
+    padding-bottom  : 3px;
+    padding-right   : 0px;
+    width           : 64px;
 }
 
 /* this class was originally written by christianheilmann.com */

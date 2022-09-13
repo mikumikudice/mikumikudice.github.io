@@ -57,8 +57,8 @@ function blog_post(){
         lastone[lastidx] = post.innerHTML.length;
         lastpsh[lastidx] = html.value;
 
-        html.value = html.value.replace(/^##[ ]?(.+)/, '<h4>$1</h4>\n');
         html.value = html.value.replace(/^#[ ]?(.+)/, '<h3>$1</h3>\n');
+        html.value = html.value.replace(/^##[ ]?(.+)/, '<h4>$1</h4>\n');
         html.value = html.value.replace(/``(.+?)``/g, '<code>$1</code>');
         html.value = html.value.replace(/\~\~(.+?)\~\~/g, '<s>$1</s>');
         html.value = html.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
@@ -108,7 +108,9 @@ function blog_post_dell(){
 }
 
 function blog_post_save(){
-    let   name = prompt('please enter the post name')
+    const name = prompt('please enter the post name')
+    const keyw = prompt('please enter keywords of the post')
+    const desc = prompt('please enter the post\'s description')
     const cntt = `<html>
     <head>
         <title>mmd's blog</title>
@@ -123,11 +125,21 @@ function blog_post_save(){
         <link href = "https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel = "stylesheet">
 
         <script src = "/assets/js/auto_header.js"></script>
+
+        <meta charset = "UTF-8">
+        <meta name = "author"      content = "Mateus M.D. Souza">
+        <meta name = "keywords"    content = 
+            "${keyw}"
+        >
+        <meta name = "description" content =
+            "${desc}"
+        >
     </head>
+
     <body onload = "init_header()">
         <header>
             <!-- Head -->
-            <h1 align = "center" class = "title"><u><a href = "index.html" title = "making stuff since 4 B.W." >mmd's blog</a></u></h1>
+            <h1 align = "center" class = "title"><a href = "index.html" title = "making stuff since 4 B.W." >mmd's blog</a></h1>
             <hr align = "center"/>
 
             <!-- Menu -->
