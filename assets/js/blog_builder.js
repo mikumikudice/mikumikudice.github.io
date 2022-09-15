@@ -33,7 +33,6 @@ function blog_post(){
     let post = document.getElementById('post');
 
     // flush buffers
-    html.value = html.value.trim();
     post.innerHTML = post.innerHTML.replace('<p></p>', '');
 
     // linefeed
@@ -65,7 +64,7 @@ function blog_post(){
         html.value = html.value.replace(/__(.+?)__/g, '<i>$1</i>');
         html.value = html.value.replace('\\\\n', '\\n');
         html.value = html.value.replace(/\[(.+?)\]\((.+?)\)/g, '<a href = $2 target = "_blank">$1</a>');
-        html.value = html.value.replace('---', '<hr class = "dark_hr" align = "center"/>');
+        html.value = html.value.replace('---', '<hr class = "dark_hr" align = "center"/>\n');
 
         post.innerHTML += html.value;
     }
@@ -98,7 +97,7 @@ function blog_post_dell(){
     if(post.innerHTML.endsWith('</p>')){
         // find last opened paragraph and remove it
         begnin = post.innerHTML.lastIndexOf('<p>');
-        post.innerHTML = post.innerHTML.replace(/\<p\>(.+?)\<\/p\>$/, '$1');
+        post.innerHTML = post.innerHTML.replace(/    \<p\>(.+?)\<\/p\>$/, '$1');
     }
     post.innerHTML = post.innerHTML.slice(0, lastone[lastidx]);
     let tbox       = document.getElementById('field');
@@ -108,9 +107,16 @@ function blog_post_dell(){
 }
 
 function blog_post_save(){
-    const name = prompt('please enter the post name')
-    const keyw = prompt('please enter keywords of the post')
-    const desc = prompt('please enter the post\'s description')
+    
+    if(!closed){
+        const len = document.getElementById('post').innerHTML.length;
+        document.getElementById('post').innerHTML =
+        document.getElementById('post').innerHTML.substring(0, len - 2);
+    }
+
+    const name = prompt('please enter the post name');
+    const keyw = prompt('please enter keywords of the post');
+    const desc = prompt('please enter the post\'s description');
     const cntt = `<html>
     <head>
         <title>mmd's blog</title>
@@ -158,5 +164,5 @@ function blog_post_save(){
         </footer>
     </body>
 </html>`;
-    download(`${name}.html`, cntt)
+    download(`${name}.html`, cntt);
 }

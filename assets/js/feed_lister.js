@@ -2,7 +2,7 @@ async function fetch_file(link){
     return await (await fetch(link)).text()
 }
 
-async function list_posts(){
+async function list_posts(path){
     // get each element (card) of the field "feed"
     const feed = document.getElementById('feed');
     const crds = feed.getElementsByTagName('li');
@@ -12,11 +12,15 @@ async function list_posts(){
     for(i = 0; i < crds.length; i++){
         // get the source for the brief line
         const cid = crds[i].id;
-        const txt = await fetch_file(`/blog/${cid}.html`);
+        if(cid == "skip") continue;
 
-        if(txt == undefined || txt == null) continue;
+        const txt = await fetch_file(`${path}${cid}.html`);
+
+        if(txt == undefined || txt == null) console.log(`${cid} is ${txt}`);
 
         const src = prsr.parseFromString(txt, 'text/html');
+
+        if(src == undefined || src == null) console.log(`src is ${src}`);
 
         let brf = src.getElementById('data').innerHTML;
         let tlt = src.getElementsByTagName('h3')[0].innerHTML;

@@ -220,7 +220,7 @@ code::selection {
 .highlight ul {
     column-count  : 3;
     column-gap    : 0;
-    flex-direction: column-reverse;
+    column-span   : none;
 }
 .highlight li {
     font-size     : 16;
@@ -279,4 +279,14 @@ code::selection {
 .highlight li:hover, .fullclick li:focus-within {
     color           : #fff8ed;
     background-color: #e01f3f;
+}
+.highlight li.invisible:hover,
+.highlight li.invisible:focus {
+    color           : #fff8ed;
+    background-color: #271d2c;
+}
+.highlight li button.invisible:hover,
+.highlight li button.invisible:focus {
+    color           : #fff8ed;
+    background-color: #271d2c;
 }

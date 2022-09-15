@@ -4,7 +4,7 @@ function scandir(directory)
     local t = {}
 
     local pfile = io.popen('ls -a "'..directory..'"')
-    assert(pfile)
+    assert(pfile, directory .. ": no such file or directory")
 
     for filename in pfile:lines() do
         i = i + 1
@@ -22,8 +22,8 @@ function set_feed(f_path, filename)
 
     local posts = {}
     for _, f in pairs(scandir(f_path)) do
-        if f:match('.+%.html') then
-            posts[#posts + 1] = f:gsub('%.html', '')
+        if f:match('.+%.html$') then
+            posts[#posts + 1] = f:gsub('%.html$', '')
         end
     end
 
@@ -44,9 +44,14 @@ function set_feed(f_path, filename)
         return time1 > time2
     end)
 
-    local path = {"<ul id = \"feed\">", "\n</ul>"}
+    local path = "%<ul id %= \"feed\"%>.*[\n]?%<%/ul%>"
+    local blck = {"<ul id = \"feed\">", "</ul>"}
     local item = "\n" .. string.rep(" ", 16) .. "<li id = \"%s\"></li>"
-    local data = io.open(filename, 'r'):read('*all')
+    local file = io.open(filename, 'r')
+    assert(file, filename .. ": no such file or directory")
+
+    data = file:read('*all')
+    file:close()
 
     local addt = ""
     for _, f in ipairs(posts) do
@@ -54,10 +59,16 @@ function set_feed(f_path, filename)
         print("added \"" .. f .. "\" to " .. filename)
         addt = addt .. i
     end
-    data = data:gsub(path[1] .. '.*' .. path[2], path[1] .. addt .. path[2])
 
-    local file = io.open(filename, 'w')
-    assert(file)
+    addt = addt .. "<li class = \"invisible\" id = \"skip\"></li>"
+
+    local cntt
+    data, cntt = data:gsub(path, blck[1] .. addt .. blck[2])
+
+    assert(cntt and cntt > 0)
+
+    file = io.open(filename, 'w')
+    assert(file, filename .. ": no such file or directory")
 
     file:write(data)
     file:close()
