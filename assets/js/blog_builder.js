@@ -26,6 +26,8 @@ function download(filename, text){
 
 let opened = false;
 let closed = false;
+let titled = false;
+let ptitle = "";
 let begnin = 0;
 function blog_post(){
     
@@ -34,6 +36,10 @@ function blog_post(){
 
     // flush buffers
     post.innerHTML = post.innerHTML.replace('<p></p>', '');
+
+    if(html.value.startsWith('#') && !titled && ptitle == ""){
+        titled = true;
+    }
 
     // linefeed
     if(html.value.startsWith('#')
@@ -44,8 +50,8 @@ function blog_post(){
         
         if(html.value.startsWith('#') && begnin > 0){
             let sub = html.value;
-            sub = sub.replace(/^##[ ]?(.+)/, '<h4>$1</h4>');
-            sub = sub.replace(/^#[ ]?(.+)/, '<h3>$1</h3>');
+            sub = sub.replace(/^##[ ]?(.+)/, '<h4>$1</h4>\n');
+            sub = sub.replace(/^#[ ]?(.+)/, '<h3>$1</h3>\n');
 
             begnin += sub.length;
         }
@@ -55,6 +61,11 @@ function blog_post(){
         lastidx++;
         lastone[lastidx] = post.innerHTML.length;
         lastpsh[lastidx] = html.value;
+
+        if(titled && ptitle == ""){
+            ptitle = html.value.replace(/^#[ ]?(.+)/, '$1');
+            titled = false;
+        }
 
         html.value = html.value.replace(/^#[ ]?(.+)/, '<h3>$1</h3>\n');
         html.value = html.value.replace(/^##[ ]?(.+)/, '<h4>$1</h4>\n');
