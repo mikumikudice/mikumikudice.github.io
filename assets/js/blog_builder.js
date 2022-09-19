@@ -24,90 +24,105 @@ function download(filename, text){
     document.body.removeChild(element);
 }
 
-let opened = false;
-let closed = false;
+let backup = [];
+let lastbp = 0;
+
+let closed = true;
+let nested = false;
+let begnin = 0;
+
 let titled = false;
 let ptitle = "";
-let begnin = 0;
-function blog_post(){
+
+// put last block within a p tag
+function close_stream(post){
+    if(begnin <= 0) return;
+
+    backup.push(post.innerHTML);
+    lastbp++;
+
+    let cntt = post.innerHTML.slice(begnin, post.innerHTML.length);
+    let temp = post.innerHTML;
     
+    if(!nested){
+        temp = temp.slice(0, begnin) + '<p>' + cntt + '</p>\n';
+    } else {
+        temp = temp.slice(0, begnin) + '<p class = "dark">' + cntt + '</p>\n';
+        nested = false;
+    }
+    post.innerHTML = temp;
+    begnin = 0;
+}
+
+function blog_post(){
     let html = document.getElementById('field');
     let post = document.getElementById('post');
 
     // flush buffers
-    post.innerHTML = post.innerHTML.replace('<p></p>', '');
-
-    if(html.value.startsWith('#') && !titled && ptitle == ""){
-        titled = true;
-    }
+    post.innerHTML = post.innerHTML.replace(/<p.*?><\/p>/g, '');
 
     // linefeed
-    if(html.value.startsWith('#')
+    if(html.value.startsWith('>')
     || html.value.endsWith('\\n')
-    || begnin == 0 && !closed){
-        if(begnin == 0) begnin = post.innerHTML.length;
-        else closed = true;
-        
-        if(html.value.startsWith('#') && begnin > 0){
-            let sub = html.value;
-            sub = sub.replace(/^##[ ]?(.+)/, '<h4>$1</h4>\n');
-            sub = sub.replace(/^#[ ]?(.+)/, '<h3>$1</h3>\n');
+    || (closed && begnin == 0
+    && !html.value.startsWith('#'))){
 
-            begnin += sub.length;
+        if(begnin == 0 && closed){
+            begnin = post.innerHTML.length;
+            closed = false;
+        } else if(!closed){
+            close_stream(post);
+            closed = true;
+        }
+        // if the if above were evaluated
+        if(html.value.startsWith('>')){
+            nested = true;
+            html.value = html.value.replace(/^>[ ]?(.+)/, '$1');
         }
     }
 
-    if(html.value != "\\n"){
+    if(!closed){
         lastidx++;
         lastone[lastidx] = post.innerHTML.length;
         lastpsh[lastidx] = html.value;
 
-        if(titled && ptitle == ""){
-            ptitle = html.value.replace(/^#[ ]?(.+)/, '$1');
-            titled = false;
-        }
-
-        html.value = html.value.replace(/^#[ ]?(.+)/, '<h3>$1</h3>\n');
-        html.value = html.value.replace(/^##[ ]?(.+)/, '<h4>$1</h4>\n');
         html.value = html.value.replace(/``(.+?)``/g, '<code>$1</code>');
         html.value = html.value.replace(/\~\~(.+?)\~\~/g, '<s>$1</s>');
         html.value = html.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
         html.value = html.value.replace(/__(.+?)__/g, '<i>$1</i>');
-        html.value = html.value.replace('\\\\n', '\\n');
+        html.value = html.value.replace(/\\n/g, '</br>\n');
         html.value = html.value.replace(/\[(.+?)\]\((.+?)\)/g, '<a href = $2 target = "_blank">$1</a>');
         html.value = html.value.replace('---', '<hr class = "dark_hr" align = "center"/>\n');
 
         post.innerHTML += html.value;
-    }
 
-    if(opened){
-        begnin = post.innerHTML.length;
-        opened = false;
-    }
-
-    if(closed){
-        // put last block within a p tag
-        if(begnin > 0){
-            let cntt = post.innerHTML.slice(begnin, post.innerHTML.length);
-            let temp = post.innerHTML;
-            temp = temp.slice(0, begnin) + '<p>' + cntt + '</p>\n';
-            
-            post.innerHTML = temp;
-            begnin = 0;
+    } else if(html.value.startsWith('#')){
+        if(!titled && ptitle == ""){
+            titled = true;
+            ptitle = html.value.replace(/^##[ ]?(.+)/, '$1');
         }
-        closed = false;
-    }   
+        html.value = html.value.replace('---', '<hr class = "dark_hr" align = "center"/>\n');
+        html.value = html.value.replace(/^##[ ]?(.+)/, '<h4>$1</h4>\n');
+        html.value = html.value.replace(/^#[ ]?(.+)/, '<h3>$1</h3>\n');
+
+        post.innerHTML += html.value;
+    }
 
     html.value = "";
 }
 
 function blog_post_dell(){
-    let post       = document.getElementById('post');
+    let post = document.getElementById('post');
 
+    // remove tags
+    if(closed && lastbp > 0){
+        post.innerHTML = backup[lastbp];
+        lastbp--;
+    }
     // if we are at the end of a paragraph
     if(post.innerHTML.endsWith('</p>')){
         // find last opened paragraph and remove it
-        begnin = post.innerHTML.lastIndexOf('<p>');
+        begnin = post.innerHTML.lastIndexOf('<p');
         post.innerHTML = post.innerHTML.replace(/    \<p\>(.+?)\<\/p\>$/, '$1');
     }
     post.innerHTML = post.innerHTML.slice(0, lastone[lastidx]);
@@ -118,7 +133,6 @@ function blog_post_dell(){
 }
 
 function blog_post_save(){
-    
     if(!closed){
         const len = document.getElementById('post').innerHTML.length;
         document.getElementById('post').innerHTML =
