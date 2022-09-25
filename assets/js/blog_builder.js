@@ -1,6 +1,12 @@
-let lastidx = -1;
-let lastone = {};
-let lastpsh = {};
+let lastpsh = [];
+let fbackup = [];
+
+let closed = true;
+let begnin = 0;
+
+let nested = false;
+let titled = false;
+let ptitle = "";
 
 function allow_return(){
     document.getElementById('field')
@@ -24,26 +30,13 @@ function download(filename, text){
     document.body.removeChild(element);
 }
 
-let backup = [];
-let lastbp = 0;
-
-let closed = true;
-let nested = false;
-let begnin = 0;
-
-let titled = false;
-let ptitle = "";
-
 // put last block within a p tag
 function close_stream(post){
-    if(begnin <= 0) return;
+    if(closed) return;
 
-    backup.push(post.innerHTML);
-    lastbp++;
-
-    let cntt = post.innerHTML.slice(begnin, post.innerHTML.length);
     let temp = post.innerHTML;
-    
+    let cntt = post.innerHTML.slice(begnin, post.innerHTML.length);
+
     if(!nested){
         temp = temp.slice(0, begnin) + '<p>' + cntt + '</p>\n';
     } else {
@@ -51,7 +44,37 @@ function close_stream(post){
         nested = false;
     }
     post.innerHTML = temp;
-    begnin = 0;
+    begnin = temp.length;
+    closed = true;
+}
+
+function push_html(post, html){
+    lastpsh.push(html.value);
+    fbackup.push(post.innerHTML);
+
+    if(html.value.startsWith('>')){
+        close_stream(post);
+        nested = true;
+        closed = false;
+        html.value = html.value.replace(/^>[ ]?(.+)/, '$1');
+    }
+
+    html.value = html.value.replace(/\\n$/, '');
+    html.value = html.value.replace(/``(.+?)``/g, '<code>$1</code>');
+    html.value = html.value.replace(/\~\~(.+?)\~\~/g, '<s>$1</s>');
+    html.value = html.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+    html.value = html.value.replace(/__(.+?)__/g, '<i>$1</i>');
+    html.value = html.value.replace(/\\n/g, '</br>\n');
+    html.value = html.value.replace(/\[(.+?)\]\((.+?)\)/g, '<a href = $2 target = "_blank">$1</a>');
+    html.value = html.value.replace('---', '<hr class = "dark_hr" align = "center"/>\n');
+
+    post.innerHTML += html.value;
+
+    // linefeed
+    if(lastpsh[lastpsh.length - 1].endsWith('\\n')){
+        close_stream(post);
+    }
+    html.value = "";
 }
 
 function blog_post(){
@@ -59,77 +82,48 @@ function blog_post(){
     let post = document.getElementById('post');
 
     // flush buffers
-    post.innerHTML = post.innerHTML.replace(/<p.*?><\/p>/g, '');
+    post.innerHTML = post.innerHTML.replace(/<p.*?><\/p>[\n]?/g, '');
+    post.innerHTML = post.innerHTML.replace(/<\/(.+?)><p(.*?)>/g, '<\/$1>\n<p$2>');
 
-    // linefeed
-    if(html.value.startsWith('>')
-    || html.value.endsWith('\\n')
-    || (closed && begnin == 0
-    && !html.value.startsWith('#'))){
+    if(html.value.startsWith('#')){
+        close_stream(post);
 
-        if(begnin == 0 && closed){
-            begnin = post.innerHTML.length;
-            closed = false;
-        } else if(!closed){
-            close_stream(post);
-            closed = true;
-        }
-        // if the if above were evaluated
-        if(html.value.startsWith('>')){
-            nested = true;
-            html.value = html.value.replace(/^>[ ]?(.+)/, '$1');
-        }
-    }
+        lastpsh.push(html.value);
+        fbackup.push(post.innerHTML);
 
-    if(!closed){
-        lastidx++;
-        lastone[lastidx] = post.innerHTML.length;
-        lastpsh[lastidx] = html.value;
-
-        html.value = html.value.replace(/``(.+?)``/g, '<code>$1</code>');
-        html.value = html.value.replace(/\~\~(.+?)\~\~/g, '<s>$1</s>');
-        html.value = html.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
-        html.value = html.value.replace(/__(.+?)__/g, '<i>$1</i>');
-        html.value = html.value.replace(/\\n/g, '</br>\n');
-        html.value = html.value.replace(/\[(.+?)\]\((.+?)\)/g, '<a href = $2 target = "_blank">$1</a>');
-        html.value = html.value.replace('---', '<hr class = "dark_hr" align = "center"/>\n');
-
-        post.innerHTML += html.value;
-
-    } else if(html.value.startsWith('#')){
         if(!titled && ptitle == ""){
             titled = true;
-            ptitle = html.value.replace(/^##[ ]?(.+)/, '$1');
+            ptitle = html.value.replace(/^[#]+[ ]?(.+)/, '$1');
         }
         html.value = html.value.replace('---', '<hr class = "dark_hr" align = "center"/>\n');
         html.value = html.value.replace(/^##[ ]?(.+)/, '<h4>$1</h4>\n');
         html.value = html.value.replace(/^#[ ]?(.+)/, '<h3>$1</h3>\n');
 
         post.innerHTML += html.value;
-    }
+
+    } else if(html.value != "\\n"){
+        if(closed){
+            begnin = post.innerHTML.length;
+            closed = false;
+        }
+        push_html(post, html);
+
+    } else close_stream(post);
 
     html.value = "";
 }
 
 function blog_post_dell(){
+    if(lastpsh.length == 0) return;
+    
+    let html = document.getElementById('field');
     let post = document.getElementById('post');
 
-    // remove tags
-    if(closed && lastbp > 0){
-        post.innerHTML = backup[lastbp];
-        lastbp--;
-    }
-    // if we are at the end of a paragraph
-    if(post.innerHTML.endsWith('</p>')){
-        // find last opened paragraph and remove it
-        begnin = post.innerHTML.lastIndexOf('<p');
-        post.innerHTML = post.innerHTML.replace(/    \<p\>(.+?)\<\/p\>$/, '$1');
-    }
-    post.innerHTML = post.innerHTML.slice(0, lastone[lastidx]);
-    let tbox       = document.getElementById('field');
-    tbox.value     = lastpsh[lastidx];
+    post.innerHTML = fbackup[fbackup.length - 1];
+    html.value = lastpsh[lastpsh.length - 1];
 
-    lastidx = lastidx > 0 ? lastidx - 1 : 0;
+    lastpsh.pop();
+    fbackup.pop();
 }
 
 function blog_post_save(){
@@ -142,7 +136,8 @@ function blog_post_save(){
     const name = prompt('please enter the post name');
     const keyw = prompt('please enter keywords of the post');
     const desc = prompt('please enter the post\'s description');
-    const cntt = `<html>
+    const cntt = `<!DOCTYPE html>
+    <html>
     <head>
         <title>mmd's blog</title>
         <link rel = "stylesheet" href = "/assets/css/config.css"/>
