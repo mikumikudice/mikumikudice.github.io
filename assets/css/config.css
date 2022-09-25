@@ -172,13 +172,12 @@ code::selection {
 .title {
     font-family     : 'PT Mono', monospace;
     font-size       : 44px;
-    font-family     : 'DM Mono';
     color           : #e01f3f;
     background-color: #fff8ed;
 }
 .title a {
     color: #e01f3f;
-    text-decoration : none;
+    text-decoration-color: #e01f3f;
 }
 
 .lang_button_on {
