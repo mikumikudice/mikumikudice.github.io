@@ -60,7 +60,9 @@ function set_feed(f_path, filename)
         addt = addt .. i
     end
 
-    addt = addt .. "<li class = \"invisible\" id = \"skip\"></li>"
+    if(#posts < 2) then
+        addt = addt .. "<li class = \"invisible\" id = \"skip\"></li>"
+    end
 
     local cntt
     data, cntt = data:gsub(path, blck[1] .. addt .. blck[2])
