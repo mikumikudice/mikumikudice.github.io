@@ -223,7 +223,7 @@ code::selection {
     column-span   : none;
 }
 .highlight li {
-    font-size     : 16;
+    font-size     : 16px;
     list-style    : none;
     position      : relative;
     transition    : 64ms;
@@ -238,7 +238,7 @@ code::selection {
     break-inside     : avoid;
 }
 .highlight p {
-    font-size : 12;
+    font-size : 12px;
     text-align: justify;
 }
 .highlight p a {
