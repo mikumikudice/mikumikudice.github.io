@@ -32,10 +32,19 @@ function download(filename, text){
 
 // put last block within a p tag
 function close_stream(post){
-    if(closed) return;
+    if(closed){
+        begnin = post.innerHTML.length;
+        return;
+    }
+
+    // flush buffer
+    post.innerHTML = post.innerHTML.replace(/<p.*?><\/p>[\n]?/g, '');
+    post.innerHTML = post.innerHTML.replace(/<\/(.+?)><p(.*?)>/g, '<\/$1>\n<p$2>');
 
     let temp = post.innerHTML;
     let cntt = post.innerHTML.slice(begnin, post.innerHTML.length);
+
+    if(cntt.length == 0) return;
 
     if(!nested){
         temp = temp.slice(0, begnin) + '<p>' + cntt + '</p>\n';
@@ -44,6 +53,7 @@ function close_stream(post){
         nested = false;
     }
     post.innerHTML = temp;
+
     begnin = temp.length;
     closed = true;
 }
@@ -80,10 +90,6 @@ function push_html(post, html){
 function blog_post(){
     let html = document.getElementById('field');
     let post = document.getElementById('post');
-
-    // flush buffers
-    post.innerHTML = post.innerHTML.replace(/<p.*?><\/p>[\n]?/g, '');
-    post.innerHTML = post.innerHTML.replace(/<\/(.+?)><p(.*?)>/g, '<\/$1>\n<p$2>');
 
     if(html.value.startsWith('#')){
         close_stream(post);
