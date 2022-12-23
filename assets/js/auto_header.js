@@ -3,7 +3,7 @@ function init_header(){
     head.innerHTML = `
     <div class = "j_text" align = "center">
         <a href = "https://www.deviantart.com/mateusmds">sketches</a>
-        <a href = "/en/mmdnight.html"                   >mmdnight</a>
+        <a href = "/mmdnight/en.html"                   >mmdnight</a>
         <a href = "/index.html"                         >home</a>
         <a href = "/projects.html"                      >projects</a>
         <a href = "/about_me.html"                      >about me</a>

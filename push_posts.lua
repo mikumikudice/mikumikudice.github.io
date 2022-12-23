@@ -77,5 +77,5 @@ function set_feed(f_path, filename)
 end
 
 set_feed('blog/', 'index.html')
-set_feed('mmdnight/en/', 'en.mmdnight.html')
-set_feed('mmdnight/pt/', 'pt.mmdnight.html')
+set_feed('mmdnight/en/', 'mmdnight/en.html')
+set_feed('mmdnight/pt/', 'mmdnight/pt.html')
