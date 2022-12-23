@@ -3,7 +3,7 @@ function init_header(){
     head.innerHTML = `
     <div class = "j_text" align = "center">
         <a href = "https://www.deviantart.com/mateusmds">sketches</a>
-        <a href = "/en.mmdnight.html"                   >mmdnight</a>
+        <a href = "/en/mmdnight.html"                   >mmdnight</a>
         <a href = "/index.html"                         >home</a>
         <a href = "/projects.html"                      >projects</a>
         <a href = "/about_me.html"                      >about me</a>
@@ -18,7 +18,7 @@ function init_header(){
         <address>
             contact email: <a href = "mailto:6s4aq0np7@mozmail.com">6s4aq0np7@mozmail.com</a> |
             twitter: <a href = "https://twitter.com/mikumikudice" target = "_blank">@mikumikudice</a> |
-            mastodon: <a rel="me" href="https://social.linux.pizza/@mikumikudice"@mikumikudice@social.linux.pizza</a>
+            mastodon: <a rel="me" href="https://social.linux.pizza/@mikumikudice">@mikumikudice@social.linux.pizza</a>
         </address>
     `;
     return 0;

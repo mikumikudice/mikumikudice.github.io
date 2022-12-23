@@ -159,7 +159,7 @@ function blog_post_save(){
         <script src = "/assets/js/auto_header.js"></script>
 
         <meta charset = "UTF-8">
-        <meta name = "author"      content = "Mateus M.D. Souza">
+        <meta name = "author"      content = "Mateus M. D. Souza">
         <meta name = "keywords"    content = 
             "${keyw}"
         >
