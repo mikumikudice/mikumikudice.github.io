@@ -15,12 +15,11 @@ async function list_posts(path){
         if(cid == "skip") continue;
 
         const txt = await fetch_file(`${path}${cid}.html`);
-
         if(txt == undefined || txt == null) console.log(`${cid} is ${txt}`);
 
         const src = prsr.parseFromString(txt, 'text/html');
-
         if(src == undefined || src == null) console.log(`src is ${src}`);
+        if(src.getElementById('data') == null) console.log(`src is ${src}`);
 
         let brf = src.getElementById('data').innerHTML;
         let tlt = src.getElementsByTagName('h3')[0].innerHTML;
