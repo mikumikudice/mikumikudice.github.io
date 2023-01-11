@@ -14,7 +14,7 @@ function init_header(){
     foot.innerHTML = `
         Copyright(c) 2019-2022 by Mateus M. D. de Souza.<br/>
         all images' rights are reserved.<br/>
-        this website uses the color pallete <a href = "https://lospec.com/palette-list/laser-lab" target = "_blank">laser lab</a> made by <a href = "https://twitter.com/polyphorge" target = "_blank">polyphorge</a>.</br></br>
+        this website uses the color pallete <a href = "https://lospec.com/palette-list/dnot-froget" target = "_blank">#dnotfroget</a> made by <a href = "https://lospec.com/sukinapan" target = "_blank">sukinapan</a>.</br></br>
         <address>
             contact email: <a href = "mailto:6s4aq0np7@mozmail.com">6s4aq0np7@mozmail.com</a> |
             twitter: <a href = "https://twitter.com/mikumikudice" target = "_blank">@mikumikudice</a> |

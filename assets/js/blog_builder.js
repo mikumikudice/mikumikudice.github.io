@@ -145,7 +145,7 @@ function blog_post_save(){
     const cntt = `<!DOCTYPE html>
     <html>
     <head>
-        <title>mmd's blog</title>
+        <title>lugoo-di</title>
         <link rel = "stylesheet" href = "/assets/css/config.css"/>
         <link rel = "icon" href = "/assets/img/icon.png">
 
@@ -171,7 +171,9 @@ function blog_post_save(){
     <body onload = "init_header()">
         <header>
             <!-- Head -->
-            <h1 align = "center" class = "title"><a href = "index.html" title = "making stuff since 4 B.W." >mmd's blog</a></h1>
+            <h1 align = "center" class = "title"><a href = "index.html" title = "the land of skulls!" >
+                <img src = "/assets/img/logo.png" style = "width: 10%; height: auto;" alt = "logo" class = "img_center">
+            </a></h1>
             <hr align = "center"/>
 
             <!-- Menu -->
