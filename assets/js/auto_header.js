@@ -12,8 +12,8 @@ function init_header(){
 
     let foot = document.getElementById('footnote');
     foot.innerHTML = `
-        Copyright(c) 2019-2022 by Mateus M. D. de Souza.<br/>
-        all images' rights are reserved.<br/>
+        images are under <a href = "https://creativecommons.org/" target = "_blank">Creative Commons License</a><br/>
+        check the license of the source code for further information<br/>
         this website uses the color pallete <a href = "https://lospec.com/palette-list/dnot-froget" target = "_blank">#dnotfroget</a> made by <a href = "https://lospec.com/sukinapan" target = "_blank">sukinapan</a>.</br></br>
         <address>
             contact email: <a href = "mailto:6s4aq0np7@mozmail.com">6s4aq0np7@mozmail.com</a> |
