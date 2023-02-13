@@ -1,18 +1,22 @@
-let lastpsh = [];
-let fbackup = [];
+let no_len = true;
+let within = false;
+let onlist = false;
+let backup = [];
+let inputb = [];
+let stateb = [];
 
-let closed = true;
-let begnin = 0;
-
-let nested = false;
-let titled = false;
-let ptitle = "";
+// usage:
+// - posts with > are in dark mode
+// - #, ##, and so on works just like markdown
+// - type with a triple star (***) to start a list.
+// - type with a plus sign at the beginning within a list to add a new item
+// - typing only a newline creates a new paragraph
 
 function allow_return(){
     document.getElementById('field')
     .addEventListener('keyup', function(event){
         event.preventDefault();
-        if(event.key == "Enter") blog_post();
+        if(event.key == "Enter") push_html();
     });
 }
 
@@ -30,115 +34,96 @@ function download(filename, text){
     document.body.removeChild(element);
 }
 
-// put last block within a p tag
-function close_stream(post){
-    if(closed){
-        begnin = post.innerHTML.length;
+function push_html(){
+    no_len = false;
+
+    let input = document.getElementById('field');
+    let postb = document.getElementById('post');
+    if(input.value == '\\n'){
+        within = false;
+        onlist = false;
+        input.value = "";
         return;
     }
 
-    // flush buffer
-    post.innerHTML = post.innerHTML.replace(/<p.*?><\/p>[\n]?/g, '');
-    post.innerHTML = post.innerHTML.replace(/<\/(.+?)><p(.*?)>/g, '<\/$1>\n<p$2>');
+    inputb.push(input.value);
+    backup.push(postb.innerHTML);
+    stateb.push([no_len, within, onlist]);
 
-    let temp = post.innerHTML;
-    let cntt = post.innerHTML.slice(begnin, post.innerHTML.length);
+    if(input.value == '***'){
+        postb.innerHTML += '<ul></ul>\n';
+        onlist = true;
+        input.value = "";
+        return;
+    }
 
-    if(cntt.length == 0) return;
+    input.value = input.value.replace(/``(.+?)``/g, '<code>$1</code>');
+    input.value = input.value.replace(/\~\~(.+?)\~\~/g, '<s>$1</s>');
+    input.value = input.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+    input.value = input.value.replace(/__(.+?)__/g, '<i>$1</i>');
+    input.value = input.value.replace(/\\n/g, '</br>\n');
+    input.value = input.value.replace(/\[(.+?)\]\((.+?)\)/g, '<a href = $2 target = "_blank">$1</a>');
+    input.value = input.value.replace('---', '<hr class = "dark_hr" align = "center"/>\n');
 
-    if(!nested){
-        temp = temp.slice(0, begnin) + '<p>' + cntt + '</p>\n';
+    if(input.value.startsWith('#')){
+        if(input.value.search(/^# /) != -1) input.value = input.value.replace(/# (.+)/, '<h1>$1</h1>');
+        else if(input.value.search(/^## /) != -1) input.value = input.value.replace(/## (.+)/, '<h2>$1</h2>');
+        else if(input.value.search(/^### /) != -1) input.value = input.value.replace(/### (.+)/, '<h3>$1</h3>');
+
+        postb.innerHTML += input.value;
+        input.value = "";
+        return;
+    }
+
+    if(within){
+        let pclss = postb.innerHTML.match(/(<p.*?>).+<\/p>$/s)[0];
+        let prgph = postb.innerHTML.match(/<p.*?>(.+)<\/p>$/s)[0];
+
+        postb.innerHTML = postb.innerHTML.replace(/<p.*?>.+<\/p>$/s, pclss + prgph + input.value + '</p>');
+
+    } else if(onlist){
+        if(input.value.startsWith('+ ')){
+            postb.innerHTML = postb.innerHTML.replace(
+                /(<ul>.*?)(<\/ul>\n)$/s,
+                `$1<li>${input.value.replace('+ ', '')}</li>\n$2`
+            );
+        } else {
+            postb.innerHTML = postb.innerHTML.replace(
+                /(<ul>.*?)(<\/li>\n<\/ul>\n)$/s,
+                `$1${input.value}$2`
+            );
+        }
     } else {
-        temp = temp.slice(0, begnin) + '<p class = "dark">' + cntt + '</p>\n';
-        nested = false;
-    }
-    post.innerHTML = temp;
+        within = true;
+        if(input.value.startsWith('> ')){
+            input.value = input.value.replace('> ', '');
 
-    begnin = temp.length;
-    closed = true;
-}
-
-function push_html(post, html){
-    lastpsh.push(html.value);
-    fbackup.push(post.innerHTML);
-
-    if(html.value.startsWith('>')){
-        close_stream(post);
-        nested = true;
-        closed = false;
-        html.value = html.value.replace(/^>[ ]?(.+)/, '$1');
-    }
-
-    html.value = html.value.replace(/\\n$/, '');
-    html.value = html.value.replace(/``(.+?)``/g, '<code>$1</code>');
-    html.value = html.value.replace(/\~\~(.+?)\~\~/g, '<s>$1</s>');
-    html.value = html.value.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
-    html.value = html.value.replace(/__(.+?)__/g, '<i>$1</i>');
-    html.value = html.value.replace(/\\n/g, '</br>\n');
-    html.value = html.value.replace(/\[(.+?)\]\((.+?)\)/g, '<a href = $2 target = "_blank">$1</a>');
-    html.value = html.value.replace('---', '<hr class = "dark_hr" align = "center"/>\n');
-
-    post.innerHTML += html.value;
-
-    // linefeed
-    if(lastpsh[lastpsh.length - 1].endsWith('\\n')){
-        close_stream(post);
-    }
-    html.value = "";
-}
-
-function blog_post(){
-    let html = document.getElementById('field');
-    let post = document.getElementById('post');
-
-    if(html.value.startsWith('#')){
-        close_stream(post);
-
-        lastpsh.push(html.value);
-        fbackup.push(post.innerHTML);
-
-        if(!titled && ptitle == ""){
-            titled = true;
-            ptitle = html.value.replace(/^[#]+[ ]?(.+)/, '$1');
+            postb.innerHTML += '<p class = "dark">' + input.value +'</p>\n'
+        } else {
+            postb.innerHTML += '<p>' + input.value +'</p>\n'
         }
-        html.value = html.value.replace('---', '<hr class = "dark_hr" align = "center"/>\n');
-        html.value = html.value.replace(/^##[ ]?(.+)/, '<h4>$1</h4>\n');
-        html.value = html.value.replace(/^#[ ]?(.+)/, '<h3>$1</h3>\n');
-
-        post.innerHTML += html.value;
-
-    } else if(html.value != "\\n"){
-        if(closed){
-            begnin = post.innerHTML.length;
-            closed = false;
-        }
-        push_html(post, html);
-
-    } else close_stream(post);
-
-    html.value = "";
-}
-
-function blog_post_dell(){
-    if(lastpsh.length == 0) return;
-    
-    let html = document.getElementById('field');
-    let post = document.getElementById('post');
-
-    post.innerHTML = fbackup[fbackup.length - 1];
-    html.value = lastpsh[lastpsh.length - 1];
-
-    lastpsh.pop();
-    fbackup.pop();
-}
-
-function blog_post_save(){
-    if(!closed){
-        const len = document.getElementById('post').innerHTML.length;
-        document.getElementById('post').innerHTML =
-        document.getElementById('post').innerHTML.substring(0, len - 2);
     }
+    input.value = "";
+}
 
+function dell_html(){
+    if(no_len || backup.length == 0) return;
+
+    let input = document.getElementById('field');
+    let postb = document.getElementById('post');
+
+    input.value     = inputb[inputb.length - 1];
+    postb.innerHTML = backup[backup.length - 1];
+    no_len = stateb[stateb.length - 1][0];
+    within = stateb[stateb.length - 1][1];
+    onlist = stateb[stateb.length - 1][2];
+
+    inputb.pop();
+    backup.pop();
+    stateb.pop();
+}
+
+function save_post(){
     const name = prompt('please enter the post name');
     const keyw = prompt('please enter keywords of the post');
     const desc = prompt('please enter the post\'s description');
