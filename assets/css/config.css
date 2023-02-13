@@ -72,12 +72,20 @@ ul {
     padding         : 8px;
     list-style-type : square;
 }
+ul::selection {
+    color           : #6f4367;
+    background-color: #f5e9bf;
+}
 li {
     padding-top     : 0px;
     padding-left    : 8px;
     padding-bottom  : 0px;
     padding-right   : 48px;
     margin-left     : 48px;
+}
+li::selection {
+    color           : #6f4367;
+    background-color: #f5e9bf;
 }
 
 hr {
@@ -117,6 +125,10 @@ code::selection {
     padding-bottom: 8px;
     padding-right : 16px;
 }
+.dark::selection {
+    color           : #6f4367;
+    background-color: #f5e9bf;
+}
 
 .editor_hotbar {
     font-family     : 'PT Mono', monospace;
@@ -138,6 +150,10 @@ code::selection {
     outline         : none;
     border          : none;
     box-shadow      : none;
+}
+.editor_hotbar input:hover::selection {
+    color           : #6f4367;
+    background-color: #f5e9bf;
 }
 
 .img_center {
