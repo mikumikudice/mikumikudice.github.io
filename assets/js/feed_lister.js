@@ -22,6 +22,9 @@ async function list_posts(path){
         if(src.getElementById('data') == null) console.log(`src is ${src}`);
 
         let brf = src.getElementById('data').innerHTML;
+
+        if(src.getElementsByTagName('h3').length == 0) continue;
+
         let tlt = src.getElementsByTagName('h3')[0].innerHTML;
         brf = brf.replace(/\<h3\>.+?\<\/h3\>/, '');
         brf = brf.replace(/\<a.+?\>(.+?)\<\/a\>/, '$1');
