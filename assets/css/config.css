@@ -130,6 +130,11 @@ code::selection {
     background-color: #f5e9bf;
 }
 
+.dark i::selection, b::selection, code::selection, a::selection {
+    color           : #6f4367;
+    background-color: #f5e9bf;
+}
+
 .editor_hotbar {
     font-family     : 'PT Mono', monospace;
     padding-left    : 4px;
