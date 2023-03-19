@@ -22,10 +22,14 @@ async function list_posts(path){
         if(src.getElementById('data') == null) console.log(`src is ${src}`);
 
         let brf = src.getElementById('data').innerHTML;
+        let tag = src.getElementsByTagName('h3');
+        let tlt;
 
-        if(src.getElementsByTagName('h3').length == 0) continue;
-
-        let tlt = src.getElementsByTagName('h3')[0].innerHTML;
+        if(tag.length == 0) {
+            tlt = src.getElementsByTagName('h1')[0].innerHTML;   
+        } else {
+            tlt = tag[0].innerHTML;
+        }
         brf = brf.replace(/\<h3\>.+?\<\/h3\>/, '');
         brf = brf.replace(/\<a.+?\>(.+?)\<\/a\>/, '$1');
         
