@@ -1,4 +1,4 @@
-module Main exposing (..)
+module Page404 exposing (..)
 
 import Browser
 import Browser.Navigation as Nav
@@ -43,6 +43,13 @@ footnote =
 i used the [radioactive13](https://lospec.com/palette-list/radioactive13) color palette created by [miguel lucero](https://lospec.com/miguel-lucero) on this website.  
 this website was entirely build using the [elm](https://elm-lang.org) programming language. [broken](http://localhost:8000/src/ada)
 """
+page_404 =
+    """
+# 808: 404 page not found
+just kidding. we could not find your requested page :c
+
+It may be in somewhere else
+"""
 
 type alias Model =
     { key : Nav.Key
@@ -63,7 +70,7 @@ init _ url key =
         rooturl = ( String.replace "Main.elm" "" url.path )
         d_model = { key = key, baseurl = rooturl }
     in
-    ( Model key "home" baseurl ( get_path d_model url ) ( div [] [] ), mov_url d_model "home" )
+    ( Model key "404" baseurl ( get_path d_model url ) ( div [] [] ), mov_url d_model url.path )
 
 mov_url model url =
     let

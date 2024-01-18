@@ -6760,7 +6760,6 @@ var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $elm$browser$Browser$Navigation$load = _Browser_load;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
-var $author$project$Page404$page_404 = '\n# 808: 404 page not found\njust kidding. we could not find your requested page :c\n\nIt may be in somewhere else\n';
 var $elm$core$Result$andThen = F2(
 	function (callback, result) {
 		if (result.$ === 'Ok') {
@@ -15846,10 +15845,8 @@ var $author$project$Page404$update = F2(
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{
-								pg_cntt: A2($author$project$MdParsing$render, _List_Nil, $author$project$Page404$page_404)
-							}),
-						$elm$core$Platform$Cmd$none);
+							{url: '404'}),
+						A2($author$project$Page404$fetch, model.baseurl, '404'));
 				}
 			default:
 				var new_url = evnt.a;
@@ -15857,11 +15854,8 @@ var $author$project$Page404$update = F2(
 				return (ldd_path === '404') ? _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{
-							pg_cntt: A2($author$project$MdParsing$render, _List_Nil, $author$project$Page404$page_404),
-							url: new_url.path
-						}),
-					$elm$core$Platform$Cmd$none) : _Utils_Tuple2(
+						{url: '404'}),
+					A2($author$project$Page404$fetch, model.baseurl, '404')) : _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{url: ldd_path}),

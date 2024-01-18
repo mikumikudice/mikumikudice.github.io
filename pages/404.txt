@@ -1,4 +1,4 @@
 # 808: 404 page not found
-just kidding. we could not find your requested page :c
+just kidding. we could not find your requested page "#url#"
 
 It may be in somewhere else
