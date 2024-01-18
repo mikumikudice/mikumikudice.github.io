@@ -1,0 +1,106 @@
+:root {
+    --maindark : #1f1a24;
+    --mainlite : #eeecde;
+    --sidedark : #2a3a42;
+    --sidelite : #7895ab;
+    --sidegray : #4d6476;
+    --win_dark : #73514d;
+    --win_gray : #ac8a71;
+    --win_lite : #decb9f;
+}
+
+body {
+    font-size       : 24;
+    background-color: var(--mainlite);
+
+    margin-top      : 48px;
+    margin-left     : 224px;
+    margin-bottom   : 48px;
+    margin-right    : 224px;
+}
+
+h1, main h2, main h3 {
+    font-family     : rubik;
+    margin-top      : 8px;
+    margin-bottom   : 8px;
+    margin-left     : 48px;
+    margin-right    : 48px;
+}
+p {
+    font-family     : PT;
+    margin-top      : 8px;
+    margin-bottom   : 0px;
+    margin-left     : 52px;
+    margin-right    : 52px;
+}
+
+main {
+    color           : var(--maindark);
+    background-color: var(--mainlite);
+    outline         : solid 2px var(--sidedark);
+
+    padding-top     : 48px;
+    padding-bottom  : 32px;
+    padding-left    : 24px;
+    padding-right   : 24px;
+}
+main h1::selection, main h1::-moz-selection,
+main h2::selection, main h2::-moz-selection,
+main h3::selection, main h3::-moz-selection {
+    color           : var(--win_lite);
+    background-color: var(--win_dark);
+}
+main hr {
+    border          : 2px solid var(--maindark);
+    margin-top      : 8px;
+    margin-left     : 48px;
+    margin-right    : 48px;
+    margin-bottom   : 16px;
+}
+main code {
+    color           : var(--sidelite);
+    background-color: var(--sidedark);
+    padding-top     : 1px;
+    padding-left    : 2px;
+    padding-bottom  : 1px;
+    padding-right   : 2px;
+}
+
+main p::selection, footer p::-moz-selection {
+    color           : var(--win_lite);
+    background-color: var(--win_dark);
+}
+main::selection, footer::selection,
+main::-moz-selection, footer::-moz-selection {
+    color           : var(--win_lite);
+    background-color: var(--win_dark);
+}
+main a, footer a {
+    color           : var(--sidedark);
+    text-decoration : none;
+}
+main a::selection     , footer a::selection,
+main a::-moz-selection, footer a::-moz-selection {
+    color           : var(--mainlite);
+    background-color: var(--win_dark);
+}
+main a:hover, footer a:hover {
+    color           : var(--mainlite);
+}
+main code::selection     , footer code::selection,
+main code::-moz-selection, footer code::-moz-selection {
+    color           : var(--sidedark);
+    background-color: var(--sidegray);
+}
+
+footer {
+    font-family     : rubik;
+    color           : var(--maindark);
+    background-color: var(--mainlite);
+    outline         : solid 2px var(--sidedark);
+
+    padding-top     : 48px;
+    padding-bottom  : 32px;
+    padding-left    : 24px;
+    padding-right   : 24px;
+}

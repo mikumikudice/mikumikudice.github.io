@@ -1,0 +1,3 @@
+## some additional information about this site and me
+i used the [radioactive13](https://lospec.com/palette-list/radioactive13) color palette created by [miguel lucero](https://lospec.com/miguel-lucero) on this website
+this website was entirely build using the [elm](https://elm-lang.org) programming language.
