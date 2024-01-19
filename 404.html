@@ -6028,22 +6028,25 @@ var $author$project$Red404$get_path = function (url) {
 			url));
 };
 var $elm$browser$Browser$Navigation$load = _Browser_load;
-var $elm$core$Platform$Cmd$batch = _Platform_batch;
-var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Red404$init = F3(
 	function (_v0, url, _v1) {
 		var path = $author$project$Red404$get_path(url);
-		var baseurl = $author$project$Red404$get_base(url);
-		return ($elm$core$String$length(
-			$elm$url$Url$toString(url)) < 64) ? _Utils_Tuple2(
+		var baseurl = A3(
+			$elm$core$String$replace,
+			'/src/Main.elm',
+			'',
+			$author$project$Red404$get_base(url));
+		return _Utils_Tuple2(
 			$author$project$Red404$Model,
 			$elm$browser$Browser$Navigation$load(
 				$elm$core$String$concat(
 					_List_fromArray(
-						[baseurl, '#badurl_', path])))) : _Utils_Tuple2($author$project$Red404$Model, $elm$core$Platform$Cmd$none);
+						[baseurl, '#badurl_', path]))));
 	});
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
+var $elm$core$Platform$Cmd$batch = _Platform_batch;
+var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Red404$update = F2(
 	function (_v0, model) {
 		return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);

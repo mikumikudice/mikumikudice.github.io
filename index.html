@@ -6705,6 +6705,7 @@ var $author$project$Main$get_base = function (url) {
 		}
 	}
 };
+var $elm$core$Debug$log = _Debug_log;
 var $elm$browser$Browser$Navigation$pushUrl = _Browser_pushUrl;
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
@@ -6720,6 +6721,7 @@ var $author$project$Main$init = F3(
 			var res = bad.a;
 			if (A2($elm$core$String$startsWith, 'badurl_', res)) {
 				var failed = A3($elm$core$String$replace, 'badurl_', '', res);
+				var _v2 = A2($elm$core$Debug$log, 'string', 'worked!');
 				return _Utils_Tuple2(
 					A5(
 						$author$project$Main$Model,
@@ -6781,6 +6783,7 @@ var $author$project$Main$init = F3(
 							])));
 			}
 		} else {
+			var _v3 = A2($elm$core$Debug$log, 'string', 'did not work!');
 			return _Utils_Tuple2(
 				A5(
 					$author$project$Main$Model,

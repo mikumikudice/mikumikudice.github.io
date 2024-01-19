@@ -40,13 +40,10 @@ main =
 
 init _ url _ =
     let
-        baseurl = get_base url
+        baseurl = ( String.replace "/src/Main.elm" "" ( get_base url ))
         path = get_path url
     in
-    if (String.length (Url.toString url)) < 64 then
-        ( Model, Nav.load (String.concat [ baseurl, "#badurl_", path ] ))
-    else
-        ( Model, Cmd.none)
+    ( Model, Nav.load (String.concat [ baseurl, "#badurl_", path ] ))
 
 update _ model = ( model, Cmd.none )
 

@@ -96,8 +96,11 @@ init _ url key =
     in
     case bad of
         Just res ->
-            if String.startsWith "badurl_" res then
-                let failed = String.replace "badurl_" "" res in
+            if ( String.startsWith "badurl_" res ) then
+                let
+                    failed = String.replace "badurl_" "" res
+                    _ = Debug.log "string" "worked!"
+                in
                 ( Model key "/404" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
                 , Cmd.batch
                     [ Nav.pushUrl key (String.concat [ baseurl, failed ] )
@@ -113,6 +116,7 @@ init _ url key =
                     ]
                 )
         Nothing ->
+            let _ = Debug.log "string" "did not work!" in
             ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
             , Cmd.batch
                 [ Nav.pushUrl key (String.concat [ baseurl, "/home" ] )
