@@ -6580,6 +6580,7 @@ var $elm$url$Url$Parser$parse = F2(
 					url.fragment,
 					$elm$core$Basics$identity)));
 	});
+var $elm$browser$Browser$Navigation$pushUrl = _Browser_pushUrl;
 var $elm$url$Url$Parser$Parser = function (a) {
 	return {$: 'Parser', a: a};
 };
@@ -6640,7 +6641,6 @@ var $elm$url$Url$Parser$questionMark = F2(
 			parser,
 			$elm$url$Url$Parser$query(queryParser));
 	});
-var $elm$browser$Browser$Navigation$replaceUrl = _Browser_replaceUrl;
 var $elm$url$Url$Parser$s = function (str) {
 	return $elm$url$Url$Parser$Parser(
 		function (_v0) {
@@ -6751,7 +6751,7 @@ var $author$project$Main$init = F3(
 						_List_fromArray(
 							[
 								A2(
-								$elm$browser$Browser$Navigation$replaceUrl,
+								$elm$browser$Browser$Navigation$pushUrl,
 								key,
 								$elm$core$String$concat(
 									_List_fromArray(
@@ -6783,7 +6783,7 @@ var $author$project$Main$init = F3(
 					$elm$core$Platform$Cmd$batch(
 						_List_fromArray(
 							[
-								A2($elm$browser$Browser$Navigation$replaceUrl, key, baseurl),
+								A2($elm$browser$Browser$Navigation$pushUrl, key, baseurl),
 								A2($author$project$Main$fetch, baseurl, '/footnote')
 							])));
 			}
@@ -6812,7 +6812,7 @@ var $author$project$Main$init = F3(
 					_List_fromArray(
 						[
 							A2(
-							$elm$browser$Browser$Navigation$replaceUrl,
+							$elm$browser$Browser$Navigation$pushUrl,
 							key,
 							$elm$core$String$concat(
 								_List_fromArray(
@@ -6870,7 +6870,6 @@ var $author$project$Main$get_path = function (url) {
 			url));
 };
 var $elm$browser$Browser$Navigation$load = _Browser_load;
-var $elm$browser$Browser$Navigation$pushUrl = _Browser_pushUrl;
 var $author$project$Main$mov_url = F2(
 	function (model, url) {
 		var new_url = $elm$core$String$concat(
