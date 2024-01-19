@@ -93,7 +93,6 @@ init _ url key =
     let
         baseurl = ( String.replace "/src/Main.elm" "" ( get_base url ))
         bad = url.fragment
-        _ = Debug.log "string" baseurl
     in
     case bad of
         Just res ->
@@ -107,7 +106,6 @@ init _ url key =
                     ]
                 )
             else
-                let _ = Debug.log "string" "1" in
                 ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
                 , Cmd.batch
                     [ Nav.pushUrl key baseurl
@@ -115,7 +113,6 @@ init _ url key =
                     ]
                 )
         Nothing ->
-            let _ = Debug.log "string" "2" in
             ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
             , Cmd.batch
                 [ Nav.pushUrl key (String.concat [ baseurl, "/home" ] )

@@ -4,7 +4,6 @@ import Browser
 import Browser.Navigation as Nav
 import Html exposing (Html)
 
-import Http
 import Url
 import Url.Parser as UrlP exposing (..)
 
