@@ -92,11 +92,10 @@ init _ url key =
         -- TODO: un-hardcode this path
         baseurl = "mikumikudice.github.io/"
         d_model = { key = key, url = "home", baseurl = baseurl }
-        stt_url = ( get_path baseurl url )
     in
     ( Model key "home" baseurl ( div [] [] ) ( div [] [ text "failed to load the footer :c" ] )
     , Cmd.batch
-        [ mov_url d_model stt_url
+        [ mov_url d_model baseurl
         , fetch baseurl "footnote"
         ]
     )
