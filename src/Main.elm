@@ -8,6 +8,7 @@ import Html.Attributes exposing (..)
 import Http
 import Url
 import Url.Parser as UrlP exposing (..)
+import Url.Parser.Query as UrlQ
 
 import MdParsing exposing (render)
 
@@ -92,10 +93,17 @@ init _ url key =
     let
         fix_for_debug =  ( String.replace "/src/Main.elm" "" ( get_base url ) )
         baseurl = ( String.replace ".io/" ".io" fix_for_debug ) -- funny workaround for a elm bug
+        is404red = UrlP.parse (UrlP.s baseurl <?> UrlQ.string "badurl") url
+        page = case is404red of
+            Just res ->
+                case res of
+                    Just bad -> bad
+                    Nothing -> "/home"
+            Nothing -> "/home"
     in
-    ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+    ( Model key page baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
     , Cmd.batch
-        [ Nav.pushUrl key (String.concat [ baseurl, "/home" ] )
+        [ Nav.pushUrl key (String.concat [ baseurl, page ] )
         , fetch baseurl "/footnote"
         ]
     )
