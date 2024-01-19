@@ -31,7 +31,6 @@ type alias Model =
     { key : Nav.Key
     , url : String
     , baseurl : String
-    , rooturl : String
     , pg_cntt : Html Event
     , ft_cntt : Html Event
     }
@@ -95,7 +94,7 @@ init _ url key =
         d_model = { key = key, url = "home", baseurl = baseurl }
         stt_url = ( get_path baseurl url )
     in
-    ( Model key "home" baseurl ( get_path baseurl url ) ( div [] [] ) ( div [] [ text "failed to load the footer :c" ] )
+    ( Model key "home" baseurl ( div [] [] ) ( div [] [ text "failed to load the footer :c" ] )
     , Cmd.batch
         [ mov_url d_model stt_url
         , fetch baseurl "footnote"
@@ -116,7 +115,7 @@ update evnt model =
                 Ok page ->
                     ( { model | pg_cntt = (render [] page ) }, Cmd.none )
                 Err _ ->
-                    ( { model | url = "404" }, fetch model.baseurl "404" )
+                    ( model, fetch model.baseurl "404" )
         LoadFooter res ->
             case res of
                 Ok page ->
@@ -128,7 +127,7 @@ update evnt model =
                 ldd_path = ( get_path model.baseurl new_url )
             in
             if ldd_path == "404" then
-                    ( { model | url = "404" }, fetch model.baseurl "404" )
+                    ( model, fetch model.baseurl "404" )
             else
                 ( { model | url = ldd_path }, fetch model.baseurl ldd_path )
 
