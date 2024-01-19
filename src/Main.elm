@@ -94,11 +94,10 @@ main =
 
 init _ url key =
     let
-        fix_for_debug =  ( String.replace "src/Main.elm" "" ( get_base url ) )
-        baseurl = String.slice 0 (( String.length fix_for_debug ) - 2) fix_for_debug
-        _ = Debug.log "string" baseurl
+        fix_for_debug =  ( String.replace "/src/Main.elm" "" ( get_base url ) )
+        baseurl = ( String.replace ".io/" ".io" fix_for_debug ) -- funny workaround for a elm bug
     in
-    ( Model key "/home" baseurl ( div [] [] ) ( div [] [ text "failed to load the footer :c" ] )
+    ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
     , Cmd.batch
         [ Nav.pushUrl key (String.concat [ baseurl, "/home" ] )
         , fetch baseurl "/footnote"
