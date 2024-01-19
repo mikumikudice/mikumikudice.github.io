@@ -101,7 +101,7 @@ init _ url key =
                 Just bad ->
                     ( Model key "/404" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
                     , Cmd.batch
-                        [ Nav.pushUrl key (String.concat [ baseurl, bad ] )
+                        [ Nav.replaceUrl key (String.concat [ baseurl, bad ] )
                         , fetch baseurl "/404"
                         , fetch baseurl "/footnote"
                         ]
@@ -109,14 +109,14 @@ init _ url key =
                 Nothing ->
                     ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
                     , Cmd.batch
-                        [ Nav.pushUrl key (String.concat [ baseurl, "/home" ] )
+                        [ Nav.replaceUrl key (String.concat [ baseurl, "/home" ] )
                         , fetch baseurl "/footnote"
                         ]
                     )
         Nothing ->
             ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
             , Cmd.batch
-                [ Nav.pushUrl key (String.concat [ baseurl, "/home" ] )
+                [ Nav.replaceUrl key (String.concat [ baseurl, "/home" ] )
                 , fetch baseurl "/footnote"
                 ]
             )
