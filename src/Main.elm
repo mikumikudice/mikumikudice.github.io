@@ -12,19 +12,8 @@ import Url.Parser as UrlP exposing (..)
 import Task exposing (..)
 import String.Format exposing (..)
 
-import MdParsing exposing (render)
-import Debug exposing (log)
 
-main : Program () Model Event
-main =
-    Browser.application
-        { init = init
-        , view = view
-        , update = update
-        , subscriptions = \ _ -> Sub.none
-        , onUrlChange = UpdateUrl
-        , onUrlRequest = RequestURL
-        }
+import MdParsing exposing (render)
 
 titlefont = "https://fonts.googleapis.com/css2?family=Rubik"
 body_font = "https://fonts.googleapis.com/css2?family=PT+Mono"
@@ -38,41 +27,31 @@ win_dark = "#73514d"
 win_gray = "#ac8a71"
 win_lite = "#decb9f"
 
-footnote =
-    """
-i used the [radioactive13](https://lospec.com/palette-list/radioactive13) color palette created by [miguel lucero](https://lospec.com/miguel-lucero) on this website.  
-this website was entirely build using the [elm](https://elm-lang.org) programming language. [broken](http://localhost:8000/src/ada)
-"""
-
 type alias Model =
     { key : Nav.Key
     , url : String
     , baseurl : String
     , rooturl : String
     , pg_cntt : Html Event
+    , ft_cntt : Html Event
     }
 
 type Event
   = RequestURL Browser.UrlRequest
   | UpdateUrl Url.Url
   | LoadNewPage (Result Http.Error String)
-
-init _ url key =
-    let
-        baseurl = ( String.replace "Main.elm" "" ( Url.toString url ) )
-        rooturl = ( String.replace "Main.elm" "" url.path )
-        d_model = { key = key, baseurl = rooturl }
-    in
-    ( Model key "home" baseurl ( get_path d_model url ) ( div [] [] ), mov_url d_model "home" )
+  | LoadFooter (Result Http.Error String)
 
 mov_url model url =
     let
         new_url = ( String.concat [ model.baseurl, url ] )
     in
-    Cmd.batch
-        [ Nav.pushUrl model.key new_url
-        , fetch model.baseurl url
-        ]
+    if url /= model.url then
+        Cmd.batch
+            [ Nav.pushUrl model.key new_url
+            , fetch model.baseurl url
+            ]
+    else Cmd.none
 
 get_base url =
     let
@@ -80,8 +59,48 @@ get_base url =
     in
     Maybe.withDefault full ( UrlP.parse ( UrlP.s full </> string ) url )
 
-get_path model url =
-    Maybe.withDefault "404" ( UrlP.parse ( UrlP.s model.baseurl </> string ) url )
+get_path baseurl url =
+    Maybe.withDefault "404" ( UrlP.parse ( UrlP.s baseurl </> string ) url )
+
+fetch baseurl url =
+    let
+        path = ( String.concat [ baseurl, "pages/", url, ".txt" ] )
+    in
+    if url /= "footnote" then
+        Http.get
+            { url = path
+            , expect = Http.expectString LoadNewPage
+            }
+    else
+        Http.get
+            { url = path
+            , expect = Http.expectString LoadFooter
+            }
+
+main : Program () Model Event
+main =
+    Browser.application
+        { init = init
+        , view = view
+        , update = update
+        , subscriptions = \ _ -> Sub.none
+        , onUrlChange = UpdateUrl
+        , onUrlRequest = RequestURL
+        }
+
+init _ url key =
+    let
+        baseurl = ( String.replace "Main.elm" "" ( Url.toString url ) )
+        rooturl = ( String.replace "Main.elm" "" url.path )
+        d_model = { key = key, url = "home", baseurl = rooturl }
+        stt_url = ( get_path baseurl url )
+    in
+    ( Model key "home" baseurl ( get_path baseurl url ) ( div [] [] ) ( div [] [ text "failed to load the footer :c" ] )
+    , Cmd.batch
+        [ mov_url d_model stt_url
+        , fetch baseurl "footnote"
+        ]
+    )
 
 update evnt model =
     case evnt of
@@ -98,24 +117,20 @@ update evnt model =
                     ( { model | pg_cntt = (render [] page ) }, Cmd.none )
                 Err _ ->
                     ( { model | url = "404" }, fetch model.baseurl "404" )
-                
+        LoadFooter res ->
+            case res of
+                Ok page ->
+                    ( { model | ft_cntt = (render [] page ) }, Cmd.none )
+                Err _ ->
+                    ( model, Cmd.none )
         UpdateUrl new_url ->
             let
-                ldd_path = ( get_path model new_url )
+                ldd_path = ( get_path model.baseurl new_url )
             in
             if ldd_path == "404" then
                     ( { model | url = "404" }, fetch model.baseurl "404" )
             else
                 ( { model | url = ldd_path }, fetch model.baseurl ldd_path )
-
-fetch baseurl url =
-    let
-        path = ( String.concat [ baseurl, "pages/", url, ".txt" ] )
-    in
-    Http.get
-        { url = path
-        , expect = Http.expectString LoadNewPage
-        }
 
 view model =
     { title = "blog"
@@ -126,6 +141,6 @@ view model =
             , node "link" [ href ( String.concat [ model.baseurl, "assets/style.css" ] ), rel "stylesheet" ] []
             , model.pg_cntt
             ]
-        , footer [] [ render [] footnote ]
+        , footer [] [ model.ft_cntt ]
         ]
     }
