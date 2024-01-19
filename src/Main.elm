@@ -95,7 +95,7 @@ init _ url key =
     in
     ( Model key "home" baseurl ( div [] [] ) ( div [] [ text "failed to load the footer :c" ] )
     , Cmd.batch
-        [ mov_url d_model baseurl
+        [ mov_url d_model "home"
         , fetch baseurl "footnote"
         ]
     )
