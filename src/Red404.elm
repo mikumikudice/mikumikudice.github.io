@@ -41,12 +41,11 @@ main =
 
 init _ url _ =
     let
-        index = String.indexes "/" url.path
-        baseurl = ( String.slice 0 (Maybe.withDefault -1 (List.head index) ) url.path )
+        baseurl = get_base url
         path = get_path url
     in
     if (String.length (Url.toString url)) < 64 then
-        ( Model, Nav.load (String.concat [ baseurl, "/?badurl=", path ] ))
+        ( Model, Nav.load (String.concat [ baseurl, "#badurl_", path ] ))
     else
         ( Model, Cmd.none)
 

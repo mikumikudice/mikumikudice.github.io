@@ -5834,6 +5834,13 @@ var $elm$url$Url$Parser$parse = F2(
 					url.fragment,
 					$elm$core$Basics$identity)));
 	});
+var $elm$core$String$replace = F3(
+	function (before, after, string) {
+		return A2(
+			$elm$core$String$join,
+			after,
+			A2($elm$core$String$split, before, string));
+	});
 var $elm$url$Url$Parser$Parser = function (a) {
 	return {$: 'Parser', a: a};
 };
@@ -5925,42 +5932,6 @@ var $elm$url$Url$Parser$custom = F2(
 			});
 	});
 var $elm$url$Url$Parser$string = A2($elm$url$Url$Parser$custom, 'STRING', $elm$core$Maybe$Just);
-var $elm$core$Maybe$withDefault = F2(
-	function (_default, maybe) {
-		if (maybe.$ === 'Just') {
-			var value = maybe.a;
-			return value;
-		} else {
-			return _default;
-		}
-	});
-var $author$project$Red404$get_path = function (url) {
-	return A2(
-		$elm$core$Maybe$withDefault,
-		'',
-		A2(
-			$elm$url$Url$Parser$parse,
-			A2(
-				$elm$url$Url$Parser$slash,
-				$elm$url$Url$Parser$s(url.path),
-				$elm$url$Url$Parser$string),
-			url));
-};
-var $elm$core$List$head = function (list) {
-	if (list.b) {
-		var x = list.a;
-		var xs = list.b;
-		return $elm$core$Maybe$Just(x);
-	} else {
-		return $elm$core$Maybe$Nothing;
-	}
-};
-var $elm$browser$Browser$Navigation$load = _Browser_load;
-var $elm$core$Basics$negate = function (n) {
-	return -n;
-};
-var $elm$core$Platform$Cmd$batch = _Platform_batch;
-var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $elm$url$Url$addPort = F2(
 	function (maybePort, starter) {
 		if (maybePort.$ === 'Nothing') {
@@ -6005,25 +5976,71 @@ var $elm$url$Url$toString = function (url) {
 					_Utils_ap(http, url.host)),
 				url.path)));
 };
+var $elm$core$Maybe$withDefault = F2(
+	function (_default, maybe) {
+		if (maybe.$ === 'Just') {
+			var value = maybe.a;
+			return value;
+		} else {
+			return _default;
+		}
+	});
+var $author$project$Red404$get_base = function (url) {
+	get_base:
+	while (true) {
+		var full = $elm$url$Url$toString(url);
+		var remv = A2(
+			$elm$core$Maybe$withDefault,
+			'',
+			A2(
+				$elm$url$Url$Parser$parse,
+				A2(
+					$elm$url$Url$Parser$slash,
+					$elm$url$Url$Parser$s(full),
+					$elm$url$Url$Parser$string),
+				url));
+		if (remv === '') {
+			return full;
+		} else {
+			var _v0 = $elm$url$Url$fromString(
+				A3($elm$core$String$replace, remv, '', full));
+			if (_v0.$ === 'Just') {
+				var nxt = _v0.a;
+				var $temp$url = nxt;
+				url = $temp$url;
+				continue get_base;
+			} else {
+				return '/404';
+			}
+		}
+	}
+};
+var $author$project$Red404$get_path = function (url) {
+	return A2(
+		$elm$core$Maybe$withDefault,
+		'',
+		A2(
+			$elm$url$Url$Parser$parse,
+			A2(
+				$elm$url$Url$Parser$slash,
+				$elm$url$Url$Parser$s(url.path),
+				$elm$url$Url$Parser$string),
+			url));
+};
+var $elm$browser$Browser$Navigation$load = _Browser_load;
+var $elm$core$Platform$Cmd$batch = _Platform_batch;
+var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Red404$init = F3(
 	function (_v0, url, _v1) {
 		var path = $author$project$Red404$get_path(url);
-		var index = A2($elm$core$String$indexes, '/', url.path);
-		var baseurl = A3(
-			$elm$core$String$slice,
-			0,
-			A2(
-				$elm$core$Maybe$withDefault,
-				-1,
-				$elm$core$List$head(index)),
-			url.path);
+		var baseurl = $author$project$Red404$get_base(url);
 		return ($elm$core$String$length(
 			$elm$url$Url$toString(url)) < 64) ? _Utils_Tuple2(
 			$author$project$Red404$Model,
 			$elm$browser$Browser$Navigation$load(
 				$elm$core$String$concat(
 					_List_fromArray(
-						[baseurl, '/?badurl=', path])))) : _Utils_Tuple2($author$project$Red404$Model, $elm$core$Platform$Cmd$none);
+						[baseurl, '#badurl_', path])))) : _Utils_Tuple2($author$project$Red404$Model, $elm$core$Platform$Cmd$none);
 	});
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);

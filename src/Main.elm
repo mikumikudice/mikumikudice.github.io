@@ -51,7 +51,7 @@ mov_url model url =
 
 get_base url =
     let
-        full = (Url.toString url)
+        full = url.path
         remv = Maybe.withDefault "" ( UrlP.parse ( UrlP.s full </> string ) url )
     in
     if remv == "" then full
@@ -91,29 +91,31 @@ main =
 
 init _ url key =
     let
-        index = String.indexes "/" url.path
-        baseurl = ( String.slice 0 (Maybe.withDefault -1 (List.head index) ) url.path )
-        is404red = UrlP.parse (UrlP.s baseurl <?> UrlQ.string "badurl") url
+        baseurl = ( String.replace "/src/Main.elm" "" ( get_base url ))
+        bad = url.fragment
+        _ = Debug.log "string" baseurl
     in
-    case is404red of
+    case bad of
         Just res ->
-            case res of
-                Just bad ->
-                    ( Model key "/404" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
-                    , Cmd.batch
-                        [ Nav.pushUrl key (String.concat [ baseurl, bad ] )
-                        , fetch baseurl "/404"
-                        , fetch baseurl "/footnote"
-                        ]
-                    )
-                Nothing ->
-                    ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
-                    , Cmd.batch
-                        [ Nav.pushUrl key baseurl
-                        , fetch baseurl "/footnote"
-                        ]
-                    )
+            if String.startsWith "badurl_" res then
+                let failed = String.replace "badurl_" "" res in
+                ( Model key "/404" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+                , Cmd.batch
+                    [ Nav.pushUrl key (String.concat [ baseurl, failed ] )
+                    , fetch baseurl "/404"
+                    , fetch baseurl "/footnote"
+                    ]
+                )
+            else
+                let _ = Debug.log "string" "1" in
+                ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+                , Cmd.batch
+                    [ Nav.pushUrl key baseurl
+                    , fetch baseurl "/footnote"
+                    ]
+                )
         Nothing ->
+            let _ = Debug.log "string" "2" in
             ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
             , Cmd.batch
                 [ Nav.pushUrl key (String.concat [ baseurl, "/home" ] )
@@ -146,7 +148,7 @@ update evnt model =
                 ( { model | url = new_url.path }, fetch model.baseurl new_url.path )
 
 view model =
-    { title = "blog"
+    { title = (String.slice 1 (String.length model.url) model.url)
     , body =
         [ main_ []
             [ node "link" [ href titlefont, rel "stylesheet" ] []
