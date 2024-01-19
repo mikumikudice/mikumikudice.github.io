@@ -41,11 +41,9 @@ main =
 
 init _ url _ =
     let
-        fix_domain =  ( String.replace "/src/Main.elm" "" ( get_base url ) )
-        fix_slash = ( String.replace ".io/" ".io" fix_domain ) -- funny workaround for a elm bug
-        baseurl = ( String.replace "/404.html" "" fix_slash )
+        index = String.indexes "/" url.path
+        baseurl = ( String.slice 0 (Maybe.withDefault -1 (List.head index) ) url.path )
         path = get_path url
-        _ = Debug.log "string" path
     in
     if (String.length (Url.toString url)) < 64 then
         ( Model, Nav.load (String.concat [ baseurl, "/?badurl=", path ] ))

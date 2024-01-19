@@ -91,8 +91,8 @@ main =
 
 init _ url key =
     let
-        fix_domain =  ( String.replace "/src/Main.elm" "" ( get_base url ) )
-        baseurl = ( String.replace ".io/" ".io" fix_domain ) -- funny workaround for a elm bug
+        index = String.indexes "/" url.path
+        baseurl = ( String.slice 0 (Maybe.withDefault -1 (List.head index) ) url.path )
         is404red = UrlP.parse (UrlP.s baseurl <?> UrlQ.string "badurl") url
     in
     case is404red of
