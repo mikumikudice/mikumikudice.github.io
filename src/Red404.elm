@@ -48,7 +48,7 @@ init _ url _ =
         _ = Debug.log "string" path
     in
     if (String.length (Url.toString url)) < 64 then
-        ( Model, Nav.load (String.concat [ baseurl, "?badurl=", path ] ))
+        ( Model, Nav.load (String.concat [ baseurl, "/?badurl=", path ] ))
     else
         ( Model, Cmd.none)
 
