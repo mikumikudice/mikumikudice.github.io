@@ -69,7 +69,6 @@ get_path url =
 fetch baseurl url =
     let
         path = ( String.concat [ baseurl, "/pages", url, ".txt" ] )
-        _ = Debug.log "string" path
     in
     if url /= "/footnote" then
         Http.get
@@ -97,6 +96,7 @@ init _ url key =
     let
         fix_for_debug =  ( String.replace "src/Main.elm" "" ( get_base url ) )
         baseurl = String.slice 0 (( String.length fix_for_debug ) - 2) fix_for_debug
+        _ = Debug.log "string" baseurl
     in
     ( Model key "/home" baseurl ( div [] [] ) ( div [] [ text "failed to load the footer :c" ] )
     , Cmd.batch
@@ -127,7 +127,6 @@ update evnt model =
                 Err _ ->
                     ( model, Cmd.none )
         UpdateUrl new_url ->
-                let _ = Debug.log "string" new_url.path in
                 ( { model | url = new_url.path }, fetch model.baseurl new_url.path )
 
 view model =
