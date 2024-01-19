@@ -9,10 +9,6 @@ import Http
 import Url
 import Url.Parser as UrlP exposing (..)
 
-import Task exposing (..)
-import String.Format exposing (..)
-
-
 import MdParsing exposing (render)
 
 titlefont = "https://fonts.googleapis.com/css2?family=Rubik"
