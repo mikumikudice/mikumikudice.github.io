@@ -45,7 +45,7 @@ init _ url _ =
         baseurl = ( String.replace ".io/" ".io" fix_for_debug ) -- funny workaround for a elm bug
         path = get_path url
     in
-    ( Model, Nav.load (String.concat [ baseurl, path ] ))
+    ( Model, Nav.load (String.concat [ baseurl, "/", path ] ))
 
 update _ model = ( model, Cmd.none )
 
