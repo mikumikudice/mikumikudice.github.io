@@ -91,8 +91,8 @@ main =
 
 init _ url key =
     let
-        fix_for_debug =  ( String.replace "/src/Main.elm" "" ( get_base url ) )
-        baseurl = ( String.replace ".io/" ".io" fix_for_debug ) -- funny workaround for a elm bug
+        fix_domain =  ( String.replace "/src/Main.elm" "" ( get_base url ) )
+        baseurl = ( String.replace ".io/" ".io" fix_domain ) -- funny workaround for a elm bug
         is404red = UrlP.parse (UrlP.s baseurl <?> UrlQ.string "badurl") url
     in
     case is404red of

@@ -41,11 +41,16 @@ main =
 
 init _ url _ =
     let
-        fix_for_debug =  ( String.replace "/src/Main.elm" "" ( get_base url ) )
-        baseurl = ( String.replace ".io/" ".io" fix_for_debug ) -- funny workaround for a elm bug
+        fix_domain =  ( String.replace "/src/Main.elm" "" ( get_base url ) )
+        fix_slash = ( String.replace ".io/" ".io" fix_domain ) -- funny workaround for a elm bug
+        baseurl = ( String.replace "/404.html" "" fix_slash )
         path = get_path url
+        _ = Debug.log "string" path
     in
-    ( Model, Nav.load (String.concat [ baseurl, "?badurl=", path ] ))
+    if (String.length (Url.toString url)) < 64 then
+        ( Model, Nav.load (String.concat [ baseurl, "?badurl=", path ] ))
+    else
+        ( Model, Cmd.none)
 
 update _ model = ( model, Cmd.none )
 

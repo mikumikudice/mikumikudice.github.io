@@ -6810,12 +6810,12 @@ var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Main$init = F3(
 	function (_v0, url, key) {
-		var fix_for_debug = A3(
+		var fix_domain = A3(
 			$elm$core$String$replace,
 			'/src/Main.elm',
 			'',
 			$author$project$Main$get_base(url));
-		var baseurl = A3($elm$core$String$replace, '.io/', '.io', fix_for_debug);
+		var baseurl = A3($elm$core$String$replace, '.io/', '.io', fix_domain);
 		var is404red = A2(
 			$elm$url$Url$Parser$parse,
 			A2(
