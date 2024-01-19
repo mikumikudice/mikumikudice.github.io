@@ -19,7 +19,7 @@ body {
     margin-right    : 224px;
 }
 
-h1, main h2, main h3 {
+h1, h2, h3 {
     font-family     : rubik;
     margin-top      : 8px;
     margin-bottom   : 8px;

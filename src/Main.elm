@@ -47,25 +47,31 @@ mov_url model url =
     in
     if url /= model.url then
         Cmd.batch
-            [ Nav.pushUrl model.key new_url
-            , fetch model.baseurl url
+            [ --Nav.pushUrl model.key new_url
+            fetch model.baseurl new_url
             ]
-    else Cmd.none
+    else fetch model.baseurl new_url
 
 get_base url =
     let
         full = (Url.toString url)
+        remv = Maybe.withDefault "" ( UrlP.parse ( UrlP.s full </> string ) url )
     in
-    Maybe.withDefault full ( UrlP.parse ( UrlP.s full </> string ) url )
+    if remv == "" then full
+    else
+        case Url.fromString ( String.replace remv "" full ) of
+            Just nxt -> get_base nxt
+            Nothing -> "/404"
 
-get_path baseurl url =
-    Maybe.withDefault "404" ( UrlP.parse ( UrlP.s baseurl </> string ) url )
+get_path url =
+    Maybe.withDefault "" ( UrlP.parse ( UrlP.s url.path </> string ) url )
 
 fetch baseurl url =
     let
-        path = ( String.concat [ baseurl, "pages/", url, ".txt" ] )
+        path = ( String.concat [ baseurl, "/pages", url, ".txt" ] )
+        _ = Debug.log "string" path
     in
-    if url /= "footnote" then
+    if url /= "/footnote" then
         Http.get
             { url = path
             , expect = Http.expectString LoadNewPage
@@ -89,14 +95,12 @@ main =
 
 init _ url key =
     let
-        -- TODO: un-hardcode this path
-        baseurl = "mikumikudice.github.io/"
-        d_model = { key = key, url = "home", baseurl = baseurl }
+        baseurl =  ( String.replace "/src/Main.elm" "" ( get_base url ) )
     in
-    ( Model key "home" baseurl ( div [] [] ) ( div [] [ text "failed to load the footer :c" ] )
+    ( Model key "/home" baseurl ( div [] [] ) ( div [] [ text "failed to load the footer :c" ] )
     , Cmd.batch
-        [ mov_url d_model "home"
-        , fetch baseurl "footnote"
+        [ Nav.pushUrl key (String.concat [ baseurl, "/home" ] )
+        , fetch baseurl "/footnote"
         ]
     )
 
@@ -105,7 +109,7 @@ update evnt model =
         RequestURL urlreq ->
             case urlreq of
                 Browser.Internal url ->
-                    ( model, mov_url model ( String.replace "/src/" "" url.path ) )
+                    ( model, mov_url model ( get_path url ))
                 Browser.External href ->
                     ( model, Nav.load href )
 
@@ -114,7 +118,7 @@ update evnt model =
                 Ok page ->
                     ( { model | pg_cntt = (render [] page ) }, Cmd.none )
                 Err _ ->
-                    ( model, fetch model.baseurl "404" )
+                    ( model, fetch model.baseurl "/404" )
         LoadFooter res ->
             case res of
                 Ok page ->
@@ -122,13 +126,8 @@ update evnt model =
                 Err _ ->
                     ( model, Cmd.none )
         UpdateUrl new_url ->
-            let
-                ldd_path = ( get_path model.baseurl new_url )
-            in
-            if ldd_path == "404" then
-                    ( model, fetch model.baseurl "404" )
-            else
-                ( { model | url = ldd_path }, fetch model.baseurl ldd_path )
+                let _ = Debug.log "string" new_url.path in
+                ( { model | url = new_url.path }, fetch model.baseurl new_url.path )
 
 view model =
     { title = "blog"
@@ -136,7 +135,7 @@ view model =
         [ main_ []
             [ node "link" [ href titlefont, rel "stylesheet" ] []
             , node "link" [ href body_font, rel "stylesheet" ] []
-            , node "link" [ href ( String.concat [ model.baseurl, "assets/style.css" ] ), rel "stylesheet" ] []
+            , node "link" [ href ( String.concat [ model.baseurl, "/assets/style.css" ] ), rel "stylesheet" ] []
             , model.pg_cntt
             ]
         , footer [] [ model.ft_cntt ]
