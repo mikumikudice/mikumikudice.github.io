@@ -6823,50 +6823,108 @@ var $author$project$Main$init = F3(
 				$elm$url$Url$Parser$s(baseurl),
 				$elm$url$Url$Parser$Query$string('badurl')),
 			url);
-		var page = function () {
-			if (is404red.$ === 'Just') {
-				var res = is404red.a;
-				if (res.$ === 'Just') {
-					var bad = res.a;
-					return bad;
-				} else {
-					return '/home';
-				}
-			} else {
-				return '/home';
-			}
-		}();
-		return _Utils_Tuple2(
-			A5(
-				$author$project$Main$Model,
-				key,
-				page,
-				baseurl,
-				A2(
-					$elm$html$Html$div,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$elm$html$Html$text('failed to load homepage :c')
-						])),
-				A2(
-					$elm$html$Html$div,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$elm$html$Html$text('failed to load the footer :c')
-						]))),
-			$elm$core$Platform$Cmd$batch(
-				_List_fromArray(
-					[
-						A2(
-						$elm$browser$Browser$Navigation$pushUrl,
+		if (is404red.$ === 'Just') {
+			var res = is404red.a;
+			if (res.$ === 'Just') {
+				var bad = res.a;
+				return _Utils_Tuple2(
+					A5(
+						$author$project$Main$Model,
 						key,
-						$elm$core$String$concat(
+						'/404',
+						baseurl,
+						A2(
+							$elm$html$Html$div,
+							_List_Nil,
 							_List_fromArray(
-								[baseurl, page]))),
-						A2($author$project$Main$fetch, baseurl, '/footnote')
-					])));
+								[
+									$elm$html$Html$text('failed to load homepage :c')
+								])),
+						A2(
+							$elm$html$Html$div,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text('failed to load the footer :c')
+								]))),
+					$elm$core$Platform$Cmd$batch(
+						_List_fromArray(
+							[
+								A2(
+								$elm$browser$Browser$Navigation$pushUrl,
+								key,
+								$elm$core$String$concat(
+									_List_fromArray(
+										[baseurl, bad]))),
+								A2($author$project$Main$fetch, baseurl, '/404'),
+								A2($author$project$Main$fetch, baseurl, '/footnote')
+							])));
+			} else {
+				return _Utils_Tuple2(
+					A5(
+						$author$project$Main$Model,
+						key,
+						'/home',
+						baseurl,
+						A2(
+							$elm$html$Html$div,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text('failed to load homepage :c')
+								])),
+						A2(
+							$elm$html$Html$div,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text('failed to load the footer :c')
+								]))),
+					$elm$core$Platform$Cmd$batch(
+						_List_fromArray(
+							[
+								A2(
+								$elm$browser$Browser$Navigation$pushUrl,
+								key,
+								$elm$core$String$concat(
+									_List_fromArray(
+										[baseurl, '/home']))),
+								A2($author$project$Main$fetch, baseurl, '/footnote')
+							])));
+			}
+		} else {
+			return _Utils_Tuple2(
+				A5(
+					$author$project$Main$Model,
+					key,
+					'/home',
+					baseurl,
+					A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('failed to load homepage :c')
+							])),
+					A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('failed to load the footer :c')
+							]))),
+				$elm$core$Platform$Cmd$batch(
+					_List_fromArray(
+						[
+							A2(
+							$elm$browser$Browser$Navigation$pushUrl,
+							key,
+							$elm$core$String$concat(
+								_List_fromArray(
+									[baseurl, '/home']))),
+							A2($author$project$Main$fetch, baseurl, '/footnote')
+						])));
+		}
 	});
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
