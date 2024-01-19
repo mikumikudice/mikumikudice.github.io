@@ -95,7 +95,8 @@ main =
 
 init _ url key =
     let
-        baseurl =  ( String.replace "/src/Main.elm" "" ( get_base url ) )
+        fix_for_debug =  ( String.replace "src/Main.elm" "" ( get_base url ) )
+        baseurl = String.slice 0 (( String.length fix_for_debug ) - 2) fix_for_debug
     in
     ( Model key "/home" baseurl ( div [] [] ) ( div [] [ text "failed to load the footer :c" ] )
     , Cmd.batch
