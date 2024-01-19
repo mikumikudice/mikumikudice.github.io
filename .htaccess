@@ -1,1 +1,1 @@
-Error Document 404 https://mikumikudice.github.io/
+ErrorDocument 404 ./index.html
