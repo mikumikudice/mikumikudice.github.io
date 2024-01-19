@@ -44,8 +44,8 @@ mov_url model url =
     in
     if url /= model.url then
         Cmd.batch
-            [ --Nav.pushUrl model.key new_url
-            fetch model.baseurl new_url
+            [ Nav.pushUrl model.key new_url
+            , fetch model.baseurl new_url
             ]
     else fetch model.baseurl new_url
 
@@ -109,7 +109,7 @@ init _ url key =
                 Nothing ->
                     ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
                     , Cmd.batch
-                        [ Nav.replaceUrl key (String.concat [ baseurl, "/home" ] )
+                        [ Nav.replaceUrl key baseurl
                         , fetch baseurl "/footnote"
                         ]
                     )
