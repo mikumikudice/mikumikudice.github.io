@@ -90,9 +90,9 @@ main =
 
 init _ url key =
     let
-        baseurl = ( String.replace "Main.elm" "" ( Url.toString url ) )
-        rooturl = ( String.replace "Main.elm" "" url.path )
-        d_model = { key = key, url = "home", baseurl = rooturl }
+        -- TODO: un-hardcode this path
+        baseurl = "mikumikudice.github.io/"
+        d_model = { key = key, url = "home", baseurl = baseurl }
         stt_url = ( get_path baseurl url )
     in
     ( Model key "home" baseurl ( get_path baseurl url ) ( div [] [] ) ( div [] [ text "failed to load the footer :c" ] )
