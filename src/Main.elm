@@ -92,7 +92,8 @@ main =
 init _ url key =
     let
         fix_domain = ( String.replace "/src/Main.elm" "" ( get_base url ))
-        baseurl = String.concat [ url.host, ( String.replace ".io/" ".io" fix_domain )]
+        baseurl = ( String.replace ".io/" ".io" fix_domain )
+        _ = Debug.log "stirng" baseurl
         bad = url.fragment
     in
     case bad of
