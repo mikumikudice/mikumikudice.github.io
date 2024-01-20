@@ -99,12 +99,12 @@ init _ url key =
         Just res ->
             if ( String.startsWith "badurl_" res ) then
                 let
-                    failed = String.replace "badurl_" "" res
+                    failed = String.replace "badurl_" "/" res
                 in
-                ( Model key "/404" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+                ( Model key res baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
                 , Cmd.batch
                     [ Nav.pushUrl key (String.concat [ baseurl, failed ] )
-                    , fetch baseurl "/404"
+                    , fetch baseurl res
                     , fetch baseurl "/footnote"
                     ]
                 )
