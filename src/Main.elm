@@ -49,6 +49,7 @@ mov_url model url =
             ]
     else fetch model.baseurl new_url
 
+get_base : Url.Url -> String
 get_base url =
     let
         full = url.path
@@ -90,16 +91,12 @@ main =
         }
 
 init _ url key =
-    let
-        baseurl = get_base url
-        bad = url.fragment
-    in
-            ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
-            , Cmd.batch
-                [ Nav.pushUrl key (String.concat [ baseurl, "/home" ] )
-                , fetch baseurl "/footnote"
-                ]
-            )
+    ( Model key "/home" (get_base url) ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+    , Cmd.batch
+        [ Nav.pushUrl key (String.concat [ (get_base url), "/home" ] )
+        , fetch (get_base url) "/footnote"
+        ]
+    )
 
 update evnt model =
     case evnt of
