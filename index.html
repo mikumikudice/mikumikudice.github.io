@@ -16084,8 +16084,13 @@ catch (e)
   header.style.fontFamily = "monospace";
   header.innerText = "Initialization Error";
   var pre = document.getElementById("elm");
-  document.body.insertBefore(header, pre);
-  pre.innerText = e;
+
+  if(pre != null){
+    document.body.insertBefore(header, pre);
+    pre.innerText = e;
+  } else {
+    console.log(e)
+  }
   throw e;
 }
 </script>
