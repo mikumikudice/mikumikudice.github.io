@@ -91,10 +91,10 @@ main =
         }
 
 init _ url key =
-    ( Model key "/home" (get_base url) ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+    ( Model key "/home" "mikumikudice.itch.io" ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
     , Cmd.batch
-        [ Nav.pushUrl key (String.concat [ (get_base url), "/home" ] )
-        , fetch (get_base url) "/footnote"
+        [ Nav.pushUrl key "mikumikudice.itch.io/home"
+        , fetch "mikumikudice.itch.io/home" "/footnote"
         ]
     )
 
