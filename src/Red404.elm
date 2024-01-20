@@ -18,7 +18,7 @@ get_path url =
 
 get_base url =
     let
-        full = (Url.toString url)
+        full = String.replace "https://" "" (Url.toString url)
         remv = Maybe.withDefault "" ( UrlP.parse ( UrlP.s full </> string ) url )
     in
     if remv == "" then full
@@ -41,9 +41,9 @@ main =
 init _ url _ =
     let
         baseurl = ( String.replace "/src/Main.elm" "" ( get_base url ))
-        path = get_path url
+        path = String.replace baseurl "" url.path
     in
-    ( Model, Nav.load (String.concat [ baseurl, "#badurl_", path ] ))
+    ( Model, Nav.load (String.concat [ "https://", baseurl, "#badurl_", path ] ))
 
 update _ model = ( model, Cmd.none )
 

@@ -5988,7 +5988,11 @@ var $elm$core$Maybe$withDefault = F2(
 var $author$project$Red404$get_base = function (url) {
 	get_base:
 	while (true) {
-		var full = $elm$url$Url$toString(url);
+		var full = A3(
+			$elm$core$String$replace,
+			'https://',
+			'',
+			$elm$url$Url$toString(url));
 		var remv = A2(
 			$elm$core$Maybe$withDefault,
 			'',
@@ -6015,33 +6019,21 @@ var $author$project$Red404$get_base = function (url) {
 		}
 	}
 };
-var $author$project$Red404$get_path = function (url) {
-	return A2(
-		$elm$core$Maybe$withDefault,
-		'',
-		A2(
-			$elm$url$Url$Parser$parse,
-			A2(
-				$elm$url$Url$Parser$slash,
-				$elm$url$Url$Parser$s(url.path),
-				$elm$url$Url$Parser$string),
-			url));
-};
 var $elm$browser$Browser$Navigation$load = _Browser_load;
 var $author$project$Red404$init = F3(
 	function (_v0, url, _v1) {
-		var path = $author$project$Red404$get_path(url);
 		var baseurl = A3(
 			$elm$core$String$replace,
 			'/src/Main.elm',
 			'',
 			$author$project$Red404$get_base(url));
+		var path = A3($elm$core$String$replace, baseurl, '', url.path);
 		return _Utils_Tuple2(
 			$author$project$Red404$Model,
 			$elm$browser$Browser$Navigation$load(
 				$elm$core$String$concat(
 					_List_fromArray(
-						[baseurl, '#badurl_', path]))));
+						['https://', baseurl, '#badurl_', path]))));
 	});
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
