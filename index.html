@@ -6886,7 +6886,6 @@ var $author$project$Main$mov_url = F2(
 		return (!_Utils_eq(url, model.url)) ? $elm$core$Platform$Cmd$batch(
 			_List_fromArray(
 				[
-					A2($elm$browser$Browser$Navigation$pushUrl, model.key, new_url),
 					A2($author$project$Main$fetch, model.baseurl, new_url)
 				])) : A2($author$project$Main$fetch, model.baseurl, new_url);
 	});
@@ -16084,7 +16083,6 @@ catch (e)
   header.style.fontFamily = "monospace";
   header.innerText = "Initialization Error";
   var pre = document.getElementById("elm");
-
   if(pre != null){
     document.body.insertBefore(header, pre);
     pre.innerText = e;

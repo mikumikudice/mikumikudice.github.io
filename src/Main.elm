@@ -44,8 +44,8 @@ mov_url model url =
     in
     if url /= model.url then
         Cmd.batch
-            [ Nav.pushUrl model.key new_url
-            , fetch model.baseurl new_url
+            [ --Nav.pushUrl model.key new_url
+            fetch model.baseurl new_url
             ]
     else fetch model.baseurl new_url
 
