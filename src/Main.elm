@@ -49,7 +49,6 @@ mov_url model url =
             ]
     else fetch model.baseurl new_url
 
-get_base : Url.Url -> String
 get_base url =
     let
         full = url.path
@@ -91,12 +90,38 @@ main =
         }
 
 init _ url key =
-    ( Model key "/home" "mikumikudice.itch.io" ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
-    , Cmd.batch
-        [ Nav.pushUrl key "/home"
-        , fetch "mikumikudice.itch.io" "/footnote"
-        ]
-    )
+    let
+        fix_domain = ( String.replace "/src/Main.elm" "" ( get_base url ))
+        baseurl = ( String.replace ".io/" ".io" fix_domain)
+        bad = url.fragment
+    in
+    case bad of
+        Just res ->
+            if ( String.startsWith "badurl_" res ) then
+                let
+                    failed = String.replace "badurl_" "" res
+                in
+                ( Model key "/404" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+                , Cmd.batch
+                    [ Nav.pushUrl key (String.concat [ baseurl, failed ] )
+                    , fetch baseurl "/404"
+                    , fetch baseurl "/footnote"
+                    ]
+                )
+            else
+                ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+                , Cmd.batch
+                    [ Nav.pushUrl key baseurl
+                    , fetch baseurl "/footnote"
+                    ]
+                )
+        Nothing ->
+            ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+            , Cmd.batch
+                [ Nav.pushUrl key (String.concat [ baseurl, "/home" ] )
+                , fetch baseurl "/footnote"
+                ]
+            )
 
 update evnt model =
     case evnt of
