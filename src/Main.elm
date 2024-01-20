@@ -154,7 +154,7 @@ view model =
         [ main_ []
             [ node "link" [ href titlefont, rel "stylesheet" ] []
             , node "link" [ href body_font, rel "stylesheet" ] []
-            , node "link" [ href ( String.concat [ model.baseurl, "/assets/style.css" ] ), rel "stylesheet" ] []
+            , node "link" [ href ( String.concat [ "https://", model.baseurl, "/css/style.css" ] ), rel "stylesheet" ] []
             , model.pg_cntt
             ]
         , footer [] [ model.ft_cntt ]
