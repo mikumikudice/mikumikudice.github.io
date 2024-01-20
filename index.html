@@ -6763,7 +6763,12 @@ var $author$project$Main$init = F3(
 			'/src/Main.elm',
 			'',
 			$author$project$Main$get_base(url));
-		var baseurl = A3($elm$core$String$replace, '.io/', '.io', fix_domain);
+		var baseurl = $elm$core$String$concat(
+			_List_fromArray(
+				[
+					url.host,
+					A3($elm$core$String$replace, '.io/', '.io', fix_domain)
+				]));
 		var bad = url.fragment;
 		if (bad.$ === 'Just') {
 			var res = bad.a;
@@ -16083,12 +16088,8 @@ catch (e)
   header.style.fontFamily = "monospace";
   header.innerText = "Initialization Error";
   var pre = document.getElementById("elm");
-  if(pre != null){
-    document.body.insertBefore(header, pre);
-    pre.innerText = e;
-  } else {
-    console.log(e)
-  }
+  document.body.insertBefore(header, pre);
+  pre.innerText = e;
   throw e;
 }
 </script>
