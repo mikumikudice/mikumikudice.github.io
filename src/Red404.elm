@@ -20,6 +20,7 @@ get_base url =
     let
         full = String.replace "https://" "" (Url.toString url)
         remv = Maybe.withDefault "" ( UrlP.parse ( UrlP.s full </> string ) url )
+        _ = Debug.log "string" remv
     in
     if remv == "" then full
     else

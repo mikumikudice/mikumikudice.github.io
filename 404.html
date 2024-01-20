@@ -5200,6 +5200,7 @@ var $author$project$Red404$Model = {};
 var $elm$core$String$concat = function (strings) {
 	return A2($elm$core$String$join, '', strings);
 };
+var $elm$core$Debug$log = _Debug_log;
 var $elm$url$Url$Parser$State = F5(
 	function (visited, unvisited, params, frag, value) {
 		return {frag: frag, params: params, unvisited: unvisited, value: value, visited: visited};
@@ -6003,13 +6004,14 @@ var $author$project$Red404$get_base = function (url) {
 					$elm$url$Url$Parser$s(full),
 					$elm$url$Url$Parser$string),
 				url));
+		var _v0 = A2($elm$core$Debug$log, 'string', remv);
 		if (remv === '') {
 			return full;
 		} else {
-			var _v0 = $elm$url$Url$fromString(
+			var _v1 = $elm$url$Url$fromString(
 				A3($elm$core$String$replace, remv, '', full));
-			if (_v0.$ === 'Just') {
-				var nxt = _v0.a;
+			if (_v1.$ === 'Just') {
+				var nxt = _v1.a;
 				var $temp$url = nxt;
 				url = $temp$url;
 				continue get_base;
@@ -6019,7 +6021,6 @@ var $author$project$Red404$get_base = function (url) {
 		}
 	}
 };
-var $elm$core$Debug$log = _Debug_log;
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Red404$init = F3(
