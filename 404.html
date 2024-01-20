@@ -6020,20 +6020,28 @@ var $author$project$Red404$get_base = function (url) {
 	}
 };
 var $elm$browser$Browser$Navigation$load = _Browser_load;
+var $elm$core$Debug$log = _Debug_log;
 var $author$project$Red404$init = F3(
 	function (_v0, url, _v1) {
-		var baseurl = A3(
+		var fix_domain = A3(
 			$elm$core$String$replace,
 			'/src/Main.elm',
 			'',
 			$author$project$Red404$get_base(url));
+		var baseurl = $elm$core$String$concat(
+			_List_fromArray(
+				[
+					'https://',
+					A3($elm$core$String$replace, '.io/', '.io', fix_domain)
+				]));
 		var path = A3($elm$core$String$replace, baseurl, '', url.path);
+		var ourl = $elm$core$String$concat(
+			_List_fromArray(
+				['https://', baseurl, '#badurl_', path]));
+		var _v2 = A2($elm$core$Debug$log, 'string', ourl);
 		return _Utils_Tuple2(
 			$author$project$Red404$Model,
-			$elm$browser$Browser$Navigation$load(
-				$elm$core$String$concat(
-					_List_fromArray(
-						['https://', baseurl, '#badurl_', path]))));
+			$elm$browser$Browser$Navigation$load(ourl));
 	});
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);

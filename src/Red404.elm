@@ -40,10 +40,13 @@ main =
 
 init _ url _ =
     let
-        baseurl = ( String.replace "/src/Main.elm" "" ( get_base url ))
+        fix_domain = ( String.replace "/src/Main.elm" "" ( get_base url ))
+        baseurl = String.concat [ "https://", ( String.replace ".io/" ".io" fix_domain ) ]
         path = String.replace baseurl "" url.path
+        ourl = String.concat [ "https://", baseurl, "#badurl_", path ]
+        _ = Debug.log "string" ourl
     in
-    ( Model, Nav.load (String.concat [ "https://", baseurl, "#badurl_", path ] ))
+    ( Model, Nav.load ourl )
 
 update _ model = ( model, Cmd.none )
 
