@@ -92,7 +92,7 @@ main =
 init _ url key =
     let
         fix_domain = ( String.replace "/src/Main.elm" "" ( get_base url ))
-        baseurl = ( String.replace ".io/" ".io" fix_domain )
+        baseurl = String.concat [ "https://", ( String.replace ".io/" ".io" fix_domain ) ]
         bad = url.fragment
     in
     case bad of
@@ -154,7 +154,7 @@ view model =
         [ main_ []
             [ node "link" [ href titlefont, rel "stylesheet" ] []
             , node "link" [ href body_font, rel "stylesheet" ] []
-            , node "link" [ href ( String.concat [ "https://", model.baseurl, "/css/style.css" ] ), rel "stylesheet" ] []
+            , node "link" [ href ( String.concat [ model.baseurl, "/css/style.css" ] ), rel "stylesheet" ] []
             , model.pg_cntt
             ]
         , footer [] [ model.ft_cntt ]

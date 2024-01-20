@@ -5644,15 +5644,15 @@ var $author$project$Main$Model = F5(
 		return {baseurl: baseurl, ft_cntt: ft_cntt, key: key, pg_cntt: pg_cntt, url: url};
 	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
+var $elm$core$String$concat = function (strings) {
+	return A2($elm$core$String$join, '', strings);
+};
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $author$project$Main$LoadFooter = function (a) {
 	return {$: 'LoadFooter', a: a};
 };
 var $author$project$Main$LoadNewPage = function (a) {
 	return {$: 'LoadNewPage', a: a};
-};
-var $elm$core$String$concat = function (strings) {
-	return A2($elm$core$String$join, '', strings);
 };
 var $elm$http$Http$BadStatus_ = F2(
 	function (a, b) {
@@ -6763,7 +6763,12 @@ var $author$project$Main$init = F3(
 			'/src/Main.elm',
 			'',
 			$author$project$Main$get_base(url));
-		var baseurl = A3($elm$core$String$replace, '.io/', '.io', fix_domain);
+		var baseurl = $elm$core$String$concat(
+			_List_fromArray(
+				[
+					'https://',
+					A3($elm$core$String$replace, '.io/', '.io', fix_domain)
+				]));
 		var bad = url.fragment;
 		if (bad.$ === 'Just') {
 			var res = bad.a;
@@ -16034,7 +16039,7 @@ var $author$project$Main$view = function (model) {
 								$elm$html$Html$Attributes$href(
 								$elm$core$String$concat(
 									_List_fromArray(
-										['https://', model.baseurl, '/css/style.css']))),
+										[model.baseurl, '/css/style.css']))),
 								$elm$html$Html$Attributes$rel('stylesheet')
 							]),
 						_List_Nil),
