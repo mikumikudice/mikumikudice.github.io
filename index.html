@@ -16026,9 +16026,7 @@ var $author$project$Main$main = $elm$browser$Browser$application(
 	});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));
-
-  const buggy = document.getElementById("elm");
-  if (buggy == null) console.log("here!");
+  
   var app = Elm.Main.init({ node: document.getElementById("elm") });
 }
 catch (e)
@@ -16038,9 +16036,13 @@ catch (e)
   header.style.fontFamily = "monospace";
   header.innerText = "Initialization Error";
   var pre = document.getElementById("elm");
-  document.body.insertBefore(header, pre);
-  pre.innerText = e;
-  throw e;
+  if(pre != null){
+    document.body.insertBefore(header, pre);
+    pre.innerText = e;
+    throw e;
+  } else {
+    header.innerText = "pre is null!!!";
+  }
 }
 </script>
 
