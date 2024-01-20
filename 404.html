@@ -6034,10 +6034,15 @@ var $author$project$Red404$init = F3(
 					'https://',
 					A3($elm$core$String$replace, '.io/', '.io', fix_domain)
 				]));
-		var path = A3($elm$core$String$replace, baseurl, '', url.path);
+		var fix_path = A3($elm$core$String$replace, baseurl, '', url.path);
+		var path = A3(
+			$elm$core$String$slice,
+			1,
+			$elm$core$String$length(fix_path) + 1,
+			fix_path);
 		var ourl = $elm$core$String$concat(
 			_List_fromArray(
-				['https://', baseurl, '#badurl_', path]));
+				[baseurl, '#badurl_', path]));
 		var _v2 = A2($elm$core$Debug$log, 'string', ourl);
 		return _Utils_Tuple2(
 			$author$project$Red404$Model,

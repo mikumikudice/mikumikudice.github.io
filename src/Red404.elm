@@ -42,8 +42,9 @@ init _ url _ =
     let
         fix_domain = ( String.replace "/src/Main.elm" "" ( get_base url ))
         baseurl = String.concat [ "https://", ( String.replace ".io/" ".io" fix_domain ) ]
-        path = String.replace baseurl "" url.path
-        ourl = String.concat [ "https://", baseurl, "#badurl_", path ]
+        fix_path = String.replace baseurl "" url.path
+        path = String.slice 1 (( String.length fix_path ) + 1 ) fix_path
+        ourl = String.concat [ baseurl, "#badurl_", path ]
         _ = Debug.log "string" ourl
     in
     ( Model, Nav.load ourl )
