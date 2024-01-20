@@ -44,8 +44,8 @@ mov_url model url =
     in
     if url /= model.url then
         Cmd.batch
-            [ --Nav.pushUrl model.key new_url
-            fetch model.baseurl new_url
+            [ Nav.pushUrl model.key new_url
+            , fetch model.baseurl new_url
             ]
     else fetch model.baseurl new_url
 
@@ -93,7 +93,6 @@ init _ url key =
     let
         fix_domain = ( String.replace "/src/Main.elm" "" ( get_base url ))
         baseurl = ( String.replace ".io/" ".io" fix_domain )
-        _ = Debug.log "stirng" baseurl
         bad = url.fragment
     in
     case bad of
@@ -104,7 +103,7 @@ init _ url key =
                 in
                 ( Model key res baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
                 , Cmd.batch
-                    [ Nav.pushUrl key (String.concat [ baseurl, failed ] )
+                    [ Nav.pushUrl key failed
                     , fetch baseurl res
                     , fetch baseurl "/footnote"
                     ]
@@ -119,7 +118,7 @@ init _ url key =
         Nothing ->
             ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
             , Cmd.batch
-                [ Nav.pushUrl key (String.concat [ baseurl, "/home" ] )
+                [ Nav.pushUrl key "/home"
                 , fetch baseurl "/footnote"
                 ]
             )
