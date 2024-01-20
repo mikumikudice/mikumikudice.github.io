@@ -6868,6 +6868,7 @@ var $author$project$Main$get_path = function (url) {
 			url));
 };
 var $elm$browser$Browser$Navigation$load = _Browser_load;
+var $elm$core$Debug$log = _Debug_log;
 var $author$project$Main$mov_url = F2(
 	function (model, url) {
 		var new_url = $elm$core$String$concat(
@@ -15931,6 +15932,7 @@ var $author$project$MdParsing$render = F2(
 	});
 var $author$project$Main$update = F2(
 	function (evnt, model) {
+		var _v0 = A2($elm$core$Debug$log, 'string', model.baseurl);
 		switch (evnt.$) {
 			case 'RequestURL':
 				var urlreq = evnt.a;

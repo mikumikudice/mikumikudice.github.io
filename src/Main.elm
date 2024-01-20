@@ -124,6 +124,7 @@ init _ url key =
             )
 
 update evnt model =
+    let _ = Debug.log "string" model.baseurl in
     case evnt of
         RequestURL urlreq ->
             case urlreq of
