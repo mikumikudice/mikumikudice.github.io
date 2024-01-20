@@ -51,7 +51,7 @@ mov_url model url =
 
 get_base url =
     let
-        full = url.path
+        full = String.replace "https://" "" (Url.toString url)
         remv = Maybe.withDefault "" ( UrlP.parse ( UrlP.s full </> string ) url )
     in
     if remv == "" then full
