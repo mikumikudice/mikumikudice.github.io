@@ -51,12 +51,12 @@ fetch host page =
         path = ( String.concat [ "https://", host, "/pages", page, ".txt" ] )
     in
     if page /= "/footnote" then
+        let _ = Debug.log "string" path in
         Http.get
             { url = path
             , expect = Http.expectString LoadNewPage
             }
     else
-        let _ = Debug.log "string" path in
         Http.get
             { url = path
             , expect = Http.expectString LoadFooter

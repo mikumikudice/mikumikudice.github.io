@@ -6441,13 +6441,13 @@ var $author$project$Main$fetch = F2(
 			_List_fromArray(
 				['https://', host, '/pages', page, '.txt']));
 		if (page !== '/footnote') {
+			var _v0 = A2($elm$core$Debug$log, 'string', path);
 			return $elm$http$Http$get(
 				{
 					expect: $elm$http$Http$expectString($author$project$Main$LoadNewPage),
 					url: path
 				});
 		} else {
-			var _v0 = A2($elm$core$Debug$log, 'string', path);
 			return $elm$http$Http$get(
 				{
 					expect: $elm$http$Http$expectString($author$project$Main$LoadFooter),
