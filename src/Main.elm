@@ -2,7 +2,7 @@ module Main exposing (..)
 
 import Browser
 import Browser.Navigation as Nav
-import Html exposing (Html, text, node, main_, span, div, footer)
+import Html exposing (Html, text, node, main_, span, div, br, footer)
 import Html.Attributes exposing (..)
 
 import Http
@@ -124,8 +124,9 @@ update evnt model =
                     ( { model | ft_cntt = (render page ) }, Cmd.none )
                 Err _ ->
                     ( model, Cmd.none )
-        UpdateUrl new_url ->
-                ( { model | url = new_url }, fetch model.url.host new_url.path )
+        UpdateUrl url ->
+                let new_url = String.concat [ "https://", model.url.host, url.path ] in
+                ( { model | page = url.path }, Nav.replaceUrl model.key new_url )
 
 view model =
     let size = String.length model.page in
@@ -137,7 +138,7 @@ view model =
             , node "link" [ href ( String.concat [ "https://", model.url.host, "/css/style.css" ] ), rel "stylesheet" ] []
             , model.pg_cntt
             ]
-        , span [] []
+        , span [] [ br [] [] ]
         , footer [] [ model.ft_cntt ]
         ]
     }
