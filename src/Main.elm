@@ -51,7 +51,6 @@ fetch host page =
         path = ( String.concat [ "https://", host, "/pages", page, ".txt" ] )
     in
     if page /= "/footnote" then
-        let _ = Debug.log "string" path in
         Http.get
             { url = path
             , expect = Http.expectString LoadNewPage
@@ -86,6 +85,7 @@ init _ url key =
                 ( Model key url failed ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
                 , Cmd.batch
                     [ Nav.pushUrl key failed
+                    , fetch url.host failed
                     , fetch url.host "/footnote"
                     ]
                 )
@@ -93,6 +93,7 @@ init _ url key =
                 ( Model key url "/home" ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
                 , Cmd.batch
                     [ Nav.pushUrl key "/home"
+                    , fetch url.host "/home"
                     , fetch url.host "/footnote"
                     ]
                 )
@@ -100,6 +101,7 @@ init _ url key =
             ( Model key url "/home" ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
             , Cmd.batch
                 [ Nav.pushUrl key "/home"
+                , fetch url.host "/home"
                 , fetch url.host "/footnote"
                 ]
             )
