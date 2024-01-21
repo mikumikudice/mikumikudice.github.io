@@ -5190,7 +5190,7 @@ var $author$project$Red404$init = F3(
 		var path = A3($elm$core$String$slice, 1, size + 1, url.path);
 		var dest = $elm$core$String$concat(
 			_List_fromArray(
-				[url.host, '&badurl=', path]));
+				['https://', url.host, '&badurl=', path]));
 		return _Utils_Tuple2(
 			$author$project$Red404$Model,
 			$elm$browser$Browser$Navigation$load(dest));

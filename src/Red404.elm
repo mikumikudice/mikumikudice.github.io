@@ -2,31 +2,14 @@ module Red404 exposing (..)
 
 import Browser
 import Browser.Navigation as Nav
-import Html exposing (Html)
 
 import Url
-import Url.Parser as UrlP exposing (..)
 
 type alias Model = {}
 
 type Event
   = RequestURL Browser.UrlRequest
   | UpdateUrl Url.Url
-
-get_path url =
-    Maybe.withDefault "" ( UrlP.parse ( UrlP.s url.path </> string ) url )
-
-get_base url =
-    let
-        full = String.replace "https://" "" (Url.toString url)
-        remv = Maybe.withDefault "" ( UrlP.parse ( UrlP.s full </> string ) url )
-        _ = Debug.log "string" remv
-    in
-    if remv == "" then full
-    else
-        case Url.fromString ( String.replace remv "" full ) of
-            Just nxt -> get_base nxt
-            Nothing -> "/404"
 
 main : Program () Model Event
 main =
@@ -39,11 +22,12 @@ main =
         , onUrlRequest = RequestURL
         }
 
+init : a -> Url.Url -> b -> (Model, Cmd Event)
 init _ url _ =
     let
         size = String.length url.path
         path = String.slice 1 ( size + 1 ) url.path
-        dest = String.concat [ url.host, "&badurl=", path ]
+        dest = String.concat [ "https://", url.host, "&badurl=", path ]
     in
     ( Model, Nav.load dest )
 
