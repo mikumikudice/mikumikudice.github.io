@@ -27,7 +27,7 @@ init _ url _ =
     let
         size = String.length url.path
         path = String.slice 1 ( size + 1 ) url.path
-        dest = String.concat [ "https://", url.host, "/&badurl=", path ]
+        dest = String.concat [ "https://", url.host, "/?badurl=", path ]
     in
     ( Model, Nav.load dest )
 
