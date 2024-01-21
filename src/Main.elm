@@ -49,7 +49,7 @@ mov_url model url =
 
 fetch host page =
     let
-        path = ( String.concat [ host, "/pages", page, ".txt" ] )
+        path = ( String.concat [ "https://", host, "/pages", page, ".txt" ] )
     in
     if page /= "/footnote" then
         Http.get

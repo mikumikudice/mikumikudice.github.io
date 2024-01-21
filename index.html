@@ -6438,7 +6438,7 @@ var $author$project$Main$fetch = F2(
 	function (host, page) {
 		var path = $elm$core$String$concat(
 			_List_fromArray(
-				[host, '/pages', page, '.txt']));
+				['https://', host, '/pages', page, '.txt']));
 		return (page !== '/footnote') ? $elm$http$Http$get(
 			{
 				expect: $elm$http$Http$expectString($author$project$Main$LoadNewPage),
