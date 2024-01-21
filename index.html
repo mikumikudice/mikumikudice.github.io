@@ -15617,25 +15617,25 @@ var $dillonkearns$elm_markdown$Markdown$Renderer$render = F2(
 		return $dillonkearns$elm_markdown$Markdown$Renderer$combineResults(
 			A2($dillonkearns$elm_markdown$Markdown$Renderer$renderHelper, renderer, ast));
 	});
-var $author$project$MdParsing$render = F2(
-	function (css, data) {
-		var _v0 = A2(
-			$elm$core$Result$andThen,
-			function (ast) {
-				return A2($dillonkearns$elm_markdown$Markdown$Renderer$render, $dillonkearns$elm_markdown$Markdown$Renderer$defaultHtmlRenderer, ast);
-			},
-			A2(
-				$elm$core$Result$mapError,
-				$author$project$MdParsing$errtostr,
-				$dillonkearns$elm_markdown$Markdown$Parser$parse(data)));
-		if (_v0.$ === 'Ok') {
-			var rendered = _v0.a;
-			return A2($elm$html$Html$div, css, rendered);
-		} else {
-			var errors = _v0.a;
-			return $elm$html$Html$text(errors);
-		}
-	});
+var $elm$html$Html$span = _VirtualDom_node('span');
+var $author$project$MdParsing$render = function (data) {
+	var _v0 = A2(
+		$elm$core$Result$andThen,
+		function (ast) {
+			return A2($dillonkearns$elm_markdown$Markdown$Renderer$render, $dillonkearns$elm_markdown$Markdown$Renderer$defaultHtmlRenderer, ast);
+		},
+		A2(
+			$elm$core$Result$mapError,
+			$author$project$MdParsing$errtostr,
+			$dillonkearns$elm_markdown$Markdown$Parser$parse(data)));
+	if (_v0.$ === 'Ok') {
+		var rendered = _v0.a;
+		return A2($elm$html$Html$span, _List_Nil, rendered);
+	} else {
+		var errors = _v0.a;
+		return $elm$html$Html$text(errors);
+	}
+};
 var $author$project$Main$update = F2(
 	function (evnt, model) {
 		switch (evnt.$) {
@@ -15660,7 +15660,7 @@ var $author$project$Main$update = F2(
 						_Utils_update(
 							model,
 							{
-								pg_cntt: A2($author$project$MdParsing$render, _List_Nil, page)
+								pg_cntt: $author$project$MdParsing$render(page)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
@@ -15676,7 +15676,7 @@ var $author$project$Main$update = F2(
 						_Utils_update(
 							model,
 							{
-								ft_cntt: A2($author$project$MdParsing$render, _List_Nil, page)
+								ft_cntt: $author$project$MdParsing$render(page)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
@@ -15743,6 +15743,7 @@ var $author$project$Main$view = function (model) {
 						_List_Nil),
 						model.pg_cntt
 					])),
+				A2($elm$html$Html$span, _List_Nil, _List_Nil),
 				A2(
 				$elm$html$Html$footer,
 				_List_Nil,

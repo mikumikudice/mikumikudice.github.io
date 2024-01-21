@@ -2,15 +2,14 @@ module Main exposing (..)
 
 import Browser
 import Browser.Navigation as Nav
-import Html exposing (Html, node, main_, section, div, hr, br, h2, h3, p, footer, text)
+import Html exposing (Html, text, node, main_, span, div, footer)
 import Html.Attributes exposing (..)
 
 import Http
 import Url
-import Url.Parser as UrlP exposing (..)
-import Url.Parser.Query as UrlQ
 
 import MdParsing exposing (render)
+import Html exposing (span)
 
 titlefont = "https://fonts.googleapis.com/css2?family=Rubik"
 body_font = "https://fonts.googleapis.com/css2?family=PT+Mono"
@@ -116,13 +115,13 @@ update evnt model =
         LoadNewPage res ->
             case res of
                 Ok page ->
-                    ( { model | pg_cntt = (render [] page ) }, Cmd.none )
+                    ( { model | pg_cntt = (render page ) }, Cmd.none )
                 Err _ ->
                     ( model, fetch model.url.host "/404" )
         LoadFooter res ->
             case res of
                 Ok page ->
-                    ( { model | ft_cntt = (render [] page ) }, Cmd.none )
+                    ( { model | ft_cntt = (render page ) }, Cmd.none )
                 Err _ ->
                     ( model, Cmd.none )
         UpdateUrl new_url ->
@@ -138,6 +137,7 @@ view model =
             , node "link" [ href ( String.concat [ "https://", model.url.host, "/css/style.css" ] ), rel "stylesheet" ] []
             , model.pg_cntt
             ]
+        , span [] []
         , footer [] [ model.ft_cntt ]
         ]
     }

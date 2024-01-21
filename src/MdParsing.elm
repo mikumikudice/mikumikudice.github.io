@@ -5,19 +5,19 @@ module MdParsing exposing (render)
     accessed on 07/12/2023 used under BSD 3-Clause "New" or "Revised" License
 -}
 
-import Html exposing (div, text)
+import Html exposing (span, text)
 import Markdown.Parser as Markdown
 import Markdown.Renderer
 
-render css data =
+render data =
     case
         data
-            |> Markdown.parse
-            |> Result.mapError errtostr
-            |> Result.andThen (\ast -> Markdown.Renderer.render Markdown.Renderer.defaultHtmlRenderer ast)
+        |> Markdown.parse
+        |> Result.mapError errtostr
+        |> Result.andThen (\ast -> Markdown.Renderer.render Markdown.Renderer.defaultHtmlRenderer ast)
         of
             Ok rendered ->
-                div css rendered
+                span [] rendered
 
             Err errors ->
                 text errors
