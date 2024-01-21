@@ -15685,14 +15685,18 @@ var $author$project$Main$update = F2(
 				}
 			default:
 				var url = evnt.a;
-				var new_url = $elm$core$String$concat(
-					_List_fromArray(
-						['https://', model.url.host, url.path]));
-				return _Utils_Tuple2(
-					_Utils_update(
-						model,
-						{page: url.path}),
-					A2($elm$browser$Browser$Navigation$replaceUrl, model.key, new_url));
+				if (!_Utils_eq(url.path, model.page)) {
+					var new_url = $elm$core$String$concat(
+						_List_fromArray(
+							['https://', model.url.host, url.path]));
+					return _Utils_Tuple2(
+						_Utils_update(
+							model,
+							{page: url.path}),
+						A2($elm$browser$Browser$Navigation$replaceUrl, model.key, new_url));
+				} else {
+					return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
+				}
 		}
 	});
 var $author$project$Main$body_font = 'https://fonts.googleapis.com/css2?family=PT+Mono';
