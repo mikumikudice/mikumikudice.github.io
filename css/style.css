@@ -1,17 +1,13 @@
 :root {
-    --maindark : #1f1a24;
-    --mainlite : #eeecde;
-    --sidedark : #2a3a42;
-    --sidelite : #7895ab;
-    --sidegray : #4d6476;
-    --win_dark : #73514d;
-    --win_gray : #ac8a71;
-    --win_lite : #decb9f;
+    --outlines : #2e4252;
+    --bnkpaper : #e5dab9;
+    --text_ink : #738e85;
+    --hghlight : #bebba1;
 }
 
 body {
     font-size       : 24;
-    background-color: var(--mainlite);
+    background-color: var(--bnkpaper);
 
     margin-top      : 48px;
     margin-left     : 224px;
@@ -35,11 +31,11 @@ p {
 }
 
 main {
-    color           : var(--maindark);
-    background-color: var(--mainlite);
-    outline         : solid 2px var(--sidedark);
+    color           : var(--text_ink);
+    background-color: var(--bnkpaper);
+    outline         : solid 2px var(--outlines);
 
-    padding-top     : 48px;
+    padding-top     : 32px;
     padding-bottom  : 32px;
     padding-left    : 24px;
     padding-right   : 24px;
@@ -51,15 +47,15 @@ main h3::selection, main h3::-moz-selection {
     background-color: var(--win_dark);
 }
 main hr {
-    border          : 2px solid var(--maindark);
+    border          : 2px solid var(--outlines);
     margin-top      : 8px;
     margin-left     : 48px;
     margin-right    : 48px;
     margin-bottom   : 16px;
 }
 main code {
-    color           : var(--sidelite);
-    background-color: var(--sidedark);
+    color           : var(--text_ink);
+    background-color: var(--bnkpaper);
     padding-top     : 1px;
     padding-left    : 2px;
     padding-bottom  : 1px;
@@ -67,39 +63,39 @@ main code {
 }
 
 main p::selection, footer p::-moz-selection {
-    color           : var(--win_lite);
-    background-color: var(--win_dark);
+    color           : var(--bnkpaper);
+    background-color: var(--text_ink);
 }
 main::selection, footer::selection,
 main::-moz-selection, footer::-moz-selection {
-    color           : var(--win_lite);
-    background-color: var(--win_dark);
+    color           : var(--hghlight);
+    background-color: var(--outlines);
 }
 main a, footer a {
-    color           : var(--sidedark);
+    color           : var(--outlines);
     text-decoration : none;
 }
 main a::selection     , footer a::selection,
 main a::-moz-selection, footer a::-moz-selection {
-    color           : var(--mainlite);
-    background-color: var(--win_dark);
+    color           : var(--bnkpaper);
+    background-color: var(--text_ink);
 }
 main a:hover, footer a:hover {
-    color           : var(--mainlite);
+    color           : var(--text_ink);
 }
 main code::selection     , footer code::selection,
 main code::-moz-selection, footer code::-moz-selection {
-    color           : var(--sidedark);
-    background-color: var(--sidegray);
+    color           : var(--bnkpaper);
+    background-color: var(--outlines);
 }
 
 footer {
     font-family     : rubik;
-    color           : var(--maindark);
-    background-color: var(--mainlite);
-    outline         : solid 2px var(--sidedark);
+    color           : var(--text_ink);
+    background-color: var(--bnkpaper);
+    outline         : solid 2px var(--outlines);
 
-    padding-top     : 48px;
+    padding-top     : 32px;
     padding-bottom  : 32px;
     padding-left    : 24px;
     padding-right   : 24px;
