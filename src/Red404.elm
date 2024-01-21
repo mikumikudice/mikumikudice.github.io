@@ -41,14 +41,11 @@ main =
 
 init _ url _ =
     let
-        fix_domain = ( String.replace "/src/Red404.elm" "" ( get_base url ))
-        baseurl = String.concat [ "https://", ( String.replace ".io/" ".io" fix_domain ) ]
-        fix_path = String.replace baseurl "" url.path
-        path = String.slice 1 (( String.length fix_path ) + 1 ) fix_path
-        ourl = String.concat [ baseurl, "#badurl_", path ]
-        _ = Debug.log "string" ourl
+        size = String.length url.path
+        path = String.slice 1 ( size + 1 ) url.path
+        dest = String.concat [ url.host, "&badurl=", path ]
     in
-    ( Model, Cmd.none )--Nav.load ourl )
+    ( Model, Nav.load dest )
 
 update _ model = ( model, Cmd.none )
 

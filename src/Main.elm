@@ -26,8 +26,8 @@ win_lite = "#decb9f"
 
 type alias Model =
     { key : Nav.Key
-    , url : String
-    , baseurl : String
+    , url : Url.Url
+    , page : String
     , pg_cntt : Html Event
     , ft_cntt : Html Event
     }
@@ -38,36 +38,20 @@ type Event
   | LoadNewPage (Result Http.Error String)
   | LoadFooter (Result Http.Error String)
 
+mov_url : Model -> String -> Cmd Event
 mov_url model url =
-    let
-        new_url = ( String.concat [ model.baseurl, url ] )
-    in
-    if url /= model.url then
+    if url /= model.url.path then
         Cmd.batch
-            [ Nav.pushUrl model.key new_url
-            , fetch model.baseurl new_url
+            [ Nav.pushUrl model.key url
+            , fetch model.url.host url
             ]
-    else fetch model.baseurl new_url
+    else fetch model.url.host url
 
-get_base url =
+fetch host page =
     let
-        full = String.replace "https://" "" (Url.toString url)
-        remv = Maybe.withDefault "" ( UrlP.parse ( UrlP.s full </> string ) url )
+        path = ( String.concat [ host, "/pages", page, ".txt" ] )
     in
-    if remv == "" then full
-    else
-        case Url.fromString ( String.replace remv "" full ) of
-            Just nxt -> get_base nxt
-            Nothing -> "/404"
-
-get_path url =
-    Maybe.withDefault "" ( UrlP.parse ( UrlP.s url.path </> string ) url )
-
-fetch baseurl url =
-    let
-        path = ( String.concat [ baseurl, "/pages", url, ".txt" ] )
-    in
-    if url /= "/footnote" then
+    if page /= "/footnote" then
         Http.get
             { url = path
             , expect = Http.expectString LoadNewPage
@@ -91,45 +75,41 @@ main =
 
 init _ url key =
     let
-        fix_domain = ( String.replace "/src/Main.elm" "" ( get_base url ))
-        baseurl = String.concat [ "https://", ( String.replace ".io/" ".io" fix_domain ) ]
-        bad = url.fragment
+        bad = url.query
     in
     case bad of
         Just res ->
-            if ( String.startsWith "badurl_" res ) then
+            if ( String.startsWith "badurl=" res ) then
                 let
-                    failed = String.replace "badurl_" "/" res
+                    failed = String.replace "badurl=" "/" res
                 in
-                ( Model key res baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+                ( Model key url failed ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
                 , Cmd.batch
                     [ Nav.pushUrl key failed
-                    , fetch baseurl res
-                    , fetch baseurl "/footnote"
+                    , fetch url.host "/footnote"
                     ]
                 )
             else
-                ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+                ( Model key url "/home" ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
                 , Cmd.batch
-                    [ Nav.pushUrl key baseurl
-                    , fetch baseurl "/footnote"
+                    [ Nav.pushUrl key "/home"
+                    , fetch url.host "/footnote"
                     ]
                 )
         Nothing ->
-            ( Model key "/home" baseurl ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+            ( Model key url "/home" ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
             , Cmd.batch
                 [ Nav.pushUrl key "/home"
-                , fetch baseurl "/footnote"
+                , fetch url.host "/footnote"
                 ]
             )
 
 update evnt model =
-    let _ = Debug.log "string" model.baseurl in
     case evnt of
         RequestURL urlreq ->
             case urlreq of
                 Browser.Internal url ->
-                    ( model, mov_url model ( get_path url ))
+                    ( model, mov_url model url.path )
                 Browser.External href ->
                     ( model, Nav.load href )
 
@@ -138,7 +118,7 @@ update evnt model =
                 Ok page ->
                     ( { model | pg_cntt = (render [] page ) }, Cmd.none )
                 Err _ ->
-                    ( model, fetch model.baseurl "/404" )
+                    ( model, fetch model.url.host "/404" )
         LoadFooter res ->
             case res of
                 Ok page ->
@@ -146,15 +126,16 @@ update evnt model =
                 Err _ ->
                     ( model, Cmd.none )
         UpdateUrl new_url ->
-                ( { model | url = new_url.path }, fetch model.baseurl new_url.path )
+                ( { model | url = new_url }, fetch model.url.host new_url.path )
 
 view model =
-    { title = (String.slice 1 (String.length model.url) model.url)
+    let size = String.length model.page in
+    { title = ( String.slice 1 ( size + 1 ) model.page )
     , body =
         [ main_ []
             [ node "link" [ href titlefont, rel "stylesheet" ] []
             , node "link" [ href body_font, rel "stylesheet" ] []
-            , node "link" [ href ( String.concat [ model.baseurl, "/css/style.css" ] ), rel "stylesheet" ] []
+            , node "link" [ href ( String.concat [ model.url.host, "/css/style.css" ] ), rel "stylesheet" ] []
             , model.pg_cntt
             ]
         , footer [] [ model.ft_cntt ]
