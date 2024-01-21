@@ -7,8 +7,6 @@
 
 body {
     font-size       : 24;
-    background-color: var(--bnkpaper);
-
     margin-top      : 48px;
     margin-left     : 224px;
     margin-bottom   : 48px;
@@ -40,12 +38,7 @@ main {
     padding-left    : 24px;
     padding-right   : 24px;
 }
-main h1::selection, main h1::-moz-selection,
-main h2::selection, main h2::-moz-selection,
-main h3::selection, main h3::-moz-selection {
-    color           : var(--win_lite);
-    background-color: var(--win_dark);
-}
+
 main hr {
     border          : 2px solid var(--outlines);
     margin-top      : 8px;
@@ -62,10 +55,6 @@ main code {
     padding-right   : 2px;
 }
 
-main p::selection, footer p::-moz-selection {
-    color           : var(--bnkpaper);
-    background-color: var(--text_ink);
-}
 main::selection, footer::selection,
 main::-moz-selection, footer::-moz-selection {
     color           : var(--hghlight);
