@@ -6,6 +6,7 @@
 }
 
 body {
+    background-color: var(--bnkpaper);
     font-size       : 24;
     margin-top      : 48px;
     margin-left     : 224px;
