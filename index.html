@@ -15636,7 +15636,6 @@ var $author$project$MdParsing$render = function (data) {
 		return $elm$html$Html$text(errors);
 	}
 };
-var $elm$browser$Browser$Navigation$replaceUrl = _Browser_replaceUrl;
 var $author$project$Main$update = F2(
 	function (evnt, model) {
 		switch (evnt.$) {
@@ -15684,19 +15683,12 @@ var $author$project$Main$update = F2(
 					return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 				}
 			default:
-				var url = evnt.a;
-				if (!_Utils_eq(url.path, model.page)) {
-					var new_url = $elm$core$String$concat(
-						_List_fromArray(
-							['https://', model.url.host, url.path]));
-					return _Utils_Tuple2(
-						_Utils_update(
-							model,
-							{page: url.path}),
-						A2($elm$browser$Browser$Navigation$replaceUrl, model.key, new_url));
-				} else {
-					return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
-				}
+				var new_url = evnt.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{page: new_url.path}),
+					A2($author$project$Main$fetch, model.url.host, new_url.path));
 		}
 	});
 var $author$project$Main$body_font = 'https://fonts.googleapis.com/css2?family=PT+Mono';

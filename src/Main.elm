@@ -124,12 +124,8 @@ update evnt model =
                     ( { model | ft_cntt = (render page ) }, Cmd.none )
                 Err _ ->
                     ( model, Cmd.none )
-        UpdateUrl url ->
-                if url.path /= model.page then
-                    let new_url = String.concat [ "https://", model.url.host, url.path ] in
-                    ( { model | page = url.path }, Nav.replaceUrl model.key new_url )
-                else
-                    ( model, Cmd.none )
+        UpdateUrl new_url ->
+                ( { model | page = new_url.path }, fetch model.url.host new_url.path )
 
 view model =
     let size = String.length model.page in
