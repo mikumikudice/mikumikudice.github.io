@@ -81,7 +81,7 @@ main a::-moz-selection, footer a::-moz-selection {
     background-color: var(--text_ink);
 }
 main a:hover, footer a:hover {
-    color           : var(--text_ink);
+    color           : var(--outlines);
 }
 main code::selection     , footer code::selection,
 main code::-moz-selection, footer code::-moz-selection {
