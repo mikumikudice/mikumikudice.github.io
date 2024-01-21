@@ -31,9 +31,9 @@ p {
 }
 
 main {
-    color           : var(--text_ink);
+    color           : var(--outlines);
     background-color: var(--bnkpaper);
-    outline         : solid 2px var(--outlines);
+    outline         : solid 3px var(--outlines);
 
     padding-top     : 32px;
     padding-bottom  : 32px;
@@ -72,7 +72,7 @@ main::-moz-selection, footer::-moz-selection {
     background-color: var(--outlines);
 }
 main a, footer a {
-    color           : var(--outlines);
+    color           : var(--text_ink);
     text-decoration : none;
 }
 main a::selection     , footer a::selection,
