@@ -56,6 +56,7 @@ fetch host page =
             , expect = Http.expectString LoadNewPage
             }
     else
+        let _ = Debug.log "string" path in
         Http.get
             { url = path
             , expect = Http.expectString LoadFooter
