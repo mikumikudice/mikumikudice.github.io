@@ -134,11 +134,11 @@ view model =
     let size = String.length model.page in
     { title = ( String.slice 1 ( size + 1 ) model.page )
     , body =
-        [ main_ []
+        [ span [] [ p [ style "text-align" "right" ] [ text "_ o x" ]]
+        , main_ []
             [ node "link" [ href titlefont, rel "stylesheet" ] []
             , node "link" [ href body_font, rel "stylesheet" ] []
             , node "link" [ href ( String.concat [ "https://", model.url.host, "/css/style.css" ] ), rel "stylesheet" ] []
-            , p [ style "text-align" "right" ] [ text "_ o x" ]
             , model.pg_cntt
             ]
         , span [] [ br [] [] ]
