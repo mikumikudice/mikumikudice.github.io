@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+  <link rel="me" href="https://social.linux.pizza/@mikumikudice">Mastodon</a>
   <meta charset="UTF-8">
   <title>Main</title>
   <style>body { padding: 0; margin: 0; }</style>
@@ -15703,6 +15704,8 @@ var $elm$virtual_dom$VirtualDom$node = function (tag) {
 };
 var $elm$html$Html$node = $elm$virtual_dom$VirtualDom$node;
 var $elm$html$Html$Attributes$rel = _VirtualDom_attribute('rel');
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $author$project$Main$titlefont = 'https://fonts.googleapis.com/css2?family=Rubik';
 var $author$project$Main$view = function (model) {
 	var size = $elm$core$String$length(model.page);
@@ -15744,6 +15747,16 @@ var $author$project$Main$view = function (model) {
 								$elm$html$Html$Attributes$rel('stylesheet')
 							]),
 						_List_Nil),
+						A2(
+						$elm$html$Html$p,
+						_List_fromArray(
+							[
+								A2($elm$html$Html$Attributes$style, 'text-align', 'right')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('_ o x')
+							])),
 						model.pg_cntt
 					])),
 				A2(

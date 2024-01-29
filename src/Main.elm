@@ -2,7 +2,7 @@ module Main exposing (..)
 
 import Browser
 import Browser.Navigation as Nav
-import Html exposing (Html, text, node, main_, span, div, br, footer)
+import Html exposing (Html, text, node, main_, span, div, p, br, footer)
 import Html.Attributes exposing (..)
 
 import Http
@@ -138,6 +138,7 @@ view model =
             [ node "link" [ href titlefont, rel "stylesheet" ] []
             , node "link" [ href body_font, rel "stylesheet" ] []
             , node "link" [ href ( String.concat [ "https://", model.url.host, "/css/style.css" ] ), rel "stylesheet" ] []
+            , p [ style "text-align" "right" ] [ text "_ o x" ]
             , model.pg_cntt
             ]
         , span [] [ br [] [] ]
