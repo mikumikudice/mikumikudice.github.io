@@ -135,6 +135,7 @@ view model =
     { title = ( String.slice 1 ( size + 1 ) model.page )
     , body =
         [ section [] [ h2 [ style "text-align" "right" ] [ text "_ o x" ]]
+        , span [] [ br [] [] ]
         , main_ []
             [ node "link" [ href titlefont, rel "stylesheet" ] []
             , node "link" [ href body_font, rel "stylesheet" ] []
