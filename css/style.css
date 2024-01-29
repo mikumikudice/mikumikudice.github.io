@@ -24,10 +24,20 @@ h1, h2, h3, h4, h5 {
 
 p {
     font-family     : PT;
+}
+
+main p, footer p {
     margin-top      : 8px;
     margin-bottom   : 0px;
     margin-left     : 52px;
     margin-right    : 52px;
+}
+
+body section p {
+    margin-top      : 2px;
+    margin-bottom   : 2px;
+    margin-left     : 0px;
+    margin-right    : 0px;
 }
 
 main {
