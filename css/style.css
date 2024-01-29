@@ -46,10 +46,10 @@ body section {
     background-color: var(--bnkpaper);
     outline         : solid 3px var(--outlines);
 
-    padding-top     : 32px;
-    padding-bottom  : 32px;
-    padding-left    : 24px;
-    padding-right   : 24px;
+    padding-top     : 08px;
+    padding-bottom  : 08px;
+    padding-left    : 16px;
+    padding-right   : 16px;
 }
 
 footer {
