@@ -41,7 +41,7 @@ main {
     padding-right   : 24px;
 }
 
-body span {
+body section {
     color           : var(--outlines);
     background-color: var(--bnkpaper);
     outline         : solid 3px var(--outlines);
