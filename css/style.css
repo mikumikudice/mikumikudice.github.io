@@ -24,20 +24,28 @@ h1, h2, h3, h4, h5 {
 
 p {
     font-family     : PT;
-}
-
-main p, footer p {
     margin-top      : 8px;
     margin-bottom   : 0px;
     margin-left     : 52px;
     margin-right    : 52px;
 }
 
-body section p {
-    margin-top      : 2px;
-    margin-bottom   : 2px;
-    margin-left     : 0px;
-    margin-right    : 0px;
+body section h2 {
+    margin-top      : 0px;
+    margin-bottom   : 0px;
+    margin-left     : 2px;
+    margin-right    : 2px;
+}
+
+body section {
+    color           : var(--outlines);
+    background-color: var(--bnkpaper);
+    outline         : solid 3px var(--outlines);
+
+    padding-top     : 4px;
+    padding-bottom  : 4px;
+    padding-left    : 8px;
+    padding-right   : 8px;
 }
 
 main {
@@ -49,17 +57,6 @@ main {
     padding-bottom  : 32px;
     padding-left    : 24px;
     padding-right   : 24px;
-}
-
-body section {
-    color           : var(--outlines);
-    background-color: var(--bnkpaper);
-    outline         : solid 3px var(--outlines);
-
-    padding-top     : 08px;
-    padding-bottom  : 08px;
-    padding-left    : 16px;
-    padding-right   : 16px;
 }
 
 footer {
