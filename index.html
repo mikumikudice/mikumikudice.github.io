@@ -6433,7 +6433,7 @@ var $author$project$Main$fetch = F2(
 	function (host, page) {
 		var path = $elm$core$String$concat(
 			_List_fromArray(
-				['https://', host, '/pages', page, '.txt']));
+				['https://', host, '/pages', page, '.md']));
 		return (page !== '/footnote') ? $elm$http$Http$get(
 			{
 				aW: $elm$http$Http$expectString($author$project$Main$LoadNewPage),
@@ -15567,15 +15567,15 @@ var $author$project$Main$view = function (model) {
 			[
 				A2(
 				$elm$html$Html$section,
-				_List_fromArray(
-					[
-						A2($elm$html$Html$Attributes$style, 'display', 'flex')
-					]),
+				_List_Nil,
 				_List_fromArray(
 					[
 						A2(
 						$elm$html$Html$nav,
-						_List_Nil,
+						_List_fromArray(
+							[
+								A2($elm$html$Html$Attributes$style, 'float', 'left')
+							]),
 						_List_fromArray(
 							[
 								$elm$html$Html$text(model.B.T)
@@ -15584,12 +15584,19 @@ var $author$project$Main$view = function (model) {
 						$elm$html$Html$h2,
 						_List_fromArray(
 							[
-								A2($elm$html$Html$Attributes$style, 'text-align', 'right')
+								A2($elm$html$Html$Attributes$style, 'float', 'right')
 							]),
 						_List_fromArray(
 							[
 								$elm$html$Html$text('_ o x')
-							]))
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								A2($elm$html$Html$Attributes$style, 'clear', 'both')
+							]),
+						_List_Nil)
 					])),
 				A2(
 				$elm$html$Html$span,

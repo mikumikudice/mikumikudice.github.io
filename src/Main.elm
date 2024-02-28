@@ -48,7 +48,7 @@ mov_url model url =
 
 fetch host page =
     let
-        path = ( String.concat [ "https://", host, "/pages", page, ".txt" ] )
+        path = ( String.concat [ "https://", host, "/pages", page, ".md" ] )
     in
     if page /= "/footnote" then
         Http.get
@@ -134,9 +134,10 @@ view model =
     let size = String.length model.page in
     { title = ( String.slice 1 ( size + 1 ) model.page )
     , body =
-        [ section [ style "display" "flex" ]
-            [ nav [] [ text model.url.path ]
-            , h2 [ style "text-align" "right" ] [ text "_ o x" ]
+        [ section []
+            [ nav [ style "float" "left" ] [ text model.url.path ]
+            , h2  [ style "float" "right" ] [ text "_ o x" ]
+            , div [ style "clear" "both" ] []
             ]
         , span [] [ br [] [] ]
         , main_ []
