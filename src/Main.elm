@@ -2,7 +2,7 @@ module Main exposing (..)
 
 import Browser
 import Browser.Navigation as Nav
-import Html exposing (Html, text, node, main_, section, div, h2, br, footer)
+import Html exposing (Html, text, node, main_, nav, section, div, h2, br, footer)
 import Html.Attributes exposing (..)
 
 import Http
@@ -134,7 +134,10 @@ view model =
     let size = String.length model.page in
     { title = ( String.slice 1 ( size + 1 ) model.page )
     , body =
-        [ section [] [ h2 [ style "text-align" "right" ] [ text "_ o x" ]]
+        [ section [ style "display" "flex" ]
+            [ nav [] [ text model.url.path ]
+            , h2 [ style "text-align" "right" ] [ text "_ o x" ]
+            ]
         , span [] [ br [] [] ]
         , main_ []
             [ node "link" [ href titlefont, rel "stylesheet" ] []

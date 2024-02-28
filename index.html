@@ -15698,6 +15698,7 @@ var $author$project$Main$update = F2(
 var $author$project$Main$body_font = 'https://fonts.googleapis.com/css2?family=PT+Mono';
 var $elm$html$Html$footer = _VirtualDom_node('footer');
 var $elm$html$Html$main_ = _VirtualDom_node('main');
+var $elm$html$Html$nav = _VirtualDom_node('nav');
 var $elm$virtual_dom$VirtualDom$node = function (tag) {
 	return _VirtualDom_node(
 		_VirtualDom_noScript(tag));
@@ -15715,9 +15716,19 @@ var $author$project$Main$view = function (model) {
 			[
 				A2(
 				$elm$html$Html$section,
-				_List_Nil,
 				_List_fromArray(
 					[
+						A2($elm$html$Html$Attributes$style, 'display', 'flex')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$nav,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text(model.url.path)
+							])),
 						A2(
 						$elm$html$Html$h2,
 						_List_fromArray(
