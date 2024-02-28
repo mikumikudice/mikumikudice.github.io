@@ -31,7 +31,7 @@ p {
     margin-right    : 52px;
 }
 
-body section h2 {
+body section h2, body nav h2 {
     margin-top      : 0px;
     margin-bottom   : 0px;
     margin-left     : 0px;
