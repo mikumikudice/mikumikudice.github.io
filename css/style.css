@@ -115,7 +115,8 @@ main p code {
     background-color: var(--outlines);
 }
 
-main::selection, main::-moz-selection {
+main::selection, main::-moz-selection
+footer::selection, footer::-moz-selection {
     color           : var(--hghlight);
     background-color: var(--outlines);
 }
