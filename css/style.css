@@ -6,33 +6,46 @@
 }
 
 body {
-    background-color: var(--bnkpaper);
+    font-family     : rubik;
     font-size       : 24;
+    color           : var(--outlines);
+    background-color: var(--bnkpaper);
     margin-top      : 48px;
     margin-left     : 224px;
     margin-bottom   : 48px;
     margin-right    : 224px;
 }
 
-body h1 {
+::selection, ::-moz-selection {
+    color           : var(--hghlight);
+    background-color: var(--outlines);
+}
+
+a {
+    color           : var(--text_ink);
+    text-decoration : none;
+}
+a::selection,  a::-moz-selection {
+    color           : var(--bnkpaper);
+    background-color: var(--text_ink);
+}
+a:hover {
+    color           : var(--outlines);
+}
+
+h1 {
     font-size: 1.8em;
 }
-
-body h2 {
+h2 {
     font-size: 1.6em;
 }
-
-body h3 {
+h3 {
     font-size: 1.2em;
 }
-
-body h4 {
+h4 {
     font-size: 1em;
 }
-
-main h1, main h2, main h3, main h4,
-footer h1, footer h2, footer h3, footer h4 {
-    font-family     : rubik;
+h1, h2, h3, h4 {
     margin-top      : 24px;
     margin-bottom   : 8px;
     margin-left     : 48px;
@@ -50,38 +63,28 @@ p {
     margin-left     : 52px;
     margin-right    : 52px;
 }
-
 del {
     text-decoration-thickness: 0.1em;
 }
 
 nav, main, footer {
-    font-family     : rubik;
-    color           : var(--outlines);
-    background-color: var(--bnkpaper);
     outline         : solid 3px var(--outlines);
-
     padding-top     : 8px;
     padding-bottom  : 8px;
-    padding-left    : 24px;
-    padding-right   : 24px;
-}
-
-main, footer {
     padding-top     : 32px;
     padding-bottom  : 32px;
     padding-left    : 24px;
     padding-right   : 24px;
 }
 
-main hr {
+hr {
     border          : 2px solid var(--outlines);
     margin-top      : 8px;
     margin-left     : 48px;
     margin-right    : 48px;
     margin-bottom   : 16px;
 }
-main code {
+code {
     font-family     : "Space Mono", monospace;
     font-size       : 0.8em;
     color           : var(--hghlight);
@@ -91,7 +94,7 @@ main code {
     padding-right   : 3px;
 }
 
-main code::selection, main code::-moz-selection {
+code::selection, code::-moz-selection {
     color           : var(--text_ink);
     background-color: var(--bnkpaper);
 }
@@ -108,26 +111,4 @@ main pre {
 
 main p code {
     background-color: var(--outlines);
-}
-
-nav section::selection, nav section::-moz-selection,
-main section::selection, main section::-moz-selection
-footer section::selection, footer section::-moz-selection {
-    color           : var(--hghlight);
-    background-color: var(--outlines);
-}
-
-main a, footer a {
-    color           : var(--text_ink);
-    text-decoration : none;
-}
-
-main a::selection     , footer a::selection,
-main a::-moz-selection, footer a::-moz-selection {
-    color           : var(--bnkpaper);
-    background-color: var(--text_ink);
-}
-
-main a:hover, footer a:hover {
-    color           : var(--outlines);
 }
