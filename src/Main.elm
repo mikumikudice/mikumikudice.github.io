@@ -13,6 +13,7 @@ import Html exposing (span)
 
 titlefont = "https://fonts.googleapis.com/css2?family=Rubik"
 body_font = "https://fonts.googleapis.com/css2?family=PT+Mono"
+code_font = "https://fonts.googleapis.com/css2?family=Space+Mono"
 
 maindark = "#1f1a24"
 mainlite = "#eeecde"
@@ -143,6 +144,7 @@ view model =
         , main_ []
             [ node "link" [ href titlefont, rel "stylesheet" ] []
             , node "link" [ href body_font, rel "stylesheet" ] []
+            , node "link" [ href code_font, rel "stylesheet" ] []
             , node "link" [ href ( String.concat [ "https://", model.url.host, "/css/style.css" ] ), rel "stylesheet" ] []
             , article [] [ model.pg_cntt ]
             ]

@@ -15548,6 +15548,7 @@ var $author$project$Main$update = F2(
 	});
 var $elm$html$Html$article = _VirtualDom_node('article');
 var $author$project$Main$body_font = 'https://fonts.googleapis.com/css2?family=PT+Mono';
+var $author$project$Main$code_font = 'https://fonts.googleapis.com/css2?family=Space+Mono';
 var $elm$html$Html$footer = _VirtualDom_node('footer');
 var $elm$html$Html$main_ = _VirtualDom_node('main');
 var $elm$html$Html$nav = _VirtualDom_node('nav');
@@ -15626,6 +15627,15 @@ var $author$project$Main$view = function (model) {
 						_List_fromArray(
 							[
 								$elm$html$Html$Attributes$href($author$project$Main$body_font),
+								$elm$html$Html$Attributes$rel('stylesheet')
+							]),
+						_List_Nil),
+						A3(
+						$elm$html$Html$node,
+						'link',
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$href($author$project$Main$code_font),
 								$elm$html$Html$Attributes$rel('stylesheet')
 							]),
 						_List_Nil),
