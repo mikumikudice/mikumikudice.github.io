@@ -18,7 +18,7 @@ nav,
 main h1, main h2, main h3, main h4, main h5,
 footer h1, footer h2, footer h3, footer h4, footer h5 {
     font-family     : rubik;
-    margin-top      : 8px;
+    margin-top      : 24px;
     margin-bottom   : 8px;
     margin-left     : 48px;
     margin-right    : 48px;
@@ -30,6 +30,10 @@ p {
     margin-bottom   : 0px;
     margin-left     : 52px;
     margin-right    : 52px;
+}
+
+s {
+    text-decoration-thickness: 0.02em;
 }
 
 body section h2 {
@@ -82,12 +86,17 @@ main hr {
     margin-bottom   : 16px;
 }
 main code {
-    color           : var(--text_ink);
-    background-color: var(--bnkpaper);
+    font-family     : "Space Mono", monospace;
+    color           : var(--bnkpaper);
+    background-color: var(--outlines);
     padding-top     : 1px;
     padding-left    : 2px;
     padding-bottom  : 1px;
     padding-right   : 2px;
+}
+
+main pre code {
+    margin-left: 64px;    
 }
 
 main p::selection, footer p::selection,
