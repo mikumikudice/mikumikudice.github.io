@@ -115,23 +115,7 @@ main p code {
     background-color: var(--outlines);
 }
 
-main p::selection, footer p::selection,
-main p::-moz-selection, footer p::-moz-selection
-
-main h1::selection, footer h1::selection,
-main h1::-moz-selection, footer h1::-moz-selection
-
-main h2::selection, footer h2::selection,
-main h2::-moz-selection, footer h2::-moz-selection
-
-main h3::selection, footer h3::selection,
-main h3::-moz-selection, footer h3::-moz-selection
-
-main h4::selection, footer h4::selection,
-main h4::-moz-selection, footer h4::-moz-selection
-
-main h5::selection, footer h5::selection,
-main h5::-moz-selection, footer h5::-moz-selection {
+main::selection, main::-moz-selection {
     color           : var(--hghlight);
     background-color: var(--outlines);
 }
