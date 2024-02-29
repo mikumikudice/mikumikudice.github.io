@@ -10,6 +10,7 @@ import Url
 
 import MdParsing exposing (render)
 import Html exposing (span)
+import List exposing (concat)
 
 titlefont = "https://fonts.googleapis.com/css2?family=Rubik"
 body_font = "https://fonts.googleapis.com/css2?family=PT+Mono"
@@ -132,23 +133,30 @@ update evnt model =
                 ( { model | page = new_url.path }, fetch model.url.host new_url.path )
 
 view model =
-    let size = String.length model.page in
-    { title = ( String.slice 1 ( size + 1 ) model.page )
+    let
+        size = String.length model.page
+        page = ( String.slice 1 ( size + 1 ) model.page ) 
+    in
+    { title = String.concat [ "iota.ban - ", page ]
     , body =
         [ section []
-            [ nav [ style "float" "left" ] [ text model.page ]
+            [ nav [ style "float" "left" ] [ text page ]
             , h2  [ style "float" "right" ] [ text "_ o x" ]
             , div [ style "clear" "both" ] []
             ]
         , span [] [ br [] [] ]
         , main_ []
-            [ node "link" [ href titlefont, rel "stylesheet" ] []
-            , node "link" [ href body_font, rel "stylesheet" ] []
-            , node "link" [ href code_font, rel "stylesheet" ] []
-            , node "link" [ href ( String.concat [ "https://", model.url.host, "/css/style.css" ] ), rel "stylesheet" ] []
-            , article [] [ model.pg_cntt ]
+            [ section []
+                [ node "link" [ href titlefont, rel "stylesheet" ] []
+                , node "link" [ href body_font, rel "stylesheet" ] []
+                , node "link" [ href code_font, rel "stylesheet" ] []
+                , node "link" [ href ( String.concat [ "https://", model.url.host, "/css/style.css" ] ), rel "stylesheet" ] []
+                ]
+            , section []
+                [ article [] [ model.pg_cntt ]
+                ]
             ]
         , span [] [ br [] [] ]
-        , footer [] [ span [] [ model.ft_cntt ]]
+        , footer [] [ section [] [ model.ft_cntt ]]
         ]
     }

@@ -5636,7 +5636,7 @@ var $elm$core$Task$perform = F2(
 var $elm$browser$Browser$application = _Browser_application;
 var $author$project$Main$Model = F5(
 	function (key, url, page, pg_cntt, ft_cntt) {
-		return {ao: ft_cntt, a5: key, T: page, aA: pg_cntt, C: url};
+		return {ao: ft_cntt, a5: key, ac: page, aA: pg_cntt, C: url};
 	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$html$Html$div = _VirtualDom_node('div');
@@ -9786,7 +9786,7 @@ var $dillonkearns$elm_markdown$Markdown$InlineParser$regMatchToEmphasisToken = F
 						e: A2(
 							$dillonkearns$elm_markdown$Markdown$InlineParser$EmphasisToken,
 							_char,
-							{ac: lFringeRank, af: rFringeRank})
+							{ab: lFringeRank, af: rFringeRank})
 					});
 			}
 		} else {
@@ -10512,7 +10512,7 @@ var $dillonkearns$elm_markdown$Markdown$InlineParser$isOpenEmphasisToken = F2(
 			if (_v1.$ === 7) {
 				var closeChar = _v1.a;
 				var close = _v1.b;
-				return _Utils_eq(openChar, closeChar) ? ((_Utils_eq(open.ac, open.af) || _Utils_eq(close.ac, close.af)) ? ((!(!A2($elm$core$Basics$modBy, 3, closeToken.au + openToken.au))) || ((!A2($elm$core$Basics$modBy, 3, closeToken.au)) && (!A2($elm$core$Basics$modBy, 3, openToken.au)))) : true) : false;
+				return _Utils_eq(openChar, closeChar) ? ((_Utils_eq(open.ab, open.af) || _Utils_eq(close.ab, close.af)) ? ((!(!A2($elm$core$Basics$modBy, 3, closeToken.au + openToken.au))) || ((!A2($elm$core$Basics$modBy, 3, closeToken.au)) && (!A2($elm$core$Basics$modBy, 3, openToken.au)))) : true) : false;
 			} else {
 				return false;
 			}
@@ -10812,7 +10812,7 @@ var $dillonkearns$elm_markdown$Markdown$InlineParser$emphasisTTM = F5(
 				var _v27 = token.e;
 				if (_v27.$ === 7) {
 					var _char = _v27.a;
-					var leftFringeRank = _v27.b.ac;
+					var leftFringeRank = _v27.b.ab;
 					var rightFringeRank = _v27.b.af;
 					if (_Utils_eq(leftFringeRank, rightFringeRank)) {
 						if ((!(!rightFringeRank)) && ((_char !== '_') || (rightFringeRank === 1))) {
@@ -10935,8 +10935,8 @@ var $dillonkearns$elm_markdown$Markdown$InlineParser$emphasisToMatch = F5(
 		var innerTokens = _v25.b;
 		var remainTokens = _v25.c;
 		var remainLength = openToken.au - closeToken.au;
-		var updt = (!remainLength) ? {aa: closeToken, S: openToken, ae: remainTokens, ai: tokensTail} : ((remainLength > 0) ? {
-			aa: closeToken,
+		var updt = (!remainLength) ? {_: closeToken, S: openToken, ae: remainTokens, ai: tokensTail} : ((remainLength > 0) ? {
+			_: closeToken,
 			S: _Utils_update(
 				openToken,
 				{c: openToken.c + remainLength, au: closeToken.au}),
@@ -10948,7 +10948,7 @@ var $dillonkearns$elm_markdown$Markdown$InlineParser$emphasisToMatch = F5(
 				remainTokens),
 			ai: tokensTail
 		} : {
-			aa: _Utils_update(
+			_: _Utils_update(
 				closeToken,
 				{au: openToken.au}),
 			S: openToken,
@@ -10969,7 +10969,7 @@ var $dillonkearns$elm_markdown$Markdown$InlineParser$emphasisToMatch = F5(
 			},
 			$dillonkearns$elm_markdown$Markdown$InlineParser$EmphasisType(updt.S.au),
 			updt.S,
-			updt.aa,
+			updt._,
 			$elm$core$List$reverse(innerTokens));
 		return _Utils_Tuple3(updt.ai, match, updt.ae);
 	});
@@ -11524,7 +11524,7 @@ var $dillonkearns$elm_markdown$Markdown$TableParser$parseHeader = F2(
 				$elm$core$List$map2,
 				F2(
 					function (headerCell, alignment) {
-						return {Y: alignment, M: headerCell};
+						return {X: alignment, M: headerCell};
 					}),
 				headers,
 				columnAlignments);
@@ -11561,7 +11561,7 @@ var $dillonkearns$elm_markdown$Markdown$CodeBlock$infoString = function (fenceCh
 				return $elm$core$Maybe$Just(trimmed);
 			}
 		});
-	var _v0 = fenceCharacter.ab;
+	var _v0 = fenceCharacter.aa;
 	if (!_v0) {
 		return A2(
 			$elm$parser$Parser$Advanced$mapChompedString,
@@ -11583,7 +11583,7 @@ var $dillonkearns$elm_markdown$Parser$Token$backtick = A2(
 	$elm$parser$Parser$Advanced$Token,
 	'`',
 	$elm$parser$Parser$Expecting('a \'`\''));
-var $dillonkearns$elm_markdown$Markdown$CodeBlock$backtick = {Z: '`', ab: 0, ah: $dillonkearns$elm_markdown$Parser$Token$backtick};
+var $dillonkearns$elm_markdown$Markdown$CodeBlock$backtick = {Y: '`', aa: 0, ah: $dillonkearns$elm_markdown$Parser$Token$backtick};
 var $dillonkearns$elm_markdown$Markdown$CodeBlock$colToIndentation = function (_int) {
 	switch (_int) {
 		case 1:
@@ -11624,14 +11624,14 @@ var $dillonkearns$elm_markdown$Markdown$CodeBlock$fenceOfAtLeast = F2(
 				$elm$parser$Parser$Advanced$ignorer,
 				builtTokens,
 				$elm$parser$Parser$Advanced$chompWhile(
-					$elm$core$Basics$eq(fenceCharacter.Z))));
+					$elm$core$Basics$eq(fenceCharacter.Y))));
 	});
 var $dillonkearns$elm_markdown$Markdown$CodeBlock$Tilde = 1;
 var $dillonkearns$elm_markdown$Parser$Token$tilde = A2(
 	$elm$parser$Parser$Advanced$Token,
 	'~',
 	$elm$parser$Parser$Expecting('a `~`'));
-var $dillonkearns$elm_markdown$Markdown$CodeBlock$tilde = {Z: '~', ab: 1, ah: $dillonkearns$elm_markdown$Parser$Token$tilde};
+var $dillonkearns$elm_markdown$Markdown$CodeBlock$tilde = {Y: '~', aa: 1, ah: $dillonkearns$elm_markdown$Parser$Token$tilde};
 var $dillonkearns$elm_markdown$Whitespace$upToThreeSpaces = $elm$parser$Parser$Advanced$oneOf(
 	_List_fromArray(
 		[
@@ -11665,7 +11665,7 @@ var $dillonkearns$elm_markdown$Markdown$CodeBlock$openingFence = A2(
 					function (indent, _v0) {
 						var character = _v0.a;
 						var length = _v0.b;
-						return {_: character, at: indent, au: length};
+						return {Z: character, at: indent, au: length};
 					})),
 			$dillonkearns$elm_markdown$Whitespace$upToThreeSpaces),
 		A2($elm$parser$Parser$Advanced$andThen, $dillonkearns$elm_markdown$Markdown$CodeBlock$colToIndentation, $elm$parser$Parser$Advanced$getCol)),
@@ -11734,7 +11734,7 @@ var $dillonkearns$elm_markdown$Markdown$CodeBlock$remainingBlockHelp = function 
 					$elm$parser$Parser$Advanced$ignorer,
 					$elm$parser$Parser$Advanced$succeed(
 						$elm$parser$Parser$Advanced$Done(body)),
-					A2($dillonkearns$elm_markdown$Markdown$CodeBlock$closingFence, fence.au, fence._))),
+					A2($dillonkearns$elm_markdown$Markdown$CodeBlock$closingFence, fence.au, fence.Z))),
 				A2(
 				$elm$parser$Parser$Advanced$keeper,
 				A2(
@@ -11772,7 +11772,7 @@ var $dillonkearns$elm_markdown$Markdown$CodeBlock$parser = A2(
 				$elm$parser$Parser$Advanced$succeed($dillonkearns$elm_markdown$Markdown$CodeBlock$CodeBlock),
 				A2(
 					$elm$parser$Parser$Advanced$ignorer,
-					$dillonkearns$elm_markdown$Markdown$CodeBlock$infoString(fence._),
+					$dillonkearns$elm_markdown$Markdown$CodeBlock$infoString(fence.Z),
 					$dillonkearns$elm_markdown$Helpers$lineEndOrEnd)),
 			$dillonkearns$elm_markdown$Markdown$CodeBlock$remainingBlock(fence));
 	},
@@ -14026,12 +14026,12 @@ var $dillonkearns$elm_markdown$Markdown$Parser$parseHeaderInlines = F2(
 			$elm$core$List$map,
 			function (_v24) {
 				var label = _v24.M;
-				var alignment = _v24.Y;
+				var alignment = _v24.X;
 				return A3(
 					$dillonkearns$elm_markdown$Markdown$Parser$parseRawInline,
 					linkReferences,
 					function (parsedHeaderLabel) {
-						return {Y: alignment, M: parsedHeaderLabel};
+						return {X: alignment, M: parsedHeaderLabel};
 					},
 					label);
 			},
@@ -15295,7 +15295,7 @@ var $dillonkearns$elm_markdown$Markdown$Renderer$renderHelperSingle = function (
 						$elm$core$List$map,
 						function (_v11) {
 							var label = _v11.M;
-							var alignment = _v11.Y;
+							var alignment = _v11.X;
 							return A2(
 								$elm$core$Result$map,
 								$elm$core$Tuple$pair(alignment),
@@ -15328,7 +15328,7 @@ var $dillonkearns$elm_markdown$Markdown$Renderer$renderHelperSingle = function (
 					return A2(
 						$elm$core$Maybe$andThen,
 						function ($) {
-							return $.Y;
+							return $.X;
 						},
 						$elm$core$List$head(
 							A2($elm$core$List$drop, columnIndex, header)));
@@ -15542,7 +15542,7 @@ var $author$project$Main$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{T: new_url.ad}),
+						{ac: new_url.ad}),
 					A2($author$project$Main$fetch, model.C.y, new_url.ad));
 		}
 	});
@@ -15563,7 +15563,8 @@ var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $author$project$Main$titlefont = 'https://fonts.googleapis.com/css2?family=Rubik';
 var $author$project$Main$view = function (model) {
-	var size = $elm$core$String$length(model.T);
+	var size = $elm$core$String$length(model.ac);
+	var page = A3($elm$core$String$slice, 1, size + 1, model.ac);
 	return {
 		bC: _List_fromArray(
 			[
@@ -15580,7 +15581,7 @@ var $author$project$Main$view = function (model) {
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text(model.T)
+								$elm$html$Html$text(page)
 							])),
 						A2(
 						$elm$html$Html$h2,
@@ -15612,50 +15613,62 @@ var $author$project$Main$view = function (model) {
 				_List_Nil,
 				_List_fromArray(
 					[
-						A3(
-						$elm$html$Html$node,
-						'link',
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$href($author$project$Main$titlefont),
-								$elm$html$Html$Attributes$rel('stylesheet')
-							]),
-						_List_Nil),
-						A3(
-						$elm$html$Html$node,
-						'link',
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$href($author$project$Main$body_font),
-								$elm$html$Html$Attributes$rel('stylesheet')
-							]),
-						_List_Nil),
-						A3(
-						$elm$html$Html$node,
-						'link',
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$href($author$project$Main$code_font),
-								$elm$html$Html$Attributes$rel('stylesheet')
-							]),
-						_List_Nil),
-						A3(
-						$elm$html$Html$node,
-						'link',
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$href(
-								$elm$core$String$concat(
-									_List_fromArray(
-										['https://', model.C.y, '/css/style.css']))),
-								$elm$html$Html$Attributes$rel('stylesheet')
-							]),
-						_List_Nil),
 						A2(
-						$elm$html$Html$article,
+						$elm$html$Html$section,
 						_List_Nil,
 						_List_fromArray(
-							[model.aA]))
+							[
+								A3(
+								$elm$html$Html$node,
+								'link',
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$href($author$project$Main$titlefont),
+										$elm$html$Html$Attributes$rel('stylesheet')
+									]),
+								_List_Nil),
+								A3(
+								$elm$html$Html$node,
+								'link',
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$href($author$project$Main$body_font),
+										$elm$html$Html$Attributes$rel('stylesheet')
+									]),
+								_List_Nil),
+								A3(
+								$elm$html$Html$node,
+								'link',
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$href($author$project$Main$code_font),
+										$elm$html$Html$Attributes$rel('stylesheet')
+									]),
+								_List_Nil),
+								A3(
+								$elm$html$Html$node,
+								'link',
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$href(
+										$elm$core$String$concat(
+											_List_fromArray(
+												['https://', model.C.y, '/css/style.css']))),
+										$elm$html$Html$Attributes$rel('stylesheet')
+									]),
+								_List_Nil)
+							])),
+						A2(
+						$elm$html$Html$section,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$article,
+								_List_Nil,
+								_List_fromArray(
+									[model.aA]))
+							]))
 					])),
 				A2(
 				$elm$html$Html$span,
@@ -15670,13 +15683,15 @@ var $author$project$Main$view = function (model) {
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$span,
+						$elm$html$Html$section,
 						_List_Nil,
 						_List_fromArray(
 							[model.ao]))
 					]))
 			]),
-		b7: A3($elm$core$String$slice, 1, size + 1, model.T)
+		b7: $elm$core$String$concat(
+			_List_fromArray(
+				['iota.ban - ', page]))
 	};
 };
 var $author$project$Main$main = $elm$browser$Browser$application(

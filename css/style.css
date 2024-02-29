@@ -24,6 +24,10 @@ footer h1, footer h2, footer h3, footer h4, footer h5 {
     margin-right    : 48px;
 }
 
+nav h2 {
+    margin-left     : 0px;
+}
+
 main article h1, main article h2, main article h3,
 main article h4, main article h5 {
     margin-top      : 24px;
@@ -37,8 +41,8 @@ p {
     margin-right    : 52px;
 }
 
-s {
-    text-decoration-thickness: 0.02em;
+del {
+    text-decoration-thickness: 0.1em;
 }
 
 body section h2 {
@@ -92,7 +96,7 @@ main hr {
 }
 main code {
     font-family     : "Space Mono", monospace;
-    font-size       : 12px;
+    font-size       : 0.8em;
     color           : var(--hghlight);
     padding-top     : 2px;
     padding-left    : 3px;
@@ -108,6 +112,10 @@ main code::selection, main code::-moz-selection {
 main pre {
     margin-left: 64px;
     margin-right: 64px;
+    padding-top     : 4px;
+    padding-left    : 3px;
+    padding-bottom  : 4px;
+    padding-right   : 3px;
     background-color: var(--outlines);
 }
 
@@ -115,8 +123,9 @@ main p code {
     background-color: var(--outlines);
 }
 
-main article::selection, main article::-moz-selection
-footer span::selection, footer span::-moz-selection {
+nav section::selection, nav section::-moz-selection,
+main section::selection, main section::-moz-selection
+footer section::selection, footer section::-moz-selection {
     color           : var(--hghlight);
     background-color: var(--outlines);
 }
