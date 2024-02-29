@@ -7,7 +7,7 @@
 
 body {
     background-color: var(--bnkpaper);
-    font-size       : 24px;
+    font-size       : 24;
     margin-top      : 48px;
     margin-left     : 224px;
     margin-bottom   : 48px;
@@ -15,19 +15,19 @@ body {
 }
 
 body h1 {
-    font-size: 2em;
-}
-
-body h2 {
     font-size: 1.8em;
 }
 
-body h3 {
+body h2 {
     font-size: 1.6em;
 }
 
+body h3 {
+    font-size: 1.2em;
+}
+
 body h4 {
-    font-size: 1.4em;
+    font-size: 1em;
 }
 
 main h1, main h2, main h3, main h4,
@@ -53,13 +53,6 @@ p {
 
 del {
     text-decoration-thickness: 0.1em;
-}
-
-body section h2 {
-    margin-top      : 0px;
-    margin-bottom   : 0px;
-    margin-left     : 0px;
-    margin-right    : 0px;
 }
 
 nav, main, footer {
