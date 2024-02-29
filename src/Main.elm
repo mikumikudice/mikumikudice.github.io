@@ -149,6 +149,6 @@ view model =
             , article [] [ model.pg_cntt ]
             ]
         , span [] [ br [] [] ]
-        , footer [] [ model.ft_cntt ]
+        , footer [] [ span [] [ model.ft_cntt ]]
         ]
     }
