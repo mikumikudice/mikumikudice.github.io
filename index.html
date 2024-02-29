@@ -4405,9 +4405,9 @@ var _Http_toTask = F3(function(router, toTask, request)
 		$elm$core$Maybe$isJust(request.br) && _Http_track(router, xhr, request.br.a);
 
 		try {
-			xhr.open(request.bR, request.B, true);
+			xhr.open(request.bR, request.C, true);
 		} catch (e) {
-			return done($elm$http$Http$BadUrl_(request.B));
+			return done($elm$http$Http$BadUrl_(request.C));
 		}
 
 		_Http_configureRequest(xhr, request);
@@ -4451,7 +4451,7 @@ function _Http_toResponse(toBody, xhr)
 function _Http_toMetadata(xhr)
 {
 	return {
-		B: xhr.responseURL,
+		C: xhr.responseURL,
 		b3: xhr.status,
 		b4: xhr.statusText,
 		a_: _Http_parseHeaders(xhr.getAllResponseHeaders())
@@ -5355,7 +5355,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {aZ: fragment, y: host, T: path, bb: port_, be: protocol, bZ: query};
+		return {aZ: fragment, y: host, ad: path, bb: port_, be: protocol, bZ: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5636,7 +5636,7 @@ var $elm$core$Task$perform = F2(
 var $elm$browser$Browser$application = _Browser_application;
 var $author$project$Main$Model = F5(
 	function (key, url, page, pg_cntt, ft_cntt) {
-		return {ao: ft_cntt, a5: key, ad: page, aA: pg_cntt, B: url};
+		return {ao: ft_cntt, a5: key, T: page, aA: pg_cntt, C: url};
 	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$html$Html$div = _VirtualDom_node('div');
@@ -6399,7 +6399,7 @@ var $elm$http$Http$cmdMap = F2(
 					bR: r.bR,
 					b6: r.b6,
 					br: r.br,
-					B: r.B
+					C: r.C
 				});
 		}
 	});
@@ -6422,11 +6422,11 @@ var $elm$http$Http$subscription = _Platform_leaf('Http');
 var $elm$http$Http$request = function (r) {
 	return $elm$http$Http$command(
 		$elm$http$Http$Request(
-			{bA: false, bC: r.bC, aW: r.aW, a_: r.a_, bR: r.bR, b6: r.b6, br: r.br, B: r.B}));
+			{bA: false, bC: r.bC, aW: r.aW, a_: r.a_, bR: r.bR, b6: r.b6, br: r.br, C: r.C}));
 };
 var $elm$http$Http$get = function (r) {
 	return $elm$http$Http$request(
-		{bC: $elm$http$Http$emptyBody, aW: r.aW, a_: _List_Nil, bR: 'GET', b6: $elm$core$Maybe$Nothing, br: $elm$core$Maybe$Nothing, B: r.B});
+		{bC: $elm$http$Http$emptyBody, aW: r.aW, a_: _List_Nil, bR: 'GET', b6: $elm$core$Maybe$Nothing, br: $elm$core$Maybe$Nothing, C: r.C});
 };
 var $elm$core$Basics$neq = _Utils_notEqual;
 var $author$project$Main$fetch = F2(
@@ -6437,11 +6437,11 @@ var $author$project$Main$fetch = F2(
 		return (page !== '/footnote') ? $elm$http$Http$get(
 			{
 				aW: $elm$http$Http$expectString($author$project$Main$LoadNewPage),
-				B: path
+				C: path
 			}) : $elm$http$Http$get(
 			{
 				aW: $elm$http$Http$expectString($author$project$Main$LoadFooter),
-				B: path
+				C: path
 			});
 	});
 var $elm$browser$Browser$Navigation$pushUrl = _Browser_pushUrl;
@@ -6552,12 +6552,12 @@ var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $elm$browser$Browser$Navigation$load = _Browser_load;
 var $author$project$Main$mov_url = F2(
 	function (model, url) {
-		return (!_Utils_eq(url, model.B.T)) ? $elm$core$Platform$Cmd$batch(
+		return (!_Utils_eq(url, model.C.ad)) ? $elm$core$Platform$Cmd$batch(
 			_List_fromArray(
 				[
 					A2($elm$browser$Browser$Navigation$pushUrl, model.a5, url),
-					A2($author$project$Main$fetch, model.B.y, url)
-				])) : A2($author$project$Main$fetch, model.B.y, url);
+					A2($author$project$Main$fetch, model.C.y, url)
+				])) : A2($author$project$Main$fetch, model.C.y, url);
 	});
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $elm$core$Result$andThen = F2(
@@ -15500,7 +15500,7 @@ var $author$project$Main$update = F2(
 					var url = urlreq.a;
 					return _Utils_Tuple2(
 						model,
-						A2($author$project$Main$mov_url, model, url.T));
+						A2($author$project$Main$mov_url, model, url.ad));
 				} else {
 					var href = urlreq.a;
 					return _Utils_Tuple2(
@@ -15521,7 +15521,7 @@ var $author$project$Main$update = F2(
 				} else {
 					return _Utils_Tuple2(
 						model,
-						A2($author$project$Main$fetch, model.B.y, '/404'));
+						A2($author$project$Main$fetch, model.C.y, '/404'));
 				}
 			case 3:
 				var res = evnt.a;
@@ -15542,10 +15542,11 @@ var $author$project$Main$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{ad: new_url.T}),
-					A2($author$project$Main$fetch, model.B.y, new_url.T));
+						{T: new_url.ad}),
+					A2($author$project$Main$fetch, model.C.y, new_url.ad));
 		}
 	});
+var $elm$html$Html$article = _VirtualDom_node('article');
 var $author$project$Main$body_font = 'https://fonts.googleapis.com/css2?family=PT+Mono';
 var $elm$html$Html$footer = _VirtualDom_node('footer');
 var $elm$html$Html$main_ = _VirtualDom_node('main');
@@ -15561,7 +15562,7 @@ var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $author$project$Main$titlefont = 'https://fonts.googleapis.com/css2?family=Rubik';
 var $author$project$Main$view = function (model) {
-	var size = $elm$core$String$length(model.ad);
+	var size = $elm$core$String$length(model.T);
 	return {
 		bC: _List_fromArray(
 			[
@@ -15578,7 +15579,7 @@ var $author$project$Main$view = function (model) {
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text(model.B.T)
+								$elm$html$Html$text(model.T)
 							])),
 						A2(
 						$elm$html$Html$h2,
@@ -15636,11 +15637,15 @@ var $author$project$Main$view = function (model) {
 								$elm$html$Html$Attributes$href(
 								$elm$core$String$concat(
 									_List_fromArray(
-										['https://', model.B.y, '/css/style.css']))),
+										['https://', model.C.y, '/css/style.css']))),
 								$elm$html$Html$Attributes$rel('stylesheet')
 							]),
 						_List_Nil),
-						model.aA
+						A2(
+						$elm$html$Html$article,
+						_List_Nil,
+						_List_fromArray(
+							[model.aA]))
 					])),
 				A2(
 				$elm$html$Html$span,
@@ -15655,7 +15660,7 @@ var $author$project$Main$view = function (model) {
 				_List_fromArray(
 					[model.ao]))
 			]),
-		b7: A3($elm$core$String$slice, 1, size + 1, model.ad)
+		b7: A3($elm$core$String$slice, 1, size + 1, model.T)
 	};
 };
 var $author$project$Main$main = $elm$browser$Browser$application(

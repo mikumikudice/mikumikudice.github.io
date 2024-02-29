@@ -2,7 +2,7 @@ module Main exposing (..)
 
 import Browser
 import Browser.Navigation as Nav
-import Html exposing (Html, text, node, main_, nav, section, div, h2, br, footer)
+import Html exposing (Html, text, node, main_, nav, article, section, div, h2, br, footer)
 import Html.Attributes exposing (..)
 
 import Http
@@ -135,7 +135,7 @@ view model =
     { title = ( String.slice 1 ( size + 1 ) model.page )
     , body =
         [ section []
-            [ nav [ style "float" "left" ] [ text model.url.path ]
+            [ nav [ style "float" "left" ] [ text model.page ]
             , h2  [ style "float" "right" ] [ text "_ o x" ]
             , div [ style "clear" "both" ] []
             ]
@@ -144,7 +144,7 @@ view model =
             [ node "link" [ href titlefont, rel "stylesheet" ] []
             , node "link" [ href body_font, rel "stylesheet" ] []
             , node "link" [ href ( String.concat [ "https://", model.url.host, "/css/style.css" ] ), rel "stylesheet" ] []
-            , model.pg_cntt
+            , article [] [ model.pg_cntt ]
             ]
         , span [] [ br [] [] ]
         , footer [] [ model.ft_cntt ]
