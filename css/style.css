@@ -18,10 +18,15 @@ nav,
 main h1, main h2, main h3, main h4, main h5,
 footer h1, footer h2, footer h3, footer h4, footer h5 {
     font-family     : rubik;
-    margin-top      : 24px;
+    margin-top      : 8px;
     margin-bottom   : 8px;
     margin-left     : 48px;
     margin-right    : 48px;
+}
+
+main article h1, main article h2, main article h3,
+main article h4, main article h5 {
+    margin-top      : 24px;
 }
 
 p {
