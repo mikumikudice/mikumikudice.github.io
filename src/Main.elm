@@ -139,8 +139,8 @@ view model =
     in
     { title = String.concat [ "iota.ban - ", page ]
     , body =
-        [ section []
-            [ nav [ style "float" "left" ] [ text page ]
+        [ nav []
+            [ h2 [ style "float" "left" ] [ text page ]
             , h2  [ style "float" "right" ] [ text "_ o x" ]
             , div [ style "clear" "both" ] []
             ]

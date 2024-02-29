@@ -52,7 +52,8 @@ body section h2 {
     margin-right    : 0px;
 }
 
-body section {
+nav, main, footer {
+    font-family     : rubik;
     color           : var(--outlines);
     background-color: var(--bnkpaper);
     outline         : solid 3px var(--outlines);
@@ -63,29 +64,12 @@ body section {
     padding-right   : 24px;
 }
 
-main {
-    color           : var(--outlines);
-    background-color: var(--bnkpaper);
-    outline         : solid 3px var(--outlines);
-
+main, footer {
     padding-top     : 32px;
     padding-bottom  : 32px;
     padding-left    : 24px;
     padding-right   : 24px;
 }
-
-footer {
-    font-family     : rubik;
-    color           : var(--outlines);
-    background-color: var(--bnkpaper);
-    outline         : solid 3px var(--outlines);
-
-    padding-top     : 32px;
-    padding-bottom  : 32px;
-    padding-left    : 24px;
-    padding-right   : 24px;
-}
-
 
 main hr {
     border          : 2px solid var(--outlines);
