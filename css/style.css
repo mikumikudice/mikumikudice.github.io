@@ -87,7 +87,7 @@ main hr {
 }
 main code {
     font-family     : "Space Mono", monospace;
-    color           : var(--bnkpaper);
+    color           : var(--hghlight);
     background-color: var(--outlines);
     padding-top     : 1px;
     padding-left    : 2px;
@@ -95,8 +95,9 @@ main code {
     padding-right   : 2px;
 }
 
-main pre code {
-    margin-left: 64px;    
+main pre {
+    margin-left: 64px;
+    background-color: var(--outlines);
 }
 
 main p::selection, footer p::selection,
