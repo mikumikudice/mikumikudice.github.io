@@ -33,6 +33,11 @@ a:hover {
     color           : var(--outlines);
 }
 
+ul {
+    margin-left     : 24px;
+    margin-right    : 24px;
+}
+
 h1 {
     font-size: 1.8em;
 }
@@ -102,8 +107,8 @@ code::selection, code::-moz-selection {
 }
 
 main pre {
-    margin-left: 64px;
-    margin-right: 64px;
+    margin-left     : 52px;
+    margin-right    : 52px;
     padding-top     : 4px;
     padding-left    : 3px;
     padding-bottom  : 4px;
