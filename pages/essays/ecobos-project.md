@@ -207,12 +207,12 @@ pops is designed for the ecobos architecture. all of its semantics is built bott
 this is an ambitious project. a life-long worth efford. despite I'm truly aware the fact most of this work, after 10 years from now, is likely to have one user (me), I'm doing it anyway. it's worth doing it anyway, as Peter Alvaro said in his essay. this is, indeed, a large project that may end be used by someone else, specially moss once it's pretty well structured. but, specially for ecobos itself, I'm developing it because it's how I think things should be. my take on literally everything there is to be in programming. kernels, operating systems, compilers, virtual machines, programming languages. all in one single ambitious yet minimalistic project.
 
 the current milestones are:
-[ ] finish moss
-[ ] set up a working VM for linux that emulates the one to be run in the ecobos kernel
-[ ] set mio for targeting pops
-[ ] develop the ecobos kernel
-[ ] develop the browser specification
-[ ] sit down and watch the sun rise in a grateful universe
+- [ ] finish moss
+- [ ] set up a working VM for linux that emulates the one to be run in the ecobos kernel
+- [ ] set mio for targeting pops
+- [ ] develop the ecobos kernel
+- [ ] develop the browser specification
+- [ ] sit down and watch the sun rise in a grateful universe
 
 I'll come back here to update these. in the meanwhile, I'm developing side projects, such as an educative language that compiles down to C called folklang and a java killer intended to be a VM-powered language that seaminglessly interops with python, lua and C.
 
