@@ -40,9 +40,6 @@ ul {
 
 h1 {
     font-size       : 1.8em;
-    margin-top      : 0px;
-    margin-left     : 48px;
-    margin-right    : 48px;
 }
 h2 {
     font-size       : 1.6em;
@@ -53,10 +50,10 @@ h3 {
 h4 {
     font-size       : 1em;
 }
-h2, h3, h4 {
+h1, h2, h3, h4 {
     margin-top      : 8px;
-    margin-bottom   : 8px;
     margin-left     : 48px;
+    margin-bottom   : 8px;
     margin-right    : 48px;
 }
 
@@ -95,6 +92,8 @@ nav {
 blockquote p {
     color           : var(--hghlight);
     background-color: var(--outlines);
+    margin-top      : 4px;
+    margin-bottom   : 4px;
     margin-left     : 48px;
     margin-right    : 48px;
 }
