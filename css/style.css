@@ -39,8 +39,10 @@ ul {
 }
 
 h1 {
-    margin-top      : 0px;
     font-size       : 1.8em;
+    margin-top      : 0px;
+    margin-left     : 48px;
+    margin-right    : 48px;
 }
 h2 {
     font-size       : 1.6em;
@@ -69,6 +71,7 @@ p {
     margin-left     : 48px;
     margin-right    : 48px;
 }
+
 del {
     text-decoration-thickness: 0.1em;
 }
@@ -87,6 +90,13 @@ nav {
     padding-left    : 24px;
     padding-bottom  : 16px;
     padding-right   : 24px;
+}
+
+blockquote p {
+    color           : var(--hghlight);
+    background-color: var(--outlines);
+    margin-left     : 48px;
+    margin-right    : 48px;
 }
 
 hr {
