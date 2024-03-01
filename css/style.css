@@ -111,6 +111,13 @@ main pre {
     background-color: var(--outlines);
 }
 
+main pre code {
+    border-top      : 4px;
+    border-left     : 4px;
+    border-bottom   : 4px;
+    border-right    : 4px;
+}
+
 main p code {
     background-color: var(--outlines);
 }
