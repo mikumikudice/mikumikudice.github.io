@@ -6,14 +6,14 @@
 }
 
 body {
-    font-family     : rubik;
+    font-family     : "Rubik Mono One", monospace;
     font-size       : 24;
     color           : var(--outlines);
     background-color: var(--bnkpaper);
-    margin-top      : 48px;
-    margin-left     : 224px;
-    margin-bottom   : 48px;
-    margin-right    : 224px;
+    margin-top      : 3%;
+    margin-left     : 16%;
+    margin-bottom   : 3%;
+    margin-right    : 16%;
 }
 
 ::selection, ::-moz-selection {
@@ -39,18 +39,19 @@ ul {
 }
 
 h1 {
-    font-size: 1.8em;
+    margin-top      : -8px;
+    font-size       : 1.8em;
 }
 h2 {
-    font-size: 1.6em;
+    font-size       : 1.6em;
 }
 h3 {
-    font-size: 1.2em;
+    font-size       : 1.2em;
 }
 h4 {
-    font-size: 1em;
+    font-size       : 1em;
 }
-h1, h2, h3, h4 {
+h2, h3, h4 {
     margin-top      : 24px;
     margin-bottom   : 8px;
     margin-left     : 48px;
@@ -62,7 +63,7 @@ nav h2 {
 }
 
 p {
-    font-family     : PT;
+    font-family     : "PT Mono", monospace;
     margin-top      : 8px;
     margin-bottom   : 0px;
     margin-left     : 48px;
@@ -82,9 +83,9 @@ main, footer {
 
 nav {
     outline         : solid 3px var(--outlines);
-    padding-top     : 8px;
+    padding-top     : 16px;
     padding-left    : 24px;
-    padding-bottom  : 8px;
+    padding-bottom  : 16px;
     padding-right   : 24px;
 }
 
@@ -113,7 +114,7 @@ code::selection, code::-moz-selection {
 main pre {
     margin-left     : 48px;
     margin-right    : 48px;
-    max-height      : 80px;
+    max-height      : 128px;
     overflow-x      : scroll;
     background-color: var(--outlines);
 }
@@ -133,7 +134,15 @@ main p code {
     background-color: var(--outlines);
 }
 
-input[type="checkbox"] {
+input[ type = "checkbox" ] {
     color           : var(--outlines);
     background-color: var(--bnkpaper);
+    appearance      : none;    
+    border          : 0.16em solid var(--outlines);
+    border-radius   : 0.24em;
+    width           : 1em;
+    height          : 1em;
+    margin-right    : 8px;
+    margin-left     : -16px;
+    transform       : translateY(0.3em);
 }

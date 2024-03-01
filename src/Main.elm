@@ -10,7 +10,6 @@ import Url
 
 import MdParsing exposing (render)
 import Html exposing (span)
-import List exposing (concat)
 
 titlefont = "https://fonts.googleapis.com/css2?family=Rubik"
 body_font = "https://fonts.googleapis.com/css2?family=PT+Mono"
