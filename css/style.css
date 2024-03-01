@@ -97,8 +97,7 @@ code {
     padding-left    : 3px;
     padding-bottom  : 2px;
     padding-right   : 3px;
-    overflow        : auto !important;
-    position        : relative !important;
+    overflow-y      : scroll;
 }
 
 code::selection, code::-moz-selection {
