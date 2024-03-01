@@ -137,7 +137,7 @@ view model =
         size = String.length model.page
         page = ( String.slice 1 ( size + 1 ) model.page ) 
     in
-    { title = String.concat [ "iota.ban - ", page ]
+    { title = String.concat [ "siota.ban - ", page ]
     , body =
         [ nav []
             [ h2 [ style "float" "left" ] [ text page ]

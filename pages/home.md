@@ -1,5 +1,5 @@
 # welcome y'all to iota ban
-"iota bán", according to google translate, means "blank sheet" in irish, but iota _ban_ means "women shit".
+"siota bán", according to google translate, means "blank sheet" in irish, but "siota _ban_" means "women shit".
 
 this is the kind of things I'll bring in this blog: **tech, linguistics, queer and programming stuff** and, mostly importantly, **lots of shit** from your favorite bunny gender trans girl **:3**
 

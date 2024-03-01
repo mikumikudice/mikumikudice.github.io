@@ -4,7 +4,7 @@
 in the past I talked about my attempts on making [VM-interpreted languages](https://mikumikudice.github.io/archive/blog/061221), [system programming languages](https://mikumikudice.github.io/archive/blog/092421) and even [operating systems](https://mikumikudice.github.io/archive/blog/031422). I wouldn't consider either lowy, B++ or pxdevOS failures. they had to at least be at an useable state to be considered as such. even on the matter of projects or joy of learning, it was not a failure. developing (or at least, trying to) them lead me to get the deepest I ever had on knowing a field. despite not being very mature, my knowledge is already capable of sustaining me on kernel and compiler contexts. I know how these work and how to create one for real. actually, I plan to do so. this is the ecobos project.
 
 ## the eco brutalist OS
-ecobos stands for eco-brutalist os, or in full, extended concepts on brutalist operating systems. it's a nested, double-acronym. the main inspirations for it are [this video](https://www.youtube.com/watch?v=L9v4Mg8wi4U), [this operating system](https://brutal.smnx.sh) and [this project](https://100r.co/site/home.html). from the first, the main reason to make it so out-of-rails on the matter of integrating the already existing ecosystem of operating systems. the second, the reason for the name and a taste of the direction the look is going to be. and lastly, the main idea of its structure and design. an operating system without users, all programs sandboxed by default, a microkernel environment that only deals with a non-so-hierarchical filesystem and a clean, aesthetic interface with no terminal emulation or shellscript. all user-space programs will be a byte-code program interpreted by the kernel virtual machine, ensuring sandboxing.
+ecobos stands for eco-brutalist os, or in full, extended concepts on brutalist operating systems. it's a nested, double-acronym. the main inspirations for it are [this video](https://www.youtube.com/watch?v=L9v4Mg8wi4U), [this operating system](https://brutal.smnx.sh) and [this project](https://100r.co/site/home.html). from the first, the main reason to make it so out-of-rails on the matter of integrating the already existing ecosystem of operating systems. the second, the reason for the name and a taste of the direction I'll take on its looks. and lastly, the main idea of its structure and design. an operating system without users, all programs sandboxed by default, a microkernel environment that only deals with a non-so-hierarchical filesystem and a clean, aesthetic interface with no terminal emulation or shellscript. all user-space programs will be a byte-code program interpreted by the kernel virtual machine, ensuring sandboxing.
 
 ### the ecobos web browser
 one small quirk I'm adding to ecobos is some kind of underweb, in the sense I'm hosting webpages that (currently) no other browser will be capable of processing. the current web development is too tightly duck-taped with HTML, CSS and javascript and, for me, these are very outdated (in the case of js, it was a bad idea back in its origins). so I'm making a browser with its custom runtime language, DOM and interaction mechanisms. literally reinventing internet as a codespace. there'll be only one language, more or less like elm, that executes all user I/O and UI/UX processing. this is a very raw idea and I'm letting it cook for now until I reach a working stage of the ecobos system itself.
@@ -15,7 +15,7 @@ but how am I going to implement all of it? we'll need a couple of plants and a v
 \* please address to [this section](#moss) for reference.
 
 moss: a compiled, statically typed, imperatively functional, effect-driven, systems programming language, or moss: a simple, small, impure functional systems lang, for short. moss is a highly experimental language that uses ratios instead of floating point numbers, linear types for memory management instead of garbage collectors or borrow checkers, use effect tags to control which interactions and states a function can make and have and yet a very simple, small, concise grammar and syntax. here's a hello world in moss:
-```rust
+```moss
     mod demo;
     io := use lime.io;
 
@@ -26,7 +26,7 @@ moss: a compiled, statically typed, imperatively functional, effect-driven, syst
 for briefly explaining every bit before diving in the explanations, we define de module name with `mod demo`, require the linux runtime IO module and store it on `io`, define a publically accessible function called `main` which the OS runtime will call as an entry point, which also takes no parameters (`fn()`), returns nothing (`nil`) and the whole function is tagged with the effect `cli` from the `io` module. in `main`, we call the `putl` function (which stands for "put line") with a string argument and a bang in the end, telling the compiler that if this function returns an error, it should crash. note that all namespaces are first-class objects. actually, everything despite the `mod` directive is considered a valid expression in moss. that's why both `io` module and the `main` function are assigned using the `:=` operator.
 
 now you know how it looks, let's see it in action:
-```rust
+```moss
 mod lime.io;
 
 cli :: eff;
@@ -65,7 +65,7 @@ please note that all statemends and expressions end with semicolons, even functi
 
 ### diving on side-effects
 another feature that moss has is an inverted situation of OOP. instead of data having behavior, behaviors have data. moss allows you to define function properties that works like static namespaces in languages such as C, but which are visible outside the function scope, but the only code chunk allowed to write on it is the function itself, as shown in the following example:
-```rust
+```moss
 mod dop;
 
 fldr :: eff; # field read effect
@@ -101,7 +101,7 @@ an mostly equivalent functionality of the `iota` function can be found in the go
 ### other nuances
 there is even more moss features to talk about, but it could be out-dated once the language is not even close to its 1.0 version. also, it would be too long. so I'll address another two essential features of moss: linear types and ratios:
 
-```rust
+```moss
 mod circle;
 
 unit := use core.unit;
@@ -162,19 +162,12 @@ just like the hundred rabbits virtual machine language, uxntal, pops is a stack-
 |10 @Console &vector $2 &read $1 &pad $5 &write $1 &error $1
 
 |0100 ( -> )
-
-	;hello-word print-text
-
-BRK
-
-@print-text ( str* -- )
-
+	;hello-word
 	&while
 		( send ) LDAk .Console/write DEO
 		( loop ) INC2 LDAk ?&while
 	POP2
-
-JMP2r
+BRK
 
 @hello-word "Hello 20 "World! 00
 ```
@@ -199,7 +192,7 @@ so, what's happening here? ecobos sticks with the idea that the only way program
 
 the line bellow, `:init main fail kill`, is the entry point label definition, which pushes the labels of the basic message-based callbacks. these are the labels the os runtime should jump-to in case of a syscall failure, such as the given file descriptor is invalid, and the label where it should jump-to in case of a forced quit, so, for example, if your program is stuck in a infinite loop and it's an image editor, you can place a last save-function in this section when the user decides to forcedly close the program.
 
-then, the actual program within the `main` label is defined. it pushes `2`, the syscall id fo write, then the memory address for the string literal, which actually is in the program itself, like the `.data` section on common assemblers. this string address actually points to a 32 bit integer, the length of the string, followed by the actual content, just like moss does. then the `sysc` keyword consumes the last 2 pushed values to the stack and pushes the current address in memory, so in case of a failure, the `fail` label can jump back. that's why there's a `pop` right after it; for cleaning the unused address. after that, we push our ok exit code of `0` and call the halt directive. finally, we define the said message/error labels, which just halts the program with exit code of `1` and the actual string value.
+then, the actual program within the `main` label is defined. it pushes `2`, the syscall id for write, then the memory address for the string literal, which actually is in the program itself, like the `.data` section on common assemblers. this string address actually points to a 32 bit integer, the length of the string, followed by the actual content, just like moss does. then the `sysc` keyword consumes the last 2 pushed values to the stack and pushes the current address in memory, so in case of a failure, the `fail` label can jump back. that's why there's a `pop` right after it; for cleaning the unused address. after that, we push our ok exit code of `0` and call the halt directive. finally, we define the said message/error labels, which just halts the program with exit code of `1` and finally actual string value.
 
 pops is designed for the ecobos architecture. all of its semantics is built bottom to top and optimized for this specific target. most people are probably going to write programs using moss that will generate mio code, which will generate the actual byte-code, but it's interesting to have a higher-level abstraction for the byte-code, both for people using it directly or for their own backends and for debugging purposes. we also are going to have a dedicated C compiler targeting ecobos and with the option to spit-out pops code, called rebecca, which we'll cover in its [dedicated essay](https://mikumikudice.github.io/essays/rebecca).
 

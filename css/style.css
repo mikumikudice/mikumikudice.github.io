@@ -72,13 +72,19 @@ del {
     text-decoration-thickness: 0.1em;
 }
 
-nav, main, footer {
+main, footer {
     outline         : solid 3px var(--outlines);
-    padding-top     : 8px;
-    padding-bottom  : 8px;
     padding-top     : 32px;
     padding-bottom  : 32px;
     padding-left    : 24px;
+    padding-right   : 24px;
+}
+
+nav {
+    outline         : solid 3px var(--outlines);
+    padding-top     : 8px;
+    padding-left    : 24px;
+    padding-bottom  : 8px;
     padding-right   : 24px;
 }
 
@@ -86,8 +92,8 @@ hr {
     border          : 2px solid var(--outlines);
     margin-top      : 8px;
     margin-left     : 48px;
-    margin-right    : 48px;
     margin-bottom   : 16px;
+    margin-right    : 48px;
 }
 code {
     font-family     : "Space Mono", monospace;
@@ -107,11 +113,16 @@ code::selection, code::-moz-selection {
 main pre {
     margin-left     : 48px;
     margin-right    : 48px;
+    max-height      : 80px;
     overflow-x      : scroll;
     background-color: var(--outlines);
 }
 
 main pre code {
+    padding-top     : 4px;
+    padding-left    : 6px;
+    padding-bottom  : 4px;
+    padding-right   : 6px;
     border-top      : 4px;
     border-left     : 4px;
     border-bottom   : 4px;
@@ -120,4 +131,9 @@ main pre code {
 
 main p code {
     background-color: var(--outlines);
+}
+
+input[type="checkbox"] {
+    color           : var(--outlines);
+    background-color: var(--bnkpaper);
 }
