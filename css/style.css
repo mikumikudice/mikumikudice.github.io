@@ -107,10 +107,6 @@ code::selection, code::-moz-selection {
 main pre {
     margin-left     : 52px;
     margin-right    : 52px;
-    padding-top     : 4px;
-    padding-left    : 3px;
-    padding-bottom  : 4px;
-    padding-right   : 3px;
     overflow-x      : scroll;
     background-color: var(--outlines);
 }
