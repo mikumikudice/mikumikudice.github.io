@@ -97,7 +97,6 @@ code {
     padding-left    : 3px;
     padding-bottom  : 2px;
     padding-right   : 3px;
-    overflow-y      : scroll;
 }
 
 code::selection, code::-moz-selection {
@@ -112,6 +111,7 @@ main pre {
     padding-left    : 3px;
     padding-bottom  : 4px;
     padding-right   : 3px;
+    overflow-x      : scroll;
     background-color: var(--outlines);
 }
 
