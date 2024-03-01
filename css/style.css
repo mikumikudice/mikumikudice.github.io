@@ -65,8 +65,8 @@ p {
     font-family     : PT;
     margin-top      : 8px;
     margin-bottom   : 0px;
-    margin-left     : 52px;
-    margin-right    : 52px;
+    margin-left     : 48px;
+    margin-right    : 48px;
 }
 del {
     text-decoration-thickness: 0.1em;
@@ -105,8 +105,8 @@ code::selection, code::-moz-selection {
 }
 
 main pre {
-    margin-left     : 52px;
-    margin-right    : 52px;
+    margin-left     : 48px;
+    margin-right    : 48px;
     overflow-x      : scroll;
     background-color: var(--outlines);
 }
