@@ -2,7 +2,7 @@ module Main exposing (..)
 
 import Browser
 import Browser.Navigation as Nav
-import Html exposing (Html, text, node, main_, nav, article, section, div, h2, br, footer)
+import Html exposing (Html, text, node, main_, nav, article, address, section, div, h2, br, footer)
 import Html.Attributes exposing (..)
 
 import Http
@@ -10,6 +10,7 @@ import Url
 
 import MdParsing exposing (render)
 import Html exposing (span)
+import Html exposing (address)
 
 titlefont = "https://fonts.googleapis.com/css2?family=Rubik"
 body_font = "https://fonts.googleapis.com/css2?family=PT+Mono"
@@ -30,6 +31,7 @@ type alias Model =
     , page : String
     , pg_cntt : Html Event
     , ft_cntt : Html Event
+    , exlinks : Html Event
     }
 
 type Event
@@ -37,6 +39,7 @@ type Event
   | UpdateUrl Url.Url
   | LoadNewPage (Result Http.Error String)
   | LoadFooter (Result Http.Error String)
+  | LoadLinks (Result Http.Error String)
 
 mov_url : Model -> String -> Cmd Event
 mov_url model url =
@@ -51,15 +54,20 @@ fetch host page =
     let
         path = ( String.concat [ "https://", host, "/pages", page, ".md" ] )
     in
-    if page /= "/footnote" then
+    if page == "/footnote" then
         Http.get
             { url = path
-            , expect = Http.expectString LoadNewPage
+            , expect = Http.expectString LoadFooter
+            }
+    else if page == "/links" then
+        Http.get
+            { url = path
+            , expect = Http.expectString LoadLinks
             }
     else
         Http.get
             { url = path
-            , expect = Http.expectString LoadFooter
+            , expect = Http.expectString LoadNewPage
             }
 
 main : Program () Model Event
@@ -83,27 +91,39 @@ init _ url key =
                 let
                     failed = String.replace "badurl=" "/" res
                 in
-                ( Model key url failed ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+                ( Model key url failed
+                ( div [] [ text "failed to load homepage :c" ] )
+                ( div [] [ text "failed to load the footer :c" ] )
+                ( div [] [ text "failed to load the external links :c" ] )
                 , Cmd.batch
                     [ Nav.pushUrl key failed
                     , fetch url.host failed
                     , fetch url.host "/footnote"
+                    , fetch url.host "/links"
                     ]
                 )
             else
-                ( Model key url "/home" ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+                ( Model key url "/home"
+                ( div [] [ text "failed to load homepage :c" ] )
+                ( div [] [ text "failed to load the footer :c" ] )
+                ( div [] [ text "failed to load the external links :c" ] )
                 , Cmd.batch
                     [ Nav.pushUrl key "/home"
                     , fetch url.host "/home"
                     , fetch url.host "/footnote"
+                    , fetch url.host "/links"
                     ]
                 )
         Nothing ->
-            ( Model key url "/home" ( div [] [ text "failed to load homepage :c" ] ) ( div [] [ text "failed to load the footer :c" ] )
+            ( Model key url "/home"
+            ( div [] [ text "failed to load homepage :c" ] )
+            ( div [] [ text "failed to load the footer :c" ] )
+            ( div [] [ text "failed to load the external links :c" ] )
             , Cmd.batch
                 [ Nav.pushUrl key "/home"
                 , fetch url.host "/home"
                 , fetch url.host "/footnote"
+                , fetch url.host "/links"
                 ]
             )
 
@@ -126,6 +146,12 @@ update evnt model =
             case res of
                 Ok page ->
                     ( { model | ft_cntt = (render page ) }, Cmd.none )
+                Err _ ->
+                    ( model, Cmd.none )
+        LoadLinks res ->
+            case res of
+                Ok page ->
+                    ( { model | exlinks = (render page ) }, Cmd.none )
                 Err _ ->
                     ( model, Cmd.none )
         UpdateUrl new_url ->
@@ -156,6 +182,9 @@ view model =
                 ]
             ]
         , span [] [ br [] [] ]
-        , footer [] [ section [] [ model.ft_cntt ]]
+        , footer []
+            [ section [] [ model.ft_cntt ]
+            , address [] [ model.exlinks ]
+            ]
         ]
     }

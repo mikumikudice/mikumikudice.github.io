@@ -1,0 +1,2 @@
+## other materials
+I also have a [substack mailing list](https://mikumikudice.substack.com/?r=2imzym&utm_campaign=pub-share-checklist), a [bluesky account](https://bsky.app/profile/mikumikudice.bsky.social) and a [social.linux.pizza instance](https://social.linux.pizza/@mikumikudice)
