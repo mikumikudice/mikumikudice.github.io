@@ -5,6 +5,9 @@ this is the kind of things I'll bring in this blog: **tech, linguistics, queer a
 
 my work is listed in the following categories:
 
+## RPG systems, games and game assets
+you can find all my creative work on games/RPG on my [itch.io page](https://mikumikudice.itch.io).
+
 ## novels
 you can read my short random stories [here](https://mikumikudice.github.io/novels).
 
