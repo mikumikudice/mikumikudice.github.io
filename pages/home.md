@@ -3,7 +3,10 @@
 
 this is the kind of things I'll bring in this blog: **tech, linguistics, queer and programming stuff** and, mostly importantly, **lots of shit** from your favorite bunny gender trans girl **:3**
 
-my work is listed in the following categories:
+# about me
+hi, I'm mikaela (she/her - a/ela/-a). I'm an autistic brazilian transfem that do lots of stuff. for example, I do digital art that you can commission on my [twitter art account DMs](https://twitter.com/mikartista_). you can also check my work in there as well.
+
+my other works are listed in the following categories:
 
 ## RPG systems, games and game assets
 you can find all my creative work on games/RPG on my [itch.io page](https://mikumikudice.itch.io).

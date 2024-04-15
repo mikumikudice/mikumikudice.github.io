@@ -1,0 +1,10 @@
+## sou brasileira
+I'm brazilian. I speak portuguese because some fuckers wanted to buy paprika and pepper but ended up in here to steal wood and kill indigenous people. for good or bad, it's my language. the point is: we made it _our_ language. up to the point the original speakers are [being re-colonized by us](https://regia-marinho.medium.com/portuguese-kids-who-only-speak-brazilian-51d140f52618). we embedded our culture in it. we molded it in our own way. _esta é a minh a língua. língua de meu povo._
+
+but this is a capitalist, imperialist world. we're forced to speak the _lingua franca_ of the colonizers of the colonizers -- currently, the USA -- i.e. english. people around the world learn english so then they can participate in the global community. but most north-americans are not learning other languages. they do lean in school spanish, but I don't believe many truly learn, just like many brazilian are taught english in schools yet don't understand it. the point is: why is their culture superior to mine? why should my art and ideas be forced in their language and culture? the answer: it's not. I do not need to do it.
+
+I started thinking about it after I found [this](https://luca-negri.itch.io/) game producer. most of his work is still in italian. if I have to learn english to consume north-american culture, why should not themselves do the same to me?
+
+for now on, I'll keep only these essays and "general access" texts in english, for a broader public. on the other hand, my stories, novels, games, comics, all of them will be first written in portuguese and latter in english and other languages. at least, in the case of visual-driven art (like games and comics), I'll do my best to make language-agnostic stories. no text, only visual storytelling.
+
+this is it. eu sou brasileira e tenho orgulho do idioma que falo e as pessoas que o falam também. lidem com isso.
