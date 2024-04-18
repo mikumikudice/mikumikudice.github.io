@@ -11,6 +11,7 @@ import Url
 import MdParsing exposing (render)
 import Html exposing (span)
 import Html exposing (address)
+import Url exposing (Url)
 
 titlefont = "https://fonts.googleapis.com/css2?family=Rubik"
 body_font = "https://fonts.googleapis.com/css2?family=PT+Mono"
@@ -132,7 +133,10 @@ update evnt model =
         RequestURL urlreq ->
             case urlreq of
                 Browser.Internal url ->
-                    ( model, mov_url model url.path )
+                    if String.endsWith ".txt" url.path then -- special case just for the license
+                        ( model, Nav.load (Url.toString url) )
+                    else
+                        ( model, mov_url model url.path )
                 Browser.External href ->
                     ( model, Nav.load href )
 
