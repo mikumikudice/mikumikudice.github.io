@@ -11,20 +11,10 @@ import Url
 import MdParsing exposing (render)
 import Html exposing (span)
 import Html exposing (address)
-import Url exposing (Url)
 
 titlefont = "https://fonts.googleapis.com/css2?family=Rubik"
 body_font = "https://fonts.googleapis.com/css2?family=PT+Mono"
 code_font = "https://fonts.googleapis.com/css2?family=Space+Mono"
-
-maindark = "#1f1a24"
-mainlite = "#eeecde"
-sidedark = "#2a3a42"
-sidelite = "#7895ab"
-sidegray = "#4d6476"
-win_dark = "#73514d"
-win_gray = "#ac8a71"
-win_lite = "#decb9f"
 
 type alias Model =
     { key : Nav.Key
@@ -83,9 +73,7 @@ main =
         }
 
 init _ url key =
-    let
-        bad = url.query
-    in
+    let bad = url.query in
     case bad of
         Just res ->
             if ( String.startsWith "badurl=" res ) then
