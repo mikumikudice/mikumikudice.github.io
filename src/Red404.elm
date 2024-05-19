@@ -28,9 +28,9 @@ init _ url _ =
         _ = Debug.log "string" "from 404"
         size = String.length url.path
         path = String.slice 1 ( size + 1 ) url.path
-        dest = String.concat [ "https://", url.host, "/?badurl=", path ]
+        dest = String.concat [ "https://", url.host, "?badurl=", path ]
     in
-    ( Model, Nav.load dest )
+    ( Model, Cmd.none )
 
 update _ model = ( model, Cmd.none )
 
