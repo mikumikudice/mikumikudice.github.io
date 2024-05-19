@@ -9,10 +9,10 @@ hi, I'm mikaela (she/her - a/ela/-a). I'm an autistic brazilian transfem that do
 my other works are listed in the following categories:
 
 ## programming projects
-moss, my compiler for a effect-driven, type-safe, functional programming language. the sr.ht page can be found <a href="https://git.sr.ht/~mikaela-md/mossy/" target="_blank">here</a>.
+moss, my compiler for a effect-driven, type-safe, functional programming language. the sr.ht page can be found [here](https://git.sr.ht/~mikaela-md/mossy/).
 
 ## RPG systems, games and game assets
-you can find all my creative work on games/RPG on my <a href="https://mikumikudice.itch.io" target="_blank">itch.io page</a>.
+you can find all my creative work on games/RPG on my [itch.io page](https://mikumikudice.itch.io).
 
 ## novels
 you can read my short random stories [here](https://mikumikudice.github.io/novels).
