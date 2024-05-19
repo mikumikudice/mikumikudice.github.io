@@ -25,12 +25,11 @@ main =
 init : a -> Url.Url -> b -> (Model, Cmd Event)
 init _ url _ =
     let
-        _ = Debug.log "string" "from 404"
         size = String.length url.path
         path = String.slice 1 ( size + 1 ) url.path
         dest = String.concat [ "https://", url.host, "?badurl=", path ]
     in
-    ( Model, Cmd.none )
+    ( Model, Nav.load dest )
 
 update _ model = ( model, Cmd.none )
 

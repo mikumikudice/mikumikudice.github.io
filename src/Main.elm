@@ -73,10 +73,7 @@ main =
         }
 
 init _ url key =
-    let
-        bad = url.query
-        _ = Debug.log "string" "from main"
-    in
+    let bad = url.query in
     case bad of
         Just res ->
             if ( String.startsWith "badurl=" res ) then
