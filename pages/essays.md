@@ -1,4 +1,5 @@
 ## tech
+* [mossyn around](https://mikumikudice.github.io/essays/mossyn-around) -- updates on my programming language
 * [sou brasileira](https://mikumikudice.github.io/essays/sou-brasileira) -- why I'll always write all my novels and games (first) in portuguese from now on
 * [rebecca](https://mikumikudice.github.io/essays/rebecca) -- a rebellious C compiler acronym
 * [the ecobos project](https://mikumikudice.github.io/essays/ecobos-project) -- a new age on the horizon
